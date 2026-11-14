@@ -1,1 +1,32 @@
-import type {Metadata} from "next";import Link from "next/link";import "./globals.css";export const metadata:Metadata={metadataBase:new URL("https://usekit.ng"),title:{default:"UseKit.ng — Free Tools to Do Business Quickly",template:"%s | UseKit.ng"},description:"UseKit.ng gives Nigerians free everyday tools: compress images, create an ATS-conscious CV, WhatsApp links, invoices and QR codes. No signup needed.",applicationName:"UseKit.ng",openGraph:{title:"UseKit.ng — Free tools to do business quickly",description:"Useful everyday tools for Nigerians. Free, simple and works on your phone.",type:"website",url:"https://usekit.ng"}};export default function RootLayout({children}:{children:React.ReactNode}){return <html lang="en"><body><header className="site-header"><div className="nav-wrap"><Link href="/" className="brand"><span className="brand-mark">u</span><span>usekit<span className="brand-dot">.</span>ng</span></Link><nav><Link href="/#tools">Explore tools</Link><Link href="/about">About</Link></nav><Link className="nav-cta" href="/#tools">Find a tool ↗</Link></div></header>{children}<footer className="site-footer"><div className="footer-inner"><div><Link href="/" className="brand"><span className="brand-mark">u</span><span>usekit<span className="brand-dot">.</span>ng</span></Link><p>Free tools to do business quickly.</p></div><div className="footer-links"><Link href="/about">About</Link><Link href="/privacy-policy">Privacy</Link><Link href="/contact">Contact</Link></div><small>© {new Date().getFullYear()} UseKit.ng. Made for everyday life in Nigeria.</small></div></footer></body></html>}
+import type { Metadata } from "next";
+import Link from "next/link";
+import "./globals.css";
+
+export const metadata: Metadata = {
+  metadataBase: new URL("https://usekit.ng"),
+  title: { default: "UseKit.ng — Everyday tools, made easier", template: "%s | UseKit.ng" },
+  description: "Thoughtful free digital tools for Nigerians. Create invoices, build a CV, compress images, make QR codes and WhatsApp links. No signup needed.",
+  applicationName: "UseKit.ng",
+  icons: { icon: [{ url: "/icon.svg", type: "image/svg+xml" }], shortcut: ["/icon.svg"], apple: [{ url: "/icon.svg", type: "image/svg+xml" }] },
+  openGraph: { title: "UseKit.ng — Everyday tools, made easier", description: "A calmer, simpler way to get everyday digital tasks done. Free tools, no signup.", type: "website", url: "https://usekit.ng" }
+};
+
+function Brand() {
+  return <span className="brand"><img src="/usekit-mark.svg" alt="" /><span className="brand-word">usekit<span className="brand-dot">.</span>ng</span></span>;
+}
+
+export default function RootLayout({ children }: { children: React.ReactNode }) {
+  return <html lang="en"><body>
+    <header className="site-header"><div className="nav-wrap">
+      <Link href="/" aria-label="UseKit.ng home"><Brand /></Link>
+      <nav aria-label="Main navigation"><Link href="/#tools">Explore tools</Link><Link href="/#why-usekit">Why UseKit</Link><Link href="/about">About</Link><Link href="/contact">Contact</Link><Link href="/#tools">All tools</Link></nav>
+      <Link className="nav-cta" href="/#tools">Find your tool <span>↗</span></Link>
+    </div></header>
+    {children}
+    <footer className="site-footer"><div className="footer-inner">
+      <div><Link href="/" aria-label="UseKit.ng home"><Brand /></Link><p>Useful tools. A little less everyday friction.</p></div>
+      <div className="footer-links"><Link href="/#tools">Explore tools</Link><Link href="/about">About</Link><Link href="/privacy-policy">Privacy</Link><Link href="/contact">Contact</Link></div>
+      <small>© {new Date().getFullYear()} UseKit.ng. Made for everyday life in Nigeria.</small>
+    </div></footer>
+  </body></html>;
+}
