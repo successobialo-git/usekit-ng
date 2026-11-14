@@ -103,7 +103,7 @@ const faqs: Record<string, { q: string; a: string }[]> = {
     },
     {
       q: "Does the ATS checker guarantee a pass?",
-      a: "No. It is a basic formatting preflight, not a scan by an employer's ATS."
+      a: "No. It is a basic formatting preflight, not a scan by an employer&apos;s ATS."
     }
   ]
 };
