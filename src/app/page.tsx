@@ -3,57 +3,50 @@ import Link from "next/link";
 import { useState } from "react";
 import { tools } from "@/lib/tools";
 
-const useCases = [
-  { n: "01", title: "For your business", copy: "Create invoices, share your WhatsApp contact and make everyday customer interactions feel more professional.", tone: "blue" },
-  { n: "02", title: "For work & career", copy: "Build a clear CV, prepare application documents and make your next opportunity easier to pursue.", tone: "cream" },
-  { n: "03", title: "For everyday tasks", copy: "Resize images, create QR codes and handle small digital jobs without installing another app.", tone: "dark" }
+const toolOrder = ["image-compressor","cv-generator","whatsapp-link-generator","invoice-generator","qr-code-generator"];
+const moments = [
+  { number:"01", title:"Business, made smoother.", text:"Create clear invoices, share your WhatsApp contact and give your customers a simpler way to reach you.", tone:"moment-dark", tag:"FOR BUSINESS" },
+  { number:"02", title:"Your next step, better prepared.", text:"Put together a professional CV and get your application documents ready without the usual friction.", tone:"moment-yellow", tag:"FOR YOUR CAREER" },
+  { number:"03", title:"Little tasks, handled.", text:"Resize images, create QR codes and take care of everyday digital jobs in a few simple steps.", tone:"moment-blue", tag:"FOR EVERYDAY LIFE" }
 ];
+export default function Home(){
+ const [query,setQuery]=useState("");
+ const ordered=toolOrder.map(s=>tools.find(t=>t.slug===s)!).filter(Boolean);
+ const filtered=ordered.filter(t=>(t.name+" "+t.short+" "+t.category).toLowerCase().includes(query.toLowerCase()));
+ return <main className="site-shell">
+  <section className="hero-stage">
+   <div className="hero-copy-block"><span className="eyebrow"><i/> YOUR EVERYDAY DIGITAL TOOLKIT</span><h1>Make your day<br/>work <em>better.</em></h1><p>Useful tools for business, work and everything in between. Get the little digital tasks out of the way — simply, beautifully, and without signing up.</p><div className="hero-ctas"><a className="button-yellow" href="#toolkit">Explore the toolkit <span>↗</span></a><a className="quiet-link" href="#why-usekit">Why UseKit? <span>↗</span></a></div><div className="hero-proof"><span>✳ Free to use</span><span>·</span><span>No account needed</span><span>·</span><span>Made for Nigeria</span></div></div>
+   <div className="hero-portrait"><div className="portrait-image"/><div className="portrait-fade"/><div className="portrait-label"><span>THE EVERYDAY ADVANTAGE</span><strong>More flow.<br/>Less figuring it out.</strong></div><div className="portrait-stamp">U<span>.</span></div></div>
+   <div className="hero-bottomline"><span>TOOLS FOR REAL LIFE</span><span>01 — 05 / THE COLLECTION</span></div>
+  </section>
 
-export default function Home() {
-  const [q, setQ] = useState("");
-  const order = ["image-compressor", "cv-generator", "whatsapp-link-generator", "invoice-generator", "qr-code-generator"];
-  const list = order.map((slug) => tools.find((tool) => tool.slug === slug)!).filter(Boolean);
-  const filtered = list.filter((tool) => (tool.name + " " + tool.short + " " + tool.category).toLowerCase().includes(q.toLowerCase()));
+  <section className="value-row" id="why-usekit">
+   <article><span className="value-number">01 / SIMPLE</span><h3>Easy from the start.</h3><p>No long setup, no unnecessary steps. Open a tool and get straight to what you came to do.</p></article>
+   <article><span className="value-number">02 / USEFUL</span><h3>Made for real tasks.</h3><p>Practical features for everyday business, work and digital life in Nigeria.</p></article>
+   <article><span className="value-number">03 / READY</span><h3>Wherever you are.</h3><p>UseKit works in your browser, on your phone, tablet or computer. Nothing to install.</p></article>
+  </section>
 
-  return (
-    <main>
-      <section className="hero">
-        <div className="hero-photo" />
-        <div className="hero-shade" />
-        <div className="hero-content">
-          <span className="eyebrow"><i /> YOUR EVERYDAY DIGITAL TOOLKIT</span>
-          <h1>Make room for<br /><em>what matters.</em></h1>
-          <p className="hero-copy">Thoughtful digital tools for work, business and everyday life. Less busywork, fewer steps, and more time for the things that move you forward.</p>
-          <div className="hero-actions">
-            <a className="hero-button" href="#tools">Explore the toolkit <span>↗</span></a>
-            <span className="hero-note">Free to use <b>·</b> No signup <b>·</b> Made for Nigeria</span>
-          </div>
-        </div>
-        <div className="hero-side-note"><span>01 / 05</span><span>TOOLS FOR REAL LIFE</span></div>
-        <div className="hero-bottom-glass"><span className="hero-pulse" /> A little less friction. A lot more flow.</div>
-      </section>
+  <section className="showcase-strip">
+   <div className="showcase-dark"><span>YOUR DIGITAL SIDEKICK</span><strong>Small tasks.<br/>Big relief.</strong><a href="#toolkit">Find a tool ↗</a></div>
+   <div className="showcase-photo photo-one" role="img" aria-label="Professional Black woman working at a laptop"/>
+   <div className="showcase-photo photo-two" role="img" aria-label="Professional Black man working in a modern office"/>
+   <div className="showcase-stat"><span>THE USEKIT DIFFERENCE</span><strong>Less busywork.<br/><em>More momentum.</em></strong><small>Useful tools, thoughtfully put together.</small></div>
+   <div className="showcase-photo photo-three" role="img" aria-label="Professional team collaborating in a modern office"/>
+  </section>
 
-      <section className="intro-strip">
-        <div><span className="section-kicker">A BETTER WAY TO GET THINGS DONE</span><h2>Useful by design.<br /><em>Easy by nature.</em></h2></div>
-        <p>Not another app to figure out. Just a calm, capable collection of tools that helps you get in, get it done and get on with your day.</p>
-        <div className="intro-stats"><div><strong>05</strong><span>Practical tools</span></div><div><strong>₦0</strong><span>To get started</span></div><div><strong>24/7</strong><span>Ready when you are</span></div></div>
-      </section>
+  <section className="toolkit-section" id="toolkit">
+   <div className="toolkit-heading"><div><span className="section-kicker">THE USEKIT COLLECTION</span><h2>Get it done.<br/><em>Get on with life.</em></h2></div><div className="toolkit-intro"><p>Five practical tools. One easy place to find them. Pick what you need and get moving.</p><label className="search-control"><span>⌕</span><input value={query} onChange={e=>setQuery(e.target.value)} placeholder="What are you looking for?" aria-label="Search tools"/><small>SEARCH</small></label></div></div>
+   <div className="tool-list">{filtered.map((tool,index)=><Link href={"/tools/"+tool.slug} className={"tool-row tool-row-"+index} key={tool.slug}><span className="tool-row-index">0{index+1}</span><div className="tool-row-main"><h3>{tool.name}</h3><p>{tool.short}</p></div><span className="tool-row-tag">{tool.tag}</span><span className="tool-row-arrow">↗</span></Link>)}</div>
+   <div className="toolkit-footer"><span>NO ACCOUNT. NO INSTALLATION. NO FUSS.</span><span>{filtered.length} TOOLS AVAILABLE <b>↗</b></span></div>
+  </section>
 
-      <section className="tool-discovery" id="tools">
-        <div className="section-topline"><span className="section-kicker">THE USEKIT COLLECTION</span><span className="section-aside">SMALL TASKS. SMOOTHER DAYS.</span></div>
-        <div className="discovery-heading"><div><h2>Your everyday<br /><em>toolkit.</em></h2><p>Everything you need, right where you need it.</p></div><label className="search-box"><span className="search-symbol">⌕</span><input value={q} onChange={(event) => setQ(event.target.value)} placeholder="Find a tool…" aria-label="Search tools" /><span className="search-hint">SEARCH</span></label></div>
-        {filtered.length ? <div className="tool-grid">{filtered.map((tool, index) => <Link className={"tool-card tool-card-" + (index % 5)} href={"/tools/" + tool.slug} key={tool.slug}><div className="tool-card-top"><span className="tool-index">0{index + 1} / TOOL</span><span className="tool-tag">{tool.tag}</span></div><h3>{tool.name}</h3><p>{tool.short}</p><div className="tool-card-bottom"><span>Open tool</span><span className="card-arrow">↗</span></div></Link>)}</div> : <div className="empty-state">No tools match that search. Try another word.</div>}
-        <div className="tool-footnote"><span>NO ACCOUNT. NO INSTALLATION. NO FUSS.</span><span>JUST GET IT DONE <b>↗</b></span></div>
-      </section>
+  <section className="philosophy-section">
+   <div className="philosophy-heading"><span className="section-kicker">A LITTLE THOUGHT BEHIND EVERY DETAIL</span><h2>Technology should<br/><em>feel human.</em></h2><p>Not complicated. Not cluttered. Just thoughtful tools that respect your time and help you move forward.</p></div>
+   <div className="philosophy-cards"><article className="philosophy-card"><span>01 — CLARITY</span><div className="abstract-symbol symbol-sun">✳</div><h3>Clear, not crowded.</h3><p>Every screen has a purpose. We keep the important things easy to find.</p></article><article className="philosophy-card"><span>02 — COMFORT</span><div className="abstract-symbol symbol-loop">↗</div><h3>Comfortable to use.</h3><p>Calm colours, considered type and a familiar flow from start to finish.</p></article><article className="philosophy-card"><span>03 — ACCESS</span><div className="abstract-symbol symbol-orbit"><i/><i/><i/></div><h3>Open to everyone.</h3><p>Useful everyday tools, available right in your browser without an account.</p></article></div>
+  </section>
 
-      <section className="feature-band">
-        <div className="feature-copy"><span className="section-kicker">MADE AROUND YOUR DAY</span><h2>Good tools should<br />feel <em>effortless.</em></h2><p>We believe useful technology should make life simpler, not add another layer of complexity. UseKit keeps the experience clear, quick and comfortable — whether you’re on a phone, tablet or laptop.</p><a href="#why-usekit" className="text-link">A little more about us <span>↗</span></a></div>
-        <div className="feature-visual"><div className="feature-image" /><div className="feature-note"><span>THE EVERYDAY ADVANTAGE</span><strong>Less time figuring it out.<br />More time moving forward.</strong></div><div className="feature-orbit">U<span>.</span></div></div>
-      </section>
+  <section className="moments-section"><div className="moments-heading"><span className="section-kicker">ONE TOOLKIT, MANY MOMENTS</span><h2>Made for your kind<br/>of <em>everyday.</em></h2></div><div className="moments-grid">{moments.map(m=><article className={"moment-card "+m.tone} key={m.number}><span>{m.number} — {m.tag}</span><h3>{m.title}</h3><p>{m.text}</p><a href="#toolkit">Explore tools <b>↗</b></a></article>)}</div></section>
 
-      <section className="usecase-section" id="why-usekit"><div className="section-topline"><span className="section-kicker">ONE TOOLKIT, MANY MOMENTS</span><span className="section-aside">BUILT FOR THE WAY YOU WORK</span></div><h2>Made for your kind<br />of <em>everyday.</em></h2><div className="usecase-grid">{useCases.map((item) => <article className={"usecase-card usecase-" + item.tone} key={item.n}><span>{item.n} — USEKIT FOR</span><h3>{item.title}</h3><p>{item.copy}</p><a href="#tools">Find your tool <b>↗</b></a></article>)}</div></section>
-
-      <section className="closing-cta"><div className="closing-glow" /><span className="section-kicker">READY WHEN YOU ARE</span><h2>Make today a little<br /><em>easier.</em></h2><p>Pick a tool. Get it done. Get back to what matters.</p><a className="hero-button" href="#tools">Explore UseKit <span>↗</span></a><span className="closing-mark">usekit.ng</span></section>
-    </main>
-  );
+  <section className="closing-stage"><div className="closing-art"/><div className="closing-content"><span className="section-kicker">A BETTER KIND OF EVERYDAY</span><h2>Start with one<br/><em>small win.</em></h2><p>Choose a tool, make it happen, and get back to what matters.</p><a className="button-yellow" href="#toolkit">Find your tool <span>↗</span></a></div><span className="closing-index">USEKIT.NG / MADE FOR EVERYDAY LIFE</span></section>
+ </main>
 }
