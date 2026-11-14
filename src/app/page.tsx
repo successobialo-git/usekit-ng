@@ -16,10 +16,10 @@ export default function Home(){
  const filtered=ordered.filter(t=>(t.name+" "+t.short+" "+t.category).toLowerCase().includes(query.toLowerCase()));
  return <main className="site-shell">
   <section className="center-hero">
-   <span className="hero-eyebrow"><i/> WELCOME TO USEKI</span>
-   <h1>Make your next<br/>everyday task <em>easier.</em></h1>
-   <p>Free, thoughtful digital tools for business, work and life. Get the little things done beautifully — then get on with what matters.</p>
-   <div className="center-actions"><a className="button-blue" href="#toolkit">Explore free tools <span>↗</span></a><a className="quiet-link" href="#why-usekit">Discover Useki</a></div>
+   <span className="hero-eyebrow"><i/> YOUR EVERYDAY DIGITAL TOOLKIT</span>
+   <h1>Make everyday<br/>work feel <em>easier.</em></h1>
+   <p>Thoughtful tools for business, work and everyday life. Create, organise and get things done with a little more ease — all in one place.</p>
+   <div className="center-actions"><a className="button-blue" href="#toolkit">Explore free tools </a><a className="quiet-link" href="#why-usekit">How it works</a></div>
   </section>
   <section className="feature-split">
    <article className="feature-dark">
@@ -27,7 +27,7 @@ export default function Home(){
     <h2>Less busywork.<br/><em>More momentum.</em></h2>
     <p>One calm place for the digital tasks that keep your day moving. No complicated setup, no unnecessary noise.</p>
     <div className="feature-tabs"><Link href="/#toolkit">For business <b>↗</b></Link><Link href="/#toolkit">For your career <b>↗</b></Link><Link href="/#toolkit">For everyday life <b>↗</b></Link></div>
-    <div className="dark-feature-bottom"><span>THE USEKI APPROACH</span><strong>Thoughtful by design.<br/>Easy by nature.</strong><Link href="/about">A little about us ↗</Link></div>
+    <div className="dark-feature-bottom"><span>THE USEKIT APPROACH</span><strong>Thoughtful by design.<br/>Easy by nature.</strong><Link href="/about">A little about us ↗</Link></div>
    </article>
    <article className="feature-portrait">
     <div className="lady-image"/>
@@ -39,7 +39,7 @@ export default function Home(){
   <section className="benefit-row" id="why-usekit">{benefits.map(([n,t,d])=><article key={n}><span>{n} / THE DETAILS</span><h3>{t}</h3><p>{d}</p></article>)}</section>
   <section className="visual-showcase">
    <div className="showcase-intro"><span className="section-kicker">A TOOLKIT THAT FITS YOUR DAY</span><h2>Small tasks.<br/><em>Handled beautifully.</em></h2></div>
-   <div className="showcase-carousel" aria-label="Useki workspace inspiration">
+   <div className="showcase-carousel" aria-label="UseKit workspace inspiration">
     <div className="carousel-track">
      {[...slides,...slides].map((s,i)=><article className="carousel-slide" key={i}><img src={s.image} alt="Professional creative workspace"/><div><small>{s.eyebrow}</small><h3>{s.title}</h3><p>{s.text}</p></div></article>)}
     </div>
@@ -47,10 +47,10 @@ export default function Home(){
   </section>
   <section className="qr-feature">
    <div className="qr-feature-copy"><span className="section-kicker">A LITTLE MORE THAN THE BASICS</span><h2>Your link.<br/><em>One quick scan.</em></h2><p>Create a QR code for your website, menu, business page or contact details. Customise the look, then download it ready to share or print.</p><Link className="button-blue" href="/tools/qr-code-generator">Explore QR studio <span>↗</span></Link></div>
-   <div className="qr-showcase-card"><div className="qr-showcase-head"><span>YOUR DIGITAL HELLO</span><span className="live-dot">LIVE PREVIEW</span></div><div className="qr-white-paper"><QRCodeSVG value="https://usekit.ng" size={190} level="H" fgColor="#202020" bgColor="#ffffff"/><strong>Scan. Connect. Done.</strong><small>POWERED BY USEKI</small></div><div className="qr-showcase-foot"><span>WEBSITE</span><span>CONTACT</span><span>MENU</span><span>PAYMENT</span></div></div>
+   <div className="qr-showcase-card"><div className="qr-showcase-head"><span>YOUR DIGITAL HELLO</span><span className="live-dot">LIVE PREVIEW</span></div><div className="qr-white-paper"><QRCodeSVG value="https://usekit.ng" size={190} level="H" fgColor="#202020" bgColor="#ffffff"/><strong>Scan. Connect. Done.</strong><small>POWERED BY USEKIT</small></div><div className="qr-showcase-foot"><span>WEBSITE</span><span>CONTACT</span><span>MENU</span><span>PAYMENT</span></div></div>
   </section>
   <section className="toolkit-section" id="toolkit">
-   <div className="toolkit-heading"><div><span className="section-kicker">THE USEKI COLLECTION</span><h2>Find your tool.<br/><em>Find your flow.</em></h2></div><div className="toolkit-intro"><p>Practical little helpers for business, work and everyday life. Choose what you need and get moving.</p><label className="search-control"><span>⌕</span><input value={query} onChange={e=>setQuery(e.target.value)} placeholder="What do you need to do?" aria-label="Search tools"/><small>SEARCH</small></label></div></div>
+   <div className="toolkit-heading"><div><span className="section-kicker">THE USEKIT COLLECTION</span><h2>Find your tool.<br/><em>Find your flow.</em></h2></div><div className="toolkit-intro"><p>Practical little helpers for business, work and everyday life. Choose what you need and get moving.</p><label className="search-control"><span>⌕</span><input value={query} onChange={e=>setQuery(e.target.value)} placeholder="What do you need to do?" aria-label="Search tools"/><small>SEARCH</small></label></div></div>
    <div className="tool-list">{filtered.map((tool,index)=><Link href={"/tools/"+tool.slug} className={"tool-row tool-row-"+index} key={tool.slug}><span className="tool-row-index">0{index+1}</span><div className="tool-row-main"><h3>{tool.name}</h3><p>{tool.short}</p></div><span className="tool-row-tag">{tool.tag}</span><span className="tool-row-arrow">↗</span></Link>)}</div>
    <div className="toolkit-footer"><span>NO ACCOUNT. NO INSTALLATION. NO FUSS.</span><span>{filtered.length} TOOLS AVAILABLE</span></div>
   </section>
