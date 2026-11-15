@@ -186,3 +186,5 @@ h1,h2,h3,h4,.brand-word{font-family:"Plus Jakarta Sans",sans-serif;font-weight:5
 
 .type-cursor{display:inline-block;color:#789d4b;font-weight:400;margin-left:2px;animation:cursorBlink .9s steps(2,start) infinite}@keyframes cursorBlink{to{visibility:hidden}}
 @media(prefers-reduced-motion:reduce){.hero-changing,.type-cursor,.carousel-track,.lady-image{animation:none!important}.carousel-track{transform:none}}
+
+.account-service-list{margin:20px 0;padding:15px;border-radius:12px;background:#f2f5ed}.account-service-list>strong{font-size:12px}.account-service-list>p{font-size:10px;line-height:1.6;color:#718070}.account-service-row{display:grid;grid-template-columns:1fr 100px;gap:7px;margin:8px 0}.account-service-row input{min-width:0;width:100%;border:0;border-radius:8px;background:#fff;padding:10px;font-size:11px}.account-add-service{border:0;background:transparent;color:#557744;font-size:11px;font-weight:750;padding:8px 0;cursor:pointer}
