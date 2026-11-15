@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap');
 @import "tailwindcss";
 :root{--ink:#202124;--muted:#777b82;--paper:#fffefa;--blue:#527fe3;--blue-dark:#315fca;--pale:#f1f2f6;--line:#ecebe7}
 *{box-sizing:border-box}html{scroll-behavior:smooth;scroll-padding-top:95px}body{margin:0;background:#fffefa;color:var(--ink);font-family:"DM Sans",Arial,sans-serif;-webkit-font-smoothing:antialiased}h1,h2,h3,.brand-word{font-family:"Manrope","DM Sans",sans-serif}a{color:inherit;text-decoration:none}button,input,textarea{font:inherit}::selection{background:#dce6ff;color:#202124}
@@ -114,7 +114,6 @@ h1,h2,h3,h4,.brand-word,.nav-cta,.button-blue{font-family:"Plus Jakarta Sans",sa
 .mobile-nav-panel{display:none}
 @media(max-width:760px){.mobile-menu-toggle{display:flex}.nav-cta{display:none}.mobile-nav-panel{display:grid;position:absolute;top:68px;left:12px;right:12px;padding:13px;background:#fffefa;border-radius:17px;box-shadow:0 20px 55px #202a3b22;z-index:100}.mobile-nav-panel a{padding:14px 13px;border-radius:10px;font-size:13px;font-weight:650;color:#303847}.mobile-nav-panel a:active{background:#edf1fa}}
 
-@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap');
 :root{--ink:#1b2820;--muted:#667268;--paper:#fbfaf5;--mint:#cce98b;--mint-strong:#a8d46a;--forest:#14251d;--forest-2:#1b3025;--line:#e7e9df;--lav:#eeedf7;--coral:#f3ded6}
 body{font-family:"DM Sans",sans-serif;font-size:15px;font-weight:400;background:var(--paper);color:var(--ink)}
 h1,h2,h3,h4,.brand-word{font-family:"Plus Jakarta Sans",sans-serif;font-weight:550}
