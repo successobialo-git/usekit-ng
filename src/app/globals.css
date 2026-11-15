@@ -203,3 +203,5 @@ h1,h2,h3,h4,.brand-word{font-family:"Plus Jakarta Sans",sans-serif;font-weight:5
 @media(max-width:760px){.cv-modern-preview{grid-template-columns:36% 64%}.cv-modern-preview>aside{padding:13px 8px}.cv-modern-main{padding:14px 10px}.cv-modern-main header h3{font-size:15px}}
 
 .document-brand-icon{width:36px;height:36px;object-fit:contain;border-radius:11px}
+
+.custom-sections{margin-top:22px;padding:17px;border-radius:12px;background:#f1f4ec}.custom-sections .document-card-title h3{margin:0 0 4px}.custom-sections .document-card-title .document-hint{margin-bottom:0}.document-preview-extra{padding:9px 18px}.document-preview-extra strong{font-size:11px}.document-preview-extra p{font-size:10px;line-height:1.6;white-space:pre-wrap;margin:5px 0}
