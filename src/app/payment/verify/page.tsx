@@ -1,0 +1,1 @@
+import type {Metadata} from "next";import PaymentVerifyClient from "@/components/PaymentVerifyClient";export const metadata:Metadata={title:"Verify payment"};export default function PaymentVerifyPage(){return <PaymentVerifyClient/>}
