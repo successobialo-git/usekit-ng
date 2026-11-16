@@ -12,11 +12,8 @@ alter table usekit.document_number_sequences enable row level security;
 drop policy if exists "Users manage their own document sequences"
   on usekit.document_number_sequences;
 
-create policy "Users manage their own document sequences"
-  on usekit.document_number_sequences
-  for all to authenticated
-  using (user_id = (select auth.uid()))
-  with check (user_id = (select auth.uid()));
+revoke all on table usekit.document_number_sequences from anon, authenticated;
+grant all on table usekit.document_number_sequences to service_role;
 
 create or replace function usekit.next_document_number(
   p_document_type text,
