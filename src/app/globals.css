@@ -366,3 +366,14 @@ body{background:#faf9f8;color:var(--ink)}
  .hero-eyebrow,.tool-row-arrow{animation:none!important}
  .feature-dark,.feature-portrait,.tool-row,.closing-stage{transition:none!important}
 }
+
+
+@media(max-width:600px){
+ .tool-app-sidebar{display:flex;flex-direction:row;align-items:center;gap:7px;white-space:nowrap;overflow-x:auto;overflow-y:hidden;min-height:0;height:auto;padding:10px 12px;scrollbar-width:thin}
+ .tool-app-sidebar .tool-app-brand{flex:0 0 auto;margin:0 8px 0 0;font-size:12px}
+ .tool-app-sidebar .tool-app-brand img{width:25px;height:25px}
+ .tool-app-sidebar>span,.tool-app-sidebar .tool-sidebar-note{display:none}
+ .tool-app-sidebar>a:not(.tool-app-brand){flex:0 0 auto;min-height:35px;padding:8px 11px;font-size:10px}
+ .tool-app-main{min-width:0}
+ .tool-app-main>section{min-width:0;max-width:100%}
+}
