@@ -17,4 +17,5 @@ jobs:
         with:
           node-version: 22
       - run: npm install --no-audit --no-fund --prefer-offline
+      - run: npm run lint
       - run: npm run build
