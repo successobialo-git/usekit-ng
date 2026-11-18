@@ -377,3 +377,47 @@ body{background:#faf9f8;color:var(--ink)}
  .tool-app-main{min-width:0}
  .tool-app-main>section{min-width:0;max-width:100%}
 }
+
+
+/* Red identity carried through account, admin and secondary pages. */
+.account-page{background:#f7f4f3!important;color:#292a2f}
+.account-hero{background:linear-gradient(120deg,#292a2f,#3c3033)!important}
+.account-hero>span{color:#f2aaa6!important}
+.account-hero p{color:#e0d8da!important}
+.account-auth-card,.account-dashboard{background:#fff!important}
+.account-auth-switch{background:#f6eeee!important}
+.account-auth-switch button{color:#71666a!important}
+.account-auth-switch button.active{background:#c93636!important;color:#fff!important}
+.account-auth-card .field input,.account-panel .field input{background:#f7f3f3!important;color:#292a2f}
+.account-auth-card .field input:focus,.account-panel .field input:focus{box-shadow:0 0 0 2px #c9363633!important}
+.account-panel{border-color:#eee5e5!important}
+.account-service-list{background:#fbefee!important}
+.account-add-service,.admin-page a{color:#b52d34!important}
+.saved-doc-row button{background:#f8e9e8!important;color:#a9232b!important}
+.account-welcome button{background:#f8e9e8!important;color:#a9232b!important}
+.internal-page-banner{background:linear-gradient(120deg,#292a2f,#4a3034)!important}
+.internal-page-banner>span,.internal-page-banner h1 em{color:#f2aaa6!important}
+.internal-page-banner p{color:#e2dadd!important}
+.content-page{background:#faf8f7!important}
+.content-page>p{color:#716e73!important}
+.admin-page{background:#f7f4f3!important;color:#292a2f}
+.admin-kicker{color:#b52d34!important}
+.admin-topline{background:#f8e9e8!important}
+.admin-status{background:#f3d8d6!important;color:#a9232b!important}
+.admin-preview{background:#f8e9e8!important}
+.admin-preview>span:first-child{color:#a9232b!important}
+.admin-preview-cta,.admin-save{background:#c93636!important;color:#fff!important}
+.admin-field input{border-color:#eee4e4!important;background:#fff!important}
+.admin-field input:focus{border-color:#c93636!important}
+.admin-checklist>div{border-color:#eee5e5!important}
+.admin-checklist strong{color:#a9232b!important}
+.tool-promo{background:#f8e9e8!important}
+.tool-promo>div>span{color:#a9232b!important}
+.tool-promo p{color:#6f666b!important}
+.tool-promo>a{background:#292a2f!important}
+.tool-promo>a:hover{background:#c93636!important}
+.payment-return{background:#faf8f7!important;color:#292a2f}
+.payment-return-button{background:#c93636!important}
+.document-next,.document-export-actions button,.document-nav button:last-child{background:#c93636!important;color:#fff!important}
+.document-next:hover,.document-export-actions button:hover,.document-nav button:last-child:hover{background:#a9232b!important}
+.document-card,.summary-card,.cv-preview-panel{border-color:#eee5e5}
