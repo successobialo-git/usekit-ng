@@ -1,6 +1,6 @@
 /* eslint-disable @next/next/no-img-element -- Blob previews are created locally in the browser. */
 "use client";
-import {useRef,useState,type ReactNode} from "react";
+import {useRef,useState} from "react";
 import Link from "next/link";
 import {logToolUse} from "@/lib/supabase";
 import {tools} from "@/lib/tools";
@@ -8,7 +8,6 @@ import DocumentBuilder from "@/components/DocumentBuilder";
 import CvBuilder from "@/components/CvBuilder";
 import QrBuilder from "@/components/QrBuilder";
 type Slug="whatsapp-link-generator"|"qr-code-generator"|"image-compressor"|"invoice-generator"|"quotation-generator"|"cv-generator";
-function WorkspaceLayout({slug,children}:{slug:Slug;children:ReactNode}){return <section className="tool-app-frame"><aside className="tool-app-sidebar"><Link href="/" className="tool-app-brand"><img src="/usekit-mark.svg" alt=""/>USEKIT</Link><span>YOUR WORKSPACE</span><span>ALL TOOLS</span>{tools.map(tool=><Link key={tool.slug} className={slug===tool.slug?"selected":""} href={"/tools/"+tool.slug}>{tool.name}</Link>)}<div className="tool-sidebar-note">Useful tools for everyday business, work and life. Pick another tool whenever you need it.</div></aside><div className="tool-app-main">{children}</div></section>;}
 export default function ToolWorkbench({slug}:{slug:Slug}){const [phone,setPhone]=useState(""),[message,setMessage]=useState("Hello, I would like to make an enquiry."),[link,setLink]=useState(""),[file,setFile]=useState<File|null>(null),[batchFiles,setBatchFiles]=useState<File[]>([]),[batchResults,setBatchResults]=useState<{name:string,url:string,size:number,original:number,targetMet:boolean}[]>([]),[target,setTarget]=useState("200"),[quality,setQuality]=useState(.82),[width,setWidth]=useState(""),[height,setHeight]=useState(""),[result,setResult]=useState(""),[format,setFormat]=useState<"image/jpeg"|"image/webp"|"image/png">("image/jpeg"),[originalPreview,setOriginalPreview]=useState(""),[notice,setNotice]=useState("");const fileRef=useRef<HTMLInputElement>(null);
  if(slug==="qr-code-generator")return <QrBuilder/>;
  if(slug==="invoice-generator"||slug==="quotation-generator")return <DocumentBuilder kind={slug==="invoice-generator"?"invoice":"quotation"}/>;
