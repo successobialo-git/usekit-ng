@@ -446,3 +446,21 @@ button,input,textarea,select{font:inherit}
  .document-stepper{overflow-x:auto!important;flex-wrap:nowrap!important;padding-bottom:5px!important}.document-stepper button{flex:0 0 auto!important}
  .admin-checklist{grid-template-columns:1fr!important}
 }
+
+/* Homepage navigation is integrated into the navy hero, like the approved reference. */
+body:has(.reference-hero) .site-header{position:absolute!important;top:76px!important;left:4.5%!important;width:91%!important;height:68px!important;padding:0!important;background:transparent!important;z-index:60!important}
+body:has(.reference-hero) .nav-wrap{height:68px!important;max-width:none!important;padding:0 clamp(22px,4vw,58px)!important;background:transparent!important;color:#fff!important}
+body:has(.reference-hero) .brand-word{color:#fff!important}
+body:has(.reference-hero) .nav-wrap nav{color:#e3e4ed!important}
+body:has(.reference-hero) .nav-wrap nav a:hover{color:#b5a3ff!important}
+body:has(.reference-hero) .nav-cta{background:#7547e8!important}
+body:has(.reference-hero) .reference-hero-inner{padding-top:112px!important}
+body:has(.reference-hero) .reference-hero-copy{padding-top:8px}
+body:has(.reference-hero) .mobile-menu-toggle{background:#ffffff16!important}
+body:has(.reference-hero) .mobile-menu-toggle span{background:#fff!important}
+@media(max-width:700px){
+ body:has(.reference-hero) .site-header{top:64px!important;left:10px!important;width:calc(100% - 20px)!important;height:58px!important}
+ body:has(.reference-hero) .nav-wrap{height:58px!important;padding:0 12px!important}
+ body:has(.reference-hero) .reference-hero-inner{padding-top:94px!important}
+ body:has(.reference-hero) .mobile-nav-panel{top:58px!important;background:#171d38!important;color:#fff!important}
+}
