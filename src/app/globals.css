@@ -414,3 +414,27 @@ html,body{background:#FFFFFF!important;color:#1D1D1D}
 .document-eyebrow,.document-brand,.tool-app-brand,.workspace-kicker,.workspace-tool-index{color:#F36B21!important}
 .document-preview.template-dark .document-preview-client{background:#292929!important;color:#FFFFFF!important}
 .button-blue:hover,.photo-tool-action:hover,.primary-btn:hover,.document-next:hover{background:#F36B21!important}
+
+
+/* Card treatment: soft charcoal surfaces, no outlines or divider rules */
+.photo-tool-card,.workspace-tool-card,.workspace-tool-row,.quick-workspace,.quick-form,.quick-preview,.quick-qr-paper,.quick-empty,.document-card,.cv-form,.cv-preview-panel,.result-panel,.suggestion-strip,.custom-sections,.admin-preview,.payment-return-icon{background:#292929!important;color:#FFFFFF!important;border:0!important;outline:0!important;box-shadow:none!important}
+.photo-tool-card h2,.workspace-tool-card h2,.workspace-tool-row h2,.document-card h3,.document-card h4,.cv-form h3,.result-panel h3,.suggestion-strip strong{color:#FFFFFF!important}
+.photo-tool-copy p,.workspace-tool-card p,.workspace-tool-row p,.document-card p,.cv-form p,.result-panel p,.suggestion-strip p{color:#C9C9C9!important}
+.workspace-tool-row{border-radius:14px!important}
+.workspace-tool-row:hover{background:#333333!important;border:0!important;transform:translateY(-1px)}
+.workspace-tool-index{color:#F36B21!important}
+.workspace-tool-open{background:#F36B21!important;color:#FFFFFF!important}
+.photo-tool-action,.quick-primary,.primary-btn,.document-next,.nav-cta,.workspace-save-cta{background:#F36B21!important;color:#FFFFFF!important;border:0!important;box-shadow:none!important}
+.field input,.field textarea,.field select,.document-card input,.document-card textarea,.document-card select,.quick-form input,.quick-form textarea,.quick-form select{background:#FFFFFF!important;color:#1D1D1D!important;border:0!important;outline:0!important;box-shadow:none!important;border-radius:9px!important}
+.field input:focus,.field textarea:focus,.field select:focus,.document-card input:focus,.document-card textarea:focus,.document-card select:focus{outline:2px solid #F36B21!important;outline-offset:1px!important;box-shadow:none!important}
+.quick-tabs,.quick-tabs button,.feature-dark .feature-tabs a,.tool-app-sidebar a,.document-sidebar button,.cv-sidebar button,.document-add,.suggestion-action,.document-nav button,.cv-template-select button.chosen,.document-top-actions button{border:0!important;outline:0!important;box-shadow:none!important}
+.quick-tabs button,.feature-dark .feature-tabs a,.tool-app-sidebar a,.document-sidebar button,.cv-sidebar button,.document-add,.suggestion-action,.document-nav button,.cv-template-select button.chosen,.document-top-actions button{background:#292929!important;color:#FFFFFF!important}
+.quick-tabs button.active,.tool-app-sidebar a.selected,.document-sidebar button.active,.cv-sidebar button.side-active{background:#3A3A3A!important;color:#FFFFFF!important}
+.document-preview,.document-preview header,.document-preview section,.document-preview footer,.cv-modern-preview,.cv-modern-main section,.cv-modern-preview aside{border-color:transparent!important;box-shadow:none!important}
+.document-preview hr,.cv-modern-main hr,.workspace-tool-row hr{display:none!important}
+.document-preview.template-clean header,.document-preview.template-mint header,.document-preview.template-dark header{border:0!important}
+.document-preview.template-dark .document-preview-client{background:#292929!important;color:#FFFFFF!important}
+.workspace-sidebar,.tool-app-sidebar,.document-sidebar,.cv-sidebar{border:0!important;box-shadow:none!important}
+.workspace-tool-list{gap:10px!important}
+.workspace-tool-row{padding:18px!important}
+@media(max-width:760px){.workspace-tool-row{padding:14px!important}}
