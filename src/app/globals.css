@@ -2,7 +2,7 @@
 @import "tailwindcss";
 :root{--ink:#202124;--muted:#777b82;--paper:#fffefa;--blue:#527fe3;--blue-dark:#315fca;--pale:#f1f2f6;--line:#ecebe7}
 *{box-sizing:border-box}html{scroll-behavior:smooth;scroll-padding-top:95px}body{margin:0;background:#fffefa;color:var(--ink);font-family:"DM Sans",Arial,sans-serif;-webkit-font-smoothing:antialiased}h1,h2,h3,.brand-word{font-family:"Manrope","DM Sans",sans-serif}a{color:inherit;text-decoration:none}button,input,textarea{font:inherit}::selection{background:#dce6ff;color:#202124}
-.site-header{height:68px;position:sticky;top:0;z-index:50;background:rgba(255,254,250,.92);padding:8px 20px 0;backdrop-filter:blur(12px)}
+.site-header{height:68px;position:sticky;top:0;z-index:50;background:#fff;padding:8px 20px 0;backdrop-filter:none}
 .nav-wrap{height:57px;max-width:1240px;margin:auto;padding:0 19px;background:#202124;color:white;border-radius:0 0 16px 16px;display:flex;align-items:center;justify-content:space-between}
 .brand{display:inline-flex;align-items:center;gap:10px;font-size:20px;font-weight:800;letter-spacing:.11em}.brand img{width:32px;height:32px;display:block}.brand-word{display:inline-flex;align-items:center;letter-spacing:.12em;color:#fff}.brand-dot{display:none}
 .nav-wrap nav{height:100%;display:flex;align-items:center;gap:27px;color:#e5e5e5;font-size:11px;font-weight:600}.nav-wrap nav a{transition:color .2s}.nav-wrap nav a:hover{color:#a9c2ff}.nav-cta{background:#527fe3;color:#fff;padding:12px 18px;border-radius:999px;font-size:10px;font-weight:800;transition:transform .2s}.nav-cta:hover{transform:translateY(-2px)}
