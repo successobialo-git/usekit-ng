@@ -813,3 +813,45 @@ a{color:inherit}
 .home-redesign .hero-proof span{background:#3a3b43;color:#e5e1e5;border:0}
 .home-redesign .quiet-link{color:#e4dfe4}
 .home-redesign .type-cursor{color:#e58a85}
+
+
+/* Unified soft-charcoal workspace surfaces; no legacy red/ash dashboard mix. */
+.site-header{background:#15161b!important;backdrop-filter:none!important}
+.nav-wrap{background:#24252c!important;border:1px solid #343640!important}
+.nav-wrap nav{color:#d7d4dc!important}
+.nav-wrap nav a:hover{color:#e6b0aa!important}
+.nav-cta,.button-blue{background:#b96f68!important;color:#fff!important}
+.nav-cta:hover,.button-blue:hover{background:#a45e59!important}
+.mobile-menu-toggle{background:#2b2c34!important;border-color:#41424b!important}
+.mobile-nav-panel{background:#24252c!important;border-color:#41424b!important;color:#f3f1f3!important}
+.page-wrap{background:#15161b!important;color:#f1eff2!important}
+.tool-breadcrumb-banner{background:#22232a!important;border:1px solid #353640!important;color:#f4f1f3!important}
+.tool-breadcrumb-banner>div>span,.document-eyebrow{color:#c99a95!important}
+.tool-breadcrumb-art{color:#c99a95!important}
+.tool-app-frame{grid-template-columns:260px minmax(0,1fr)!important;min-height:calc(100vh - 210px)!important;background:#191a20!important;border:1px solid #343640!important;border-radius:14px!important;overflow:visible!important}
+.tool-app-sidebar,.qr-studio>.tool-app-sidebar{position:sticky!important;top:0!important;align-self:stretch!important;height:calc(100vh - 72px)!important;min-height:620px!important;background:#22232b!important;border-right:1px solid #383943!important;padding:25px 17px!important;color:#e8e5e9!important}
+.tool-app-brand{color:#f7f4f6!important}
+.tool-app-sidebar>a:not(.tool-app-brand){background:transparent!important;color:#c8c5cd!important;border:0!important;border-radius:8px!important}
+.tool-app-sidebar>a:not(.tool-app-brand):hover,.tool-app-sidebar>a.active,.tool-app-sidebar>a[aria-current=page]{background:#343540!important;color:#fff!important}
+.tool-app-sidebar>span,.tool-sidebar-note{color:#96939f!important}
+.tool-app-main,.qr-studio>.tool-app-main{background:#191a20!important;color:#f1eff2!important}
+.tool-app-top h2,.tool-app-top h3{color:#f7f5f7!important}
+.tool-app-top p{color:#b9b6c0!important}
+.document-card,.summary-card,.cv-preview-panel,.qr-settings,.qr-live-preview,.image-studio-grid>div,.account-panel,.admin-panel,.account-auth-card{background:#25262e!important;color:#f1eff2!important;border:1px solid #393a44!important;box-shadow:none!important}
+.document-card h3,.summary-card h3,.qr-settings h3,.account-auth-card h2,.account-panel h3,.admin-panel h2{color:#f7f5f7!important}
+.document-card p,.summary-card p,.account-panel>p,.admin-panel p{color:#c1bec7!important}
+.field input,.field textarea,.field select,.admin-field input{background:#1c1d24!important;color:#f4f1f4!important;border:1px solid #41424c!important}
+.field input::placeholder,.field textarea::placeholder{color:#888691!important}
+.primary-btn,.admin-save,.admin-preview-cta{background:#b96f68!important;color:#fff!important}
+.secondary-btn,.back-link,.account-welcome button,.saved-doc-row button{background:#34353f!important;color:#e5c0bc!important}
+.result-panel,.account-empty,.account-service-list,.admin-topline,.admin-preview,.tool-promo{background:#2a2b34!important;color:#e8e5e9!important;border:1px solid #3c3d47!important}
+.tool-promo>a{background:#b96f68!important;color:#fff!important}
+.payment-return-card{background:#25262e!important;color:#f4f1f3!important;border:1px solid #393a44!important}
+.account-auth-switch{background:#1c1d24!important}
+.account-auth-switch button.active{background:#b96f68!important;color:#fff!important}
+@media(max-width:700px){
+ .tool-app-frame{display:block!important;min-height:0!important;overflow:hidden!important}
+ .tool-app-sidebar,.qr-studio>.tool-app-sidebar{position:relative!important;top:auto!important;display:flex!important;flex-direction:row!important;align-items:center!important;white-space:nowrap!important;overflow-x:auto!important;overflow-y:hidden!important;width:100%!important;height:auto!important;min-height:0!important;padding:10px!important;border-right:0!important;border-bottom:1px solid #383943!important}
+ .tool-app-sidebar>a:not(.tool-app-brand){flex:0 0 auto!important}
+ .tool-app-main,.qr-studio>.tool-app-main{padding:16px 12px 24px!important}
+}
