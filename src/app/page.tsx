@@ -2,6 +2,7 @@
 import Link from "next/link";
 import {useEffect,useState} from "react";
 import QuickToolsPanel from "@/components/QuickToolsPanel";
+import AdSenseUnit from "@/components/AdSenseUnit";
 import {tools} from "@/lib/tools";
 import {getBrowserSupabase} from "@/lib/supabase-browser";
 
@@ -29,6 +30,7 @@ export default function Home(){
    {filtered.length===0&&<p className="no-tools">No tools match that search. Try another word.</p>}
    <p className="toolkit-footer">NO ACCOUNT REQUIRED TO GET STARTED <span>{filtered.length} PRACTICAL TOOLS</span></p>
   </section>
+  <AdSenseUnit placement="home"/>
   <section className="feature-split"><article className="feature-dark"><span className="mini-label">BUILT FOR REAL EVERYDAY WORK</span><h2>Business-ready.<br/><em>Life-friendly.</em></h2><p>From first-time freelancers to growing businesses and job seekers, UseKit brings practical digital tools into one thoughtful workspace.</p><div className="feature-tabs"><Link href="/#toolkit">For business owners</Link><Link href="/#toolkit">For professionals</Link><Link href="/#toolkit">For job seekers</Link></div><div className="dark-feature-bottom"><span>THE USEKIT PROMISE</span><strong>Useful by design.<br/>Simple to finish.</strong><Link href="/about">About UseKit</Link></div></article><article className="feature-portrait"><div className="lady-image"/><div className="portrait-wash"/><div className="portrait-copy"><span>MADE FOR YOUR NEXT MOVE</span><h3>Good work<br/>deserves good tools.</h3></div><div className="portrait-pills"><span>Free to use</span><span>Works on mobile</span></div></article></section>
   <section className="closing-stage"><div className="closing-art"/><div className="closing-content"><span className="section-kicker">A BETTER KIND OF EVERYDAY</span><h2>Start with one<br/><em>small win.</em></h2><p>Choose a tool, make it happen, and get back to what matters.</p><a className="button-blue" href="#quick-tools">Get started free</a></div></section>
  </main>;
