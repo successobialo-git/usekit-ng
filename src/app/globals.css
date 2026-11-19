@@ -385,3 +385,32 @@ body:has(.qr-studio) .site-header,body:has(.qr-studio) .site-footer{display:none
 .tool-app-sidebar .tool-sidebar-note,.document-sidebar .sidebar-bottom,.cv-sidebar .sidebar-bottom{margin-top:auto;padding:13px;border-radius:10px;background:#302019;color:#D9CBC3;font-size:9px;line-height:1.6}
 @media(max-width:760px){.tool-app-frame,.document-app,.cv-app,.qr-studio{grid-template-columns:64px minmax(0,1fr)!important}.tool-app-sidebar,.document-sidebar,.cv-sidebar{width:64px!important;padding:16px 6px!important;overflow:hidden}.tool-app-sidebar>span,.tool-sidebar-note,.document-sidebar>.sidebar-caption,.document-sidebar>.sidebar-bottom,.cv-sidebar>.sidebar-caption,.cv-sidebar>.sidebar-bottom{display:none!important}.tool-app-sidebar>a,.document-sidebar>a,.cv-sidebar>button{font-size:0!important;justify-content:center;padding:0 2px}.tool-app-sidebar>a:before,.document-sidebar>a:before{content:"";width:7px;height:7px;border-radius:50%;background:#F36B21}.tool-app-main,.document-main,.cv-main{padding:18px 12px!important}.document-top-actions{width:100%}.document-top-actions button{font-size:9px;padding:9px 10px}}
 @media(max-width:420px){.tool-app-frame,.document-app,.cv-app,.qr-studio{grid-template-columns:56px minmax(0,1fr)!important}.tool-app-sidebar,.document-sidebar,.cv-sidebar{width:56px!important}.tool-app-main,.document-main,.cv-main{padding:14px 9px!important}}
+
+
+/* Final palette correction: neutral whites, charcoal tabs, orange accent only */
+:root{--ink:#1D1D1D;--muted:#707070;--paper:#FFFFFF;--blue:#F36B21;--blue-dark:#F36B21;--pale:#FCFCFC;--line:#EEEEEE;--accent:#F36B21;--deep:#1D1D1D;--soft-orange:#FFFFFF}
+html,body{background:#FFFFFF!important;color:#1D1D1D}
+.nav-wrap,.mobile-nav-panel{background:#1D1D1D!important;box-shadow:0 10px 32px rgba(0,0,0,.08)!important}
+.nav-wrap nav{color:#F5F5F5!important}
+.mobile-menu-toggle{background:#292929!important}
+.center-hero,.quick-tools,.toolkit-section,.quick-workspace,.quick-form,.quick-preview,.feature-portrait,.closing-stage,.tool-app-frame,.document-app,.cv-app,.qr-studio,.tool-app-main,.document-main,.cv-main,.tool-app-top,.document-topbar,.document-card,.cv-form,.cv-preview-panel,.admin-page,.payment-return,.workspace-shell,.workspace-content{background:#FFFFFF!important}
+.quick-tabs,.quick-qr-paper,.quick-empty,.quick-form input,.quick-form textarea,.quick-form select,.field input,.field textarea,.field select,.document-card input,.document-card textarea,.document-card select,.workspace-tool-row,.result-panel,.suggestion-strip,.custom-sections,.document-preview-client,.admin-topline,.admin-preview,.payment-return-icon{background:#FCFCFC!important}
+.quick-tabs button,.feature-dark .feature-tabs a,.tool-app-sidebar a,.document-sidebar button,.cv-sidebar button,.document-add,.suggestion-action,.document-nav button,.cv-template-select button.chosen,.document-top-actions button,.workspace-tool-open{background:#292929!important;color:#FFFFFF!important;border-color:#292929!important}
+.quick-tabs button.active,.tool-app-sidebar a.selected,.document-sidebar button.active,.cv-sidebar button.side-active,.feature-dark .feature-tabs a:hover{background:#1D1D1D!important;color:#FFFFFF!important}
+.photo-tool-card,.workspace-tool-card,.feature-dark,.tool-app-sidebar,.document-sidebar,.cv-sidebar,.workspace-sidebar,.cv-modern-preview>aside{background:#1D1D1D!important;color:#FFFFFF!important}
+.tool-app-sidebar>a:hover,.document-sidebar>a:hover,.cv-sidebar>button:hover,.workspace-nav-link:hover,.workspace-sidebar-bottom,.tool-sidebar-note,.document-sidebar .sidebar-bottom,.cv-sidebar .sidebar-bottom{background:#292929!important;color:#FFFFFF!important}
+.workspace-nav-label,.tool-app-sidebar>span,.document-sidebar>.sidebar-caption,.cv-sidebar>.sidebar-caption{color:#B8B8B8!important}
+.workspace-nav-active{background:#292929!important;color:#FFFFFF!important}
+.workspace-tool-row:hover{background:#F5F5F5!important}
+.workspace-tool-open{background:#292929!important}
+.photo-tool-copy p,.workspace-tool-card p,.workspace-sidebar-bottom p,.tool-sidebar-note,.document-sidebar .sidebar-bottom,.cv-sidebar .sidebar-bottom{color:#D0D0D0!important}
+.quick-tabs,.quick-tabs button,.feature-dark .feature-tabs a,.tool-app-sidebar a,.document-sidebar button,.cv-sidebar button{border-color:transparent!important;box-shadow:none!important}
+.feature-portrait,.closing-stage{background:#FFFFFF!important}
+.closing-art{background:linear-gradient(90deg,#FFFFFF 0%,rgba(255,255,255,.96) 45%,rgba(255,255,255,.12) 100%),url("https://images.pexels.com/photos/10376034/pexels-photo-10376034.jpeg?auto=compress&cs=tinysrgb&w=1300") center/cover!important}
+.result-panel,.suggestion-strip,.custom-sections,.document-preview-client,.admin-topline,.admin-preview,.payment-return-icon{background:#FCFCFC!important;color:#1D1D1D!important}
+.workspace-tool-row{border:1px solid #F0F0F0!important}
+.workspace-tool-row:hover{border-color:#E8E8E8!important}
+.workspace-content-head h1,.workspace-tool-row h2,.workspace-content,.tool-app-main,.document-main,.cv-main{color:#1D1D1D!important}
+.document-eyebrow,.document-brand,.tool-app-brand,.workspace-kicker,.workspace-tool-index{color:#F36B21!important}
+.document-preview.template-dark .document-preview-client{background:#292929!important;color:#FFFFFF!important}
+.button-blue:hover,.photo-tool-action:hover,.primary-btn:hover,.document-next:hover{background:#F36B21!important}
