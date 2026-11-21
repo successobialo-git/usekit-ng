@@ -17,7 +17,9 @@
     "react": "19.1.2",
     "react-dom": "19.1.2",
     "@supabase/ssr": "0.12.7",
-    "html2canvas": "1.4.1"
+    "html2canvas": "1.4.1",
+    "pdf-lib": "^1.17.1",
+    "pdfjs-dist": "^4.10.38"
   },
   "devDependencies": {
     "@tailwindcss/postcss": "4.1.13",
