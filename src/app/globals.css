@@ -438,3 +438,40 @@ html,body{background:#FFFFFF!important;color:#1D1D1D}
 .workspace-tool-list{gap:10px!important}
 .workspace-tool-row{padding:18px!important}
 @media(max-width:760px){.workspace-tool-row{padding:14px!important}}
+
+
+/* Image & PDF compressor page only */
+.image-pdf-frame .compress-tabs{display:flex;gap:5px;width:max-content;max-width:100%;padding:5px;margin:0 0 18px;border-radius:12px;background:#f0eee9}
+.image-pdf-frame .compress-tabs button{min-width:100px;border:0;border-radius:9px;padding:11px 22px;background:transparent;color:#766b65;font-size:12px;font-weight:750;cursor:pointer}
+.image-pdf-frame .compress-tabs button.active{background:#873a13;color:#fff}
+.image-pdf-frame .target-size-row{grid-template-columns:minmax(0,1fr) 115px;gap:12px}
+.image-pdf-frame .pdf-dropzone{min-height:185px;border:1.5px dashed #d8c9bd;border-radius:14px;background:#fbf8f5;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:9px;text-align:center;padding:20px;cursor:pointer;transition:border-color .2s,background .2s}
+.image-pdf-frame .pdf-dropzone:hover,.image-pdf-frame .pdf-dropzone.dragging{border-color:#873a13;background:#fff0e6}
+.image-pdf-frame .pdf-dropzone strong{font-size:13px;color:#292929}
+.image-pdf-frame .pdf-dropzone>span:last-child{font-size:11px;color:#8b7468}
+.image-pdf-frame .pdf-drop-icon{display:grid;place-items:center;width:43px;height:49px;border-radius:7px;background:#873a13;color:#fff;font-size:12px;font-weight:850;letter-spacing:.04em}
+.image-pdf-frame .pdf-file-info{display:flex;flex-direction:column;gap:5px;margin:12px 0 19px;padding:13px;border-radius:10px;background:#353535;color:#fff;overflow-wrap:anywhere}
+.image-pdf-frame .pdf-file-info strong{font-size:11px}
+.image-pdf-frame .pdf-file-info span{font-size:10px;color:#d4c7c0}
+.image-pdf-frame .pdf-result-panel{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:9px;margin-top:16px}
+.image-pdf-frame .pdf-result-panel>div{min-width:0;padding:12px 9px;border-radius:10px;background:#393939;display:flex;flex-direction:column;gap:7px}
+.image-pdf-frame .pdf-result-panel>div span{font-size:8px;letter-spacing:.08em;color:#d3c4bb;font-weight:800}
+.image-pdf-frame .pdf-result-panel>div strong{font-size:13px;color:#fff;overflow-wrap:anywhere}
+.image-pdf-frame .pdf-result-panel>a{grid-column:1/-1;text-align:center;text-decoration:none;display:block}
+.image-pdf-frame .document-hint{font-size:10px;line-height:1.7;color:#b9aaa2}
+.image-pdf-frame .document-next:disabled{opacity:.55;cursor:wait}
+.image-pdf-frame .tool-promo{display:flex!important}
+.image-pdf-frame .faq{display:block!important}
+.image-pdf-frame .usekit-ad-slot{display:block;max-width:980px;min-height:90px;margin:22px auto;padding:7px 12px;border-radius:10px;background:#f8f7f4;color:#8b7468;text-align:center;font-size:8px;letter-spacing:.12em}
+.image-pdf-frame .usekit-ad-slot span{display:block;margin-bottom:4px}
+.image-pdf-frame .faq-item{background:#fbfaf5!important}
+@media(max-width:760px){
+ .image-pdf-frame .compress-tabs{width:100%;display:grid;grid-template-columns:1fr 1fr}
+ .image-pdf-frame .compress-tabs button{width:100%;min-width:0}
+ .image-pdf-frame .target-size-row{grid-template-columns:minmax(0,1fr) 95px}
+ .image-pdf-frame .pdf-dropzone{min-height:160px}
+ .image-pdf-frame .pdf-result-panel{gap:6px}
+ .image-pdf-frame .pdf-result-panel>div{padding:10px 7px}
+ .image-pdf-frame .pdf-result-panel>div strong{font-size:11px}
+ .image-pdf-frame .usekit-ad-slot{margin:16px auto}
+}
