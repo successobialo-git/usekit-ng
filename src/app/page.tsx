@@ -27,7 +27,7 @@ export default function Home(){
   <section className="center-hero home-hero">
     <h1>Make everyday work<br/>feel <em className="hero-changing">{typed}<span className="type-cursor">|</span></em>.</h1>
     <p>Create invoices and quotations, build a stronger CV, compress images and PDFs, make QR codes and more, all with simple tools designed to help you get things done.</p>
-    <div className="center-actions"><a className="button-blue hero-primary" href="#quick-tools">Get started <span><Send size={17} strokeWidth={2.2}/></span></a><a className="quiet-link" href="#toolkit">Explore tools</a></div>
+    <div className="center-actions"><a className="button-blue hero-primary" href="#quick-tools">Get started <span><Send size={17} strokeWidth={2.2}/></span></a><a className="quiet-link" href="#toolkit">Explore tools</a></div><p className="hero-audience-note"><span aria-hidden="true">●</span> Tools for small businesses, freelancers and students</p>
     <div className="home-proof" aria-label="Tools for small businesses, freelancers, job seekers, creators and students">
       <div><span><Store size={17} strokeWidth={1.7}/>Small businesses</span><span><BriefcaseBusiness size={17} strokeWidth={1.7}/>Freelancers</span><span><UserRound size={17} strokeWidth={1.7}/>Job seekers</span><span><Palette size={17} strokeWidth={1.7}/>Creators</span><span><GraduationCap size={18} strokeWidth={1.7}/>Students</span></div>
     </div>
