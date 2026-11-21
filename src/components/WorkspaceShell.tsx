@@ -1,12 +1,12 @@
 "use client";
 import {useEffect,useState} from "react";
-import {BriefcaseBusiness,FileImage,FileText,MessageCircle,ReceiptText,QrCode} from "lucide-react";
+import {Briefcase,FileImage,FileText,MessageCircle,Receipt,QrCode} from "lucide-react";
 import ToolWorkbench from "@/components/ToolWorkbench";
 import {tools} from "@/lib/tools";
 type ToolSlug="qr-code-generator"|"image-compressor"|"invoice-generator"|"quotation-generator"|"cv-generator"|"whatsapp-link-generator";
-const icons:Record<string,React.ComponentType<{size?:number;strokeWidth?:number}>>={
- "qr-code-generator":QrCode,"image-compressor":FileImage,"invoice-generator":ReceiptText,
- "quotation-generator":FileText,"cv-generator":BriefcaseBusiness,"whatsapp-link-generator":MessageCircle
+const icons:Record<string,import("react").ComponentType<{size?:number;strokeWidth?:number}>>={
+ "qr-code-generator":QrCode,"image-compressor":FileImage,"invoice-generator":Receipt,
+ "quotation-generator":FileText,"cv-generator":Briefcase,"whatsapp-link-generator":MessageCircle
 };
 export default function WorkspaceShell(){
  const [active,setActive]=useState<ToolSlug>("qr-code-generator");
