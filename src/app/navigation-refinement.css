@@ -213,3 +213,6 @@ input[type=range]::-webkit-progress-value{background:#e92b50!important}
 .site-header .nav-wrap>.brand .brand-word::first-letter{color:#e92b50!important}
 .site-footer .brand .brand-word::first-letter,.tool-app-brand::first-letter,.document-brand span::first-letter{color:#e92b50!important}
 .site-footer .brand .brand-word{display:inline-block!important;transform:translateY(-1px)!important}
+
+/* Slightly raise only the UseKit wordmark in the header for optical alignment. */
+.site-header .nav-wrap>.brand .brand-word{transform:translateY(-3px)!important}
