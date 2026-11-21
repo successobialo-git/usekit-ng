@@ -1,16 +1,16 @@
 import Link from "next/link";
 
 const faqs=[
- {q:"What is UseKit?",a:"UseKit brings practical digital tools and smart assistance together to help you create, improve and complete everyday work."},
+ {q:"What is UseKit?",a:"UseKit brings free practical digital tools and smart assistance together to help you create, improve and complete everyday work."},
  {q:"Who is UseKit for?",a:"UseKit is designed for small business owners, freelancers, job seekers, students, creators and professionals who want straightforward ways to get everyday digital tasks done."},
  {q:"What can I do with UseKit?",a:"You can create QR codes, invoices, quotations and WhatsApp links, build or improve a CV, and compress images and PDFs for online applications and everyday sharing."},
- {q:"Can I use UseKit on my phone?",a:"Yes. UseKit is designed to work in modern mobile, tablet and desktop browsers."}
+ {q:"Are UseKit tools free to use?",a:"Yes. UseKit offers a range of free online tools for everyday business, career and digital tasks. Some advanced features or AI-assisted capabilities may have separate limits, which are shown within the relevant tool."},\n {q:"Can I use UseKit on my phone?",a:"Yes. UseKit is designed to work in modern mobile, tablet and desktop browsers."}
 ];
 
 const aboutStructuredData={
  "@context":"https://schema.org",
  "@graph":[
-  {"@type":"Organization","@id":"https://usekit.ng/#organization","name":"UseKit","url":"https://usekit.ng/","description":"Practical digital tools and smart assistance for business, careers and everyday work.","founder":{"@id":"https://usekit.ng/about#founder"}},
+  {"@type":"Organization","@id":"https://usekit.ng/#organization","name":"UseKit","url":"https://usekit.ng/","description":"Free practical digital tools and smart assistance for business, careers and everyday work.","founder":{"@id":"https://usekit.ng/about#founder"}},
   {"@type":"Person","@id":"https://usekit.ng/about#founder","name":"Success Obialo","jobTitle":"Founder and Creator of UseKit","worksFor":{"@id":"https://usekit.ng/#organization"}},
   {"@type":"WebPage","@id":"https://usekit.ng/about#webpage","url":"https://usekit.ng/about","name":"About UseKit","description":"Learn about UseKit, a practical digital toolkit for business, careers and everyday work.","about":{"@id":"https://usekit.ng/#organization"}},
   {"@type":"FAQPage","mainEntity":faqs.map(item=>({"@type":"Question","name":item.q,"acceptedAnswer":{"@type":"Answer","text":item.a}}))}
@@ -19,8 +19,8 @@ const aboutStructuredData={
 
 export const metadata={
  title:"About UseKit | Practical Digital Tools for Everyday Work",
- description:"Meet UseKit: practical online tools and smart assistance for Nigerian businesses, freelancers, job seekers and everyday work.",
- keywords:["about UseKit","online productivity tools","free business tools Nigeria","CV builder Nigeria","invoice generator","image and PDF compressor","everyday digital tools"],
+ description:"Meet UseKit: free practical online tools and smart assistance for Nigerian businesses, freelancers, job seekers and everyday work.",
+ keywords:["about UseKit","online productivity tools","free online tools Nigeria","free business tools Nigeria","free productivity tools","CV builder Nigeria","invoice generator","image and PDF compressor","everyday digital tools"],
  alternates:{canonical:"/about"},
  openGraph:{title:"About UseKit | Practical Tools, Made Easier",description:"Practical digital tools and smart assistance for business, careers and everyday work.",url:"/about",type:"website"}
 };
@@ -31,13 +31,13 @@ export default function About(){
   <div className="internal-page-banner">
    <span>USEKIT / ABOUT</span>
    <h1>Useful tools.<br/><em>Better everyday flow.</em></h1>
-   <p>Practical digital tools and smart assistance to help you create, improve and get everyday work done with less effort.</p>
+   <p>Free practical digital tools and smart assistance to help you create, improve and get everyday work done with less effort.</p>
   </div>
   <div className="content-feature">
    <div>
     <span>OUR POINT OF VIEW</span>
     <h2>Technology should make the day feel lighter.</h2>
-    <p>Everyday tasks should not require a dozen different websites. UseKit brings useful tools for business, careers and daily digital work into one straightforward place, so you can focus on the result instead of figuring out the process.</p>
+    <p>Everyday tasks should not require a dozen different websites or expensive software. UseKit brings free practical tools for business, careers and daily digital work into one straightforward place, so you can focus on the result instead of figuring out the process.</p>
     <p>Whether you are preparing a business document, improving your CV, creating a QR code or getting a file ready for an online application, the experience should feel simple and considered.</p>
     <p className="about-founder-note">UseKit is an independent digital tools platform founded and built by <strong>Success Obialo</strong>.</p>
     <Link href="/#toolkit" className="about-feature-link">Explore the tools <span aria-hidden="true">→</span></Link>
