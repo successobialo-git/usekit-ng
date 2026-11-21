@@ -8,8 +8,8 @@ const icons:Record<string,import("react").ComponentType<{size?:number;strokeWidt
  "qr-code-generator":QrCode,"image-compressor":FileImage,"invoice-generator":Receipt,
  "quotation-generator":FileText,"cv-generator":Briefcase,"whatsapp-link-generator":MessageCircle
 };
-export default function WorkspaceShell(){
- const [active,setActive]=useState<ToolSlug>("qr-code-generator");
+export default function WorkspaceShell({initialTool="qr-code-generator"}:{initialTool?:string}){
+ const [active,setActive]=useState<ToolSlug>((initialTool as ToolSlug)||"qr-code-generator");
  useEffect(()=>{const requested=new URLSearchParams(window.location.search).get("tool");if(requested&&tools.some(t=>t.slug===requested))setActive(requested as ToolSlug);},[]);
  function choose(slug:ToolSlug){setActive(slug);window.history.replaceState(null,"","/workspace?tool="+slug);}
  return <main className="workspace-v2">
