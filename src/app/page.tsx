@@ -1,7 +1,7 @@
 "use client";
 import Link from "next/link";
 import {useEffect,useState} from "react";
-import {BriefcaseBusiness,GraduationCap,Palette,Send,Store,UserRound} from "lucide-react";
+import {BriefcaseBusiness,GraduationCap,Palette,Send,Store,UserRound,CheckCircle2} from "lucide-react";
 import QuickToolsPanel from "@/components/QuickToolsPanel";
 import AdSenseUnit from "@/components/AdSenseUnit";
 import {tools} from "@/lib/tools";
@@ -27,7 +27,7 @@ export default function Home(){
   <section className="center-hero home-hero">
     <h1>Make everyday work<br/>feel <em className="hero-changing">{typed}<span className="type-cursor">|</span></em>.</h1>
     <p>Create invoices and quotations, build a stronger CV, compress images and PDFs, make QR codes and more — all with simple tools designed to help you get things done.</p>
-    <div className="center-actions"><a className="button-blue hero-primary" href="#quick-tools">Get started <span><Send size={17} strokeWidth={2.2}/></span></a><a className="quiet-link" href="#toolkit">Explore tools</a></div>
+    <div className="center-actions"><a className="button-blue hero-primary" href="#quick-tools">Get started <span><Send size={17} strokeWidth={2.2}/></span></a><a className="quiet-link" href="#toolkit">Explore tools</a><div className="hero-trust"><span className="hero-trust-mark"><CheckCircle2 size={16}/></span><span><strong>Made for everyday work in Nigeria</strong><small>Free tools <i/> No sign-up needed</small></span></div></div>
     <div className="home-proof" aria-label="Tools for small businesses, freelancers, job seekers, creators and students">
       <div><span><Store size={17} strokeWidth={1.7}/>Small businesses</span><span><BriefcaseBusiness size={17} strokeWidth={1.7}/>Freelancers</span><span><UserRound size={17} strokeWidth={1.7}/>Job seekers</span><span><Palette size={17} strokeWidth={1.7}/>Creators</span><span><GraduationCap size={18} strokeWidth={1.7}/>Students</span></div>
     </div>
