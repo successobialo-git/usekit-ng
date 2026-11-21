@@ -1,0 +1,86 @@
+/* UseKit workspace layout and shared tool surfaces */
+.site-header{position:sticky!important;top:0!important;z-index:200!important;display:block!important;visibility:visible!important;opacity:1!important}
+.workspace-v2{display:grid!important;grid-template-columns:244px minmax(0,1fr)!important;min-height:calc(100vh - 72px)!important;background:#f5f4f2!important;color:#25252a!important}
+.workspace-v2-sidebar{position:sticky!important;top:72px!important;align-self:start!important;height:calc(100vh - 72px)!important;min-height:540px!important;overflow-y:auto!important;background:#25252a!important;padding:27px 15px!important}
+.workspace-v2-label{font-size:10px!important;letter-spacing:.16em!important;font-weight:750!important;color:#a8a8ae!important;padding:0 13px 16px!important}
+.workspace-v2-sidebar nav{display:flex!important;flex-direction:column!important;gap:5px!important}
+.workspace-v2-sidebar nav button{display:grid!important;grid-template-columns:23px minmax(0,1fr) 20px!important;align-items:center!important;gap:11px!important;width:100%!important;min-height:48px!important;padding:0 12px!important;border:0!important;border-radius:11px!important;background:transparent!important;color:#c3c3c8!important;text-align:left!important;font-size:12px!important;font-weight:600!important}
+.workspace-v2-sidebar nav button svg{color:#ed7189!important;width:19px!important;height:19px!important}
+.workspace-v2-sidebar nav button small{font-size:9px!important;color:#77777e!important;text-align:right!important}
+.workspace-v2-sidebar nav button:hover,.workspace-v2-sidebar nav button.active{background:#39393f!important;color:#fff!important}
+.workspace-v2-main{min-width:0!important;background:#f5f4f2!important;padding:30px clamp(18px,3.4vw,52px) 48px!important;color:#29292e!important}
+.workspace-v2-tool{width:100%!important;max-width:1260px!important;margin:0 auto!important;min-width:0!important;color:#29292e!important}
+.workspace-v2-tool .tool-app-sidebar,.workspace-v2-tool .document-sidebar,.workspace-v2-tool .cv-sidebar{display:none!important}
+.workspace-v2-tool .tool-app-main,.workspace-v2-tool .document-main,.workspace-v2-tool .cv-main{width:100%!important;max-width:none!important;min-width:0!important;background:transparent!important;color:#29292e!important;padding:0!important}
+.workspace-v2-tool .tool-app-top,.workspace-v2-tool .document-topbar,.workspace-v2-tool .cv-topbar{display:flex!important;align-items:center!important;justify-content:space-between!important;gap:20px!important;min-height:148px!important;padding:28px 32px!important;margin:0 0 22px!important;border:0!important;border-radius:19px!important;background:#29292e!important;color:#f0eff0!important}
+.workspace-v2-tool .tool-app-top h2,.workspace-v2-tool .document-topbar h2,.workspace-v2-tool .cv-topbar h2{margin:7px 0 6px!important;color:#f3f1f2!important;font-size:clamp(23px,2.4vw,31px)!important;line-height:1.15!important;letter-spacing:-.035em!important;font-weight:650!important}
+.workspace-v2-tool .tool-app-top p,.workspace-v2-tool .document-topbar p,.workspace-v2-tool .cv-topbar p{margin:0!important;color:#b8b6bc!important;font-size:12px!important;line-height:1.65!important;max-width:560px!important}
+.workspace-v2-tool .document-eyebrow{display:inline-flex!important;align-items:center!important;min-height:25px!important;padding:5px 10px!important;margin:0 0 12px!important;border-radius:7px!important;background:#45464e!important;color:#f18ba0!important;font-size:9px!important;font-weight:750!important;letter-spacing:.13em!important;line-height:1.35!important}
+.workspace-v2-tool .tool-app-top>button,.workspace-v2-tool .document-topbar>button,.workspace-v2-tool .cv-topbar>button,.workspace-v2-tool .document-next{border:0!important;border-radius:999px!important;background:#e92b50!important;color:#fff!important;min-height:42px!important;padding:0 19px!important;font-size:11px!important;font-weight:700!important}
+.workspace-v2-tool .qr-studio-grid,.workspace-v2-tool .image-studio-grid{display:grid!important;grid-template-columns:minmax(0,1.08fr) minmax(300px,.92fr)!important;align-items:start!important;gap:20px!important}
+.workspace-v2-tool .qr-settings{display:flex!important;flex-direction:column!important;gap:14px!important;min-width:0!important}
+.workspace-v2-tool .document-card,.workspace-v2-tool .cv-custom-card,.workspace-v2-tool .cv-preview-panel,.workspace-v2-tool .qr-live-preview,.workspace-v2-tool .image-preview-card,.workspace-v2-tool .document-step-actions{box-sizing:border-box!important;background:#34353b!important;color:#f5f4f5!important;border:0!important;border-radius:16px!important;padding:22px!important;box-shadow:0 2px 12px rgba(20,18,22,.055)!important;min-width:0!important}
+.workspace-v2-tool .document-card h3,.workspace-v2-tool .qr-settings h3,.workspace-v2-tool .cv-custom-card h3,.workspace-v2-tool .document-card strong,.workspace-v2-tool .qr-live-preview strong{color:#f7f6f7!important;font-size:15px!important;font-weight:700!important}
+.workspace-v2-tool .document-card p,.workspace-v2-tool .document-hint,.workspace-v2-tool .field label,.workspace-v2-tool .document-card label,.workspace-v2-tool .cv-custom-card p,.workspace-v2-tool .qr-live-preview>p{color:#c2c0c6!important}
+.workspace-v2-tool .document-card .field,.workspace-v2-tool .cv-custom-card .field{margin-top:13px!important;min-width:0!important}
+.workspace-v2-tool .document-card input:not([type=checkbox]):not([type=radio]):not([type=range]):not([type=color]),.workspace-v2-tool .document-card textarea,.workspace-v2-tool .document-card select,.workspace-v2-tool .field input:not([type=checkbox]):not([type=radio]):not([type=range]):not([type=color]),.workspace-v2-tool .field textarea,.workspace-v2-tool .field select,.workspace-v2-tool .cv-custom-card input:not([type=checkbox]):not([type=radio]):not([type=range]):not([type=color]),.workspace-v2-tool .cv-custom-card textarea,.workspace-v2-tool .cv-custom-card select{background:#fff!important;color:#292a30!important;border:1px solid #e9e7e8!important;border-radius:9px!important;min-height:42px!important;padding:10px 12px!important;min-width:0!important;max-width:100%!important}
+.workspace-v2-tool .document-card input[type=color],.workspace-v2-tool .field input[type=color]{background:#fff!important;border:1px solid #e9e7e8!important;border-radius:9px!important;padding:4px!important}
+.workspace-v2-tool .hex-control{display:flex!important;align-items:center!important;gap:9px!important;padding:7px!important;background:#45464e!important;border:0!important;border-radius:11px!important}
+.workspace-v2-tool .hex-control input[type=color]{flex:0 0 40px!important;width:40px!important;height:38px!important;min-height:38px!important;padding:3px!important;background:#fff!important;border:0!important;border-radius:8px!important}
+.workspace-v2-tool .qr-live-paper{display:flex!important;align-items:center!important;justify-content:center!important;flex-direction:column!important;gap:13px!important;padding:30px!important;margin:16px auto!important;width:fit-content!important;max-width:100%!important;min-width:300px!important;min-height:340px!important;border-radius:13px!important;background:#fff!important;box-shadow:0 0 0 1px #efeded!important}
+.workspace-v2-tool .qr-live-paper svg{display:block!important;max-width:100%!important;height:auto!important}
+.workspace-v2-tool .qr-live-paper strong{margin-top:4px!important;font-size:12px!important;color:#29292e!important}
+.workspace-v2-tool .qr-live-paper small{font-size:9px!important;letter-spacing:.13em!important;color:#77747b!important}
+.workspace-v2-tool .qr-live-paper.is-transparent{background-color:transparent!important}
+.workspace-v2-tool input[type=file]{display:block!important;width:100%!important;max-width:100%!important;min-width:0!important;padding:10px!important;background:#45464e!important;color:#f4f2f4!important;border:1px dashed #777780!important;border-radius:11px!important;font-size:11px!important;line-height:1.5!important;cursor:pointer!important;overflow:hidden!important}
+.workspace-v2-tool input[type=file]::file-selector-button{margin:0 12px 0 0!important;padding:9px 13px 9px 34px!important;min-height:36px!important;border:0!important;border-radius:8px!important;background-color:#fff!important;color:#e92b50!important;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%23e92b50' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4'/%3E%3Cpath d='m17 8-5-5-5 5'/%3E%3Cpath d='M12 3v12'/%3E%3C/svg%3E")!important;background-repeat:no-repeat!important;background-position:11px center!important;font:700 11px/1.2 sans-serif!important;cursor:pointer!important}
+.workspace-v2-tool .image-studio-grid .document-card>h3{margin:3px 0 15px!important}
+.workspace-v2-tool .image-studio-grid .document-hint{padding:10px 12px!important;margin:12px 0!important;background:#45464e!important;border-radius:9px!important;line-height:1.5!important}
+.workspace-v2-tool .document-stepper,.workspace-v2-tool .cv-progress{display:flex!important;align-items:center!important;gap:10px!important;padding:13px 16px!important;border:0!important;border-radius:14px!important;background:#34353b!important;margin:0 0 19px!important}
+.workspace-v2-tool .document-stepper button span{width:30px!important;height:30px!important;display:grid!important;place-items:center!important;border:0!important;border-radius:50%!important;background:#45464e!important;color:#ddd!important}
+.workspace-v2-tool .document-stepper button.current span{background:#e92b50!important;color:#fff!important}
+.workspace-v2-tool .document-columns,.workspace-v2-tool .cv-columns{grid-template-columns:minmax(0,1fr)!important;gap:18px!important}
+.workspace-v2-tool .document-summary{display:none!important}
+.workspace-v2-tool .document-step-actions{display:flex!important;align-items:center!important;justify-content:space-between!important;gap:12px!important;margin-top:16px!important}
+.nav-cta{display:inline-flex!important;align-items:center!important;gap:17px!important;padding:6px 7px 6px 19px!important;min-height:43px!important;background:#e92b50!important;color:#fff!important;border-radius:999px!important;font-size:11px!important;font-weight:700!important}
+.nav-cta i{width:30px!important;height:30px!important;display:grid!important;place-items:center!important;border-radius:50%!important;background:#fff!important;color:#242429!important;font-style:normal!important}
+.center-hero:after{display:none!important}
+@media(max-width:900px){.workspace-v2{grid-template-columns:1fr!important;min-height:calc(100vh - 68px)!important}.workspace-v2-sidebar{position:sticky!important;top:68px!important;width:100%!important;height:auto!important;min-height:0!important;padding:9px 12px!important;border-radius:0!important;overflow-x:auto!important;overflow-y:hidden!important}.workspace-v2-label{display:none!important}.workspace-v2-sidebar nav{display:flex!important;flex-direction:row!important;gap:6px!important;width:max-content!important;min-width:100%!important}.workspace-v2-sidebar nav button{width:auto!important;min-width:46px!important;min-height:43px!important;grid-template-columns:20px auto!important;gap:7px!important;padding:0 12px!important;font-size:10px!important;white-space:nowrap!important}.workspace-v2-sidebar nav button small{display:none!important}.workspace-v2-main{padding:20px 16px 34px!important}}
+@media(max-width:650px){.workspace-v2-sidebar{top:62px!important}.workspace-v2-main{padding:14px 11px 28px!important}.workspace-v2-tool .tool-app-top,.workspace-v2-tool .document-topbar,.workspace-v2-tool .cv-topbar{align-items:flex-start!important;flex-direction:column!important;gap:14px!important;min-height:0!important;padding:21px!important}.workspace-v2-tool .qr-studio-grid,.workspace-v2-tool .image-studio-grid{grid-template-columns:minmax(0,1fr)!important}.workspace-v2-tool .document-card,.workspace-v2-tool .cv-custom-card,.workspace-v2-tool .qr-live-preview,.workspace-v2-tool .image-preview-card{padding:17px!important}.workspace-v2-tool .qr-live-paper{min-width:0!important;width:100%!important;min-height:0!important;padding:22px!important}.workspace-v2-tool .qr-live-paper svg{width:min(100%,280px)!important;height:auto!important}.workspace-v2-tool .document-stepper{gap:6px!important;padding:10px!important;overflow-x:auto!important}.workspace-v2-tool .document-stepper button span{width:27px!important;height:27px!important;min-width:27px!important}.workspace-v2-tool .document-eyebrow{min-height:23px!important;padding:4px 8px!important}}
+
+/* Align empty states and preview copy consistently */
+.workspace-v2-tool .quick-empty{display:flex!important;flex-direction:column!important;align-items:center!important;justify-content:center!important;gap:9px!important;min-height:190px!important;margin:14px 0!important;padding:28px 24px!important;text-align:center!important;background:#45464e!important;border:1px dashed #686971!important;border-radius:13px!important;box-sizing:border-box!important}
+.workspace-v2-tool .quick-empty strong{display:block!important;margin:0!important;color:#f7f6f7!important;font-size:15px!important;font-weight:700!important;line-height:1.45!important}
+.workspace-v2-tool .quick-empty span{display:block!important;max-width:330px!important;color:#c2c0c6!important;font-size:12px!important;line-height:1.7!important}
+.workspace-v2-tool .qr-live-preview>p{margin:12px 0 0!important;padding:0 4px!important;text-align:center!important;font-size:11px!important;line-height:1.7!important}
+.workspace-v2-tool .image-studio-grid .document-card>h3{line-height:1.4!important;margin:3px 0 16px!important}
+.workspace-v2-tool .image-studio-grid .document-card>.field{padding:0!important;margin:13px 0 0!important}
+.workspace-v2-tool .image-studio-grid .document-card .field label{display:block!important;margin:0 0 8px!important;line-height:1.5!important}
+.workspace-v2-tool .image-studio-grid .document-card .document-eyebrow{margin:0 0 12px!important}
+.workspace-v2-tool .image-studio-grid .document-card .document-next{margin-top:16px!important}
+@media(max-width:650px){.workspace-v2-tool .quick-empty{min-height:150px!important;padding:22px 16px!important}.workspace-v2-tool .quick-empty strong{font-size:14px!important}.workspace-v2-tool .quick-empty span{font-size:11px!important}}
+
+/* QR Studio: compact editor with a comfortable live-preview margin. */
+.qr-studio-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(300px,.82fr);gap:24px;align-items:start}
+.qr-live-preview{position:sticky;top:104px;padding:22px;border-radius:20px;background:#f1f1f3;min-width:0}
+.qr-live-paper{width:100%;min-height:340px;padding:28px 20px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px;border-radius:16px;overflow:hidden}
+.qr-live-paper svg{display:block;width:min(100%,280px);height:auto;max-height:320px}
+.qr-live-preview>.document-eyebrow{display:block;margin:0 0 16px}
+.qr-settings .document-card{margin-bottom:16px}
+.qr-settings .document-next{width:100%}
+@media(max-width:900px){.qr-studio-grid{grid-template-columns:minmax(0,1fr)}.qr-live-preview{position:static}.qr-live-paper{min-height:280px}}
+@media(max-width:480px){.qr-live-preview{padding:14px}.qr-live-paper{padding:20px 12px;min-height:250px}}
+
+/* CV review: a third, genuinely distinct executive document treatment. */
+.cv-executive-preview{background:#fff;color:#30323a;min-height:1050px;padding:0 42px 42px;border-radius:10px;box-shadow:0 12px 36px rgba(25,25,30,.08);font-family:Arial,sans-serif}
+.cv-executive-preview>header{margin:0 -42px 28px;padding:34px 42px 22px;background:#252932;color:#fff;border-bottom:3px solid #e92b50}
+.cv-executive-preview>header h3{margin:0 0 7px;font-size:28px;letter-spacing:-.8px;color:#fff}
+.cv-executive-preview>header p{margin:0 0 9px;color:#f4a2b2;font-size:13px}
+.cv-executive-preview>header small{color:#d5d6da;font-size:9px;line-height:1.7}
+.cv-executive-preview section{margin:0 0 22px}
+.cv-executive-preview section h4{margin:0 0 8px;color:#e92b50;font-size:10px;letter-spacing:1.2px;border-bottom:1px solid #e7e7e9;padding-bottom:7px}
+.cv-executive-preview section p{white-space:pre-line;margin:0;color:#4d5058;font-size:11px;line-height:1.65}
+.cv-template-select{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px}
+.cv-template-select button{min-height:52px;padding:10px;border-radius:10px;background:#f0f0f2;color:#42444b;font-size:12px}
+.cv-template-select button.chosen{background:#34353b;color:#fff;box-shadow:inset 0 0 0 1px #e92b50}
+@media(max-width:600px){.cv-executive-preview{padding:0 20px 24px}.cv-executive-preview>header{margin:0 -20px 22px;padding:26px 20px 18px}.cv-template-select{grid-template-columns:1fr}}
