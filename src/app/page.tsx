@@ -40,6 +40,19 @@ export default function Home(){
   </section>
   <AdSenseUnit placement="home"/>
   <section className="feature-split"><article className="feature-dark"><span className="mini-label">BUILT FOR REAL EVERYDAY WORK</span><h2>Business-ready.<br/><em>Life-friendly.</em></h2><p>For freelancers, growing businesses and job seekers, UseKit brings practical tools together in one simple workspace.</p><div className="feature-tabs"><Link href="/#toolkit">For business owners</Link><Link href="/#toolkit">For professionals</Link><Link href="/#toolkit">For job seekers</Link></div><div className="dark-feature-bottom"><span>THE USEKIT PROMISE</span><strong>Useful by design.<br/>Simple to finish.</strong><Link href="/about">About UseKit</Link></div></article><article className="feature-portrait"><div className="lady-image"/><div className="portrait-wash"/><div className="portrait-copy"><span>MADE FOR YOUR NEXT MOVE</span><h3>Good work<br/>deserves good tools.</h3></div><div className="portrait-pills"><span>Free to use</span><span>Works on mobile</span></div></article></section>
+  <section className="home-about-intro" aria-labelledby="home-about-title">
+    <div className="home-about-copy">
+      <span className="section-kicker">A LITTLE ABOUT USEKIT</span>
+      <h2 id="home-about-title">Everyday tools.<br/><em>More time for what matters.</em></h2>
+      <p>UseKit brings practical digital tools and smart assistance together to make everyday work easier. Create professional business documents, improve your CV, get help with writing, prepare files for online applications and simplify the small tasks that take up your day.</p>
+      <Link href="/about" className="home-about-link">Get to know UseKit <span aria-hidden="true">→</span></Link>
+    </div>
+    <div className="home-about-points">
+      <div><strong>01</strong><span><b>Create with confidence</b><small>CVs, invoices, quotations and useful digital assets.</small></span></div>
+      <div><strong>02</strong><span><b>Improve what you have</b><small>Make existing work clearer, stronger and more professional.</small></span></div>
+      <div><strong>03</strong><span><b>Get everyday tasks done</b><small>Smart assistance and simple tools, all in one place.</small></span></div>
+    </div>
+  </section>
   <section className="closing-stage"><div className="closing-art"/><div className="closing-content"><span className="section-kicker">A BETTER KIND OF EVERYDAY</span><h2>Start with one<br/><em>small win.</em></h2><p>Choose a tool, make it happen, and get back to what matters.</p><a className="button-blue" href="#quick-tools">Get started free</a></div></section>
  </main>;
 }
