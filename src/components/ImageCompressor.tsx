@@ -15,7 +15,6 @@ type ImageOutput={name:string,url:string,size:number,original:number,targetMet:b
 const bytes=(value:number,unit:Unit)=>value*(unit==="MB"?1024*1024:1024);
 const pretty=(size:number)=>size>=1024*1024?(size/1024/1024).toFixed(2)+" MB":(size/1024).toFixed(1)+" KB";
 const percent=(before:number,after:number)=>before>0?Math.max(0,(1-after/before)*100):0;
-const clamp=(n:number,min:number,max:number)=>Math.min(max,Math.max(min,n));
 
 export default function ImageCompressor(){
  const [mode,setMode]=useState<Mode>("image"),[imageFiles,setImageFiles]=useState<File[]>([]),[pdfFile,setPdfFile]=useState<File|null>(null);
@@ -23,10 +22,10 @@ export default function ImageCompressor(){
  const [quality,setQuality]=useState(.84),[width,setWidth]=useState(""),[height,setHeight]=useState("");
  const [imageOutputs,setImageOutputs]=useState<ImageOutput[]>([]),[pdfUrl,setPdfUrl]=useState(""),[pdfSize,setPdfSize]=useState(0);
  const [originalPreview,setOriginalPreview]=useState(""),[notice,setNotice]=useState(""),[busy,setBusy]=useState(false),[dragging,setDragging]=useState(false);
- const imageInput=useRef<HTMLInputElement>(null),pdfInput=useRef<HTMLInputElement>(null),dropRef=useRef<HTMLDivElement>(null),ownedUrls=useRef<string[]>([]);
+ const imageInput=useRef<HTMLInputElement>(null),pdfInput=useRef<HTMLInputElement>(null),ownedUrls=useRef<string[]>([]);
  const targetBytes=bytes(Number(target),unit);
  useEffect(()=>()=>{ownedUrls.current.forEach(url=>URL.revokeObjectURL(url));},[]);
- function makeObjectUrl(blob:Blob){const url=makeObjectUrl(blob);ownedUrls.current.push(url);return url;}
+ function makeObjectUrl(blob:Blob){const url=URL.createObjectURL(blob);ownedUrls.current.push(url);return url;}
 
  function clearOutputs(){imageOutputs.forEach(x=>URL.revokeObjectURL(x.url));setImageOutputs([]);if(pdfUrl)URL.revokeObjectURL(pdfUrl);setPdfUrl("");setPdfSize(0);setNotice("");}
  function selectImages(files:FileList|File[]|null){if(!files)return;const selected=Array.from(files).filter(f=>f.type.startsWith("image/"));if(!selected.length){setNotice("Choose a supported image file.");return;}clearOutputs();setImageFiles(selected);if(originalPreview)URL.revokeObjectURL(originalPreview);setOriginalPreview(makeObjectUrl(selected[0]));}
@@ -85,7 +84,7 @@ export default function ImageCompressor(){
      {imageOutputs[0]&&<a className="quick-download" href={imageOutputs[0].url} download={imageOutputs[0].name}>Download compressed image</a>}
     </div><aside className="qr-live-preview"><span className="document-eyebrow">PREVIEW</span>{imageOutputs[0]?<div className="image-compare"><div><span>ORIGINAL</span>{originalPreview&&<img src={originalPreview} alt="Original image preview"/>}</div><div><span>COMPRESSED</span><img src={imageOutputs[0].url} alt="Compressed image preview"/></div></div>:<div className="quick-empty"><strong>Your result appears here</strong><span>Upload an image and set your target size.</span></div>}<p>Image compression runs locally. The tool adjusts quality and dimensions to reach your requested size or the closest possible result.</p></aside>
    </div>:<div className="image-studio-grid">
-    <div className="document-card"><span className="document-eyebrow">01 / UPLOAD PDF</span><h3>Choose your PDF</h3><div ref={dropRef} className={"pdf-dropzone "+(dragging?"dragging":"")} onDragOver={e=>{e.preventDefault();setDragging(true);}} onDragLeave={()=>setDragging(false)} onDrop={handleDrop} onClick={()=>pdfInput.current?.click()} role="button" tabIndex={0} onKeyDown={e=>{if(e.key==="Enter"||e.key===" "){e.preventDefault();pdfInput.current?.click();}}}><input ref={pdfInput} type="file" accept="application/pdf,.pdf" hidden onChange={e=>selectPdf(e.target.files?.[0]||null)}/><span className="pdf-drop-icon">PDF</span><strong>Drag &amp; drop your PDF here</strong><span>or click to browse files</span></div>
+    <div className="document-card"><span className="document-eyebrow">01 / UPLOAD PDF</span><h3>Choose your PDF</h3><div className={"pdf-dropzone "+(dragging?"dragging":"")} onDragOver={e=>{e.preventDefault();setDragging(true);}} onDragLeave={()=>setDragging(false)} onDrop={handleDrop} onClick={()=>pdfInput.current?.click()} role="button" tabIndex={0} onKeyDown={e=>{if(e.key==="Enter"||e.key===" "){e.preventDefault();pdfInput.current?.click();}}}><input ref={pdfInput} type="file" accept="application/pdf,.pdf" hidden onChange={e=>selectPdf(e.target.files?.[0]||null)}/><span className="pdf-drop-icon">PDF</span><strong>Drag &amp; drop your PDF here</strong><span>or click to browse files</span></div>
      {pdfFile&&<div className="pdf-file-info"><strong>{pdfFile.name}</strong><span>Original size: {pretty(pdfFile.size)}</span></div>}
      <span className="document-eyebrow">02 / TARGET SIZE</span><div className="document-grid target-size-row"><div className="field"><label>Target size</label><input type="number" min="0.01" step="any" value={target} onChange={e=>setTarget(e.target.value)} placeholder="e.g. 200"/></div><div className="field"><label>Unit</label><select value={unit} onChange={e=>setUnit(e.target.value as Unit)}><option>KB</option><option>MB</option></select></div></div>
      <button className="document-next" disabled={!pdfFile||busy} onClick={compressPdf}>{busy?"Compressing PDF…":"Compress PDF"}</button>
