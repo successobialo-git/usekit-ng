@@ -70,3 +70,17 @@
 .qr-settings .document-next{width:100%}
 @media(max-width:900px){.qr-studio-grid{grid-template-columns:minmax(0,1fr)}.qr-live-preview{position:static}.qr-live-paper{min-height:280px}}
 @media(max-width:480px){.qr-live-preview{padding:14px}.qr-live-paper{padding:20px 12px;min-height:250px}}
+
+/* CV review: a third, genuinely distinct executive document treatment. */
+.cv-executive-preview{background:#fff;color:#30323a;min-height:1050px;padding:0 42px 42px;border-radius:10px;box-shadow:0 12px 36px rgba(25,25,30,.08);font-family:Arial,sans-serif}
+.cv-executive-preview>header{margin:0 -42px 28px;padding:34px 42px 22px;background:#252932;color:#fff;border-bottom:3px solid #e92b50}
+.cv-executive-preview>header h3{margin:0 0 7px;font-size:28px;letter-spacing:-.8px;color:#fff}
+.cv-executive-preview>header p{margin:0 0 9px;color:#f4a2b2;font-size:13px}
+.cv-executive-preview>header small{color:#d5d6da;font-size:9px;line-height:1.7}
+.cv-executive-preview section{margin:0 0 22px}
+.cv-executive-preview section h4{margin:0 0 8px;color:#e92b50;font-size:10px;letter-spacing:1.2px;border-bottom:1px solid #e7e7e9;padding-bottom:7px}
+.cv-executive-preview section p{white-space:pre-line;margin:0;color:#4d5058;font-size:11px;line-height:1.65}
+.cv-template-select{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px}
+.cv-template-select button{min-height:52px;padding:10px;border-radius:10px;background:#f0f0f2;color:#42444b;font-size:12px}
+.cv-template-select button.chosen{background:#34353b;color:#fff;box-shadow:inset 0 0 0 1px #e92b50}
+@media(max-width:600px){.cv-executive-preview{padding:0 20px 24px}.cv-executive-preview>header{margin:0 -20px 22px;padding:26px 20px 18px}.cv-template-select{grid-template-columns:1fr}}
