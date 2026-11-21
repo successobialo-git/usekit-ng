@@ -207,3 +207,9 @@ input[type=range]::-webkit-progress-value{background:#e92b50!important}
  .about-page .content-feature img{width:100%!important;max-height:300px!important;object-fit:cover!important}
  .about-bottom-cta{margin-top:34px!important}
 }
+
+/* UseKit wordmark accent: colour the first letter and lift the text optically. */
+.site-header .nav-wrap>.brand .brand-word{display:inline-block!important;visibility:visible!important;opacity:1!important;transform:translateY(-1px)!important}
+.site-header .nav-wrap>.brand .brand-word::first-letter{color:#e92b50!important}
+.site-footer .brand .brand-word::first-letter,.tool-app-brand::first-letter,.document-brand span::first-letter{color:#e92b50!important}
+.site-footer .brand .brand-word{display:inline-block!important;transform:translateY(-1px)!important}
