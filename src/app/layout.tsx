@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import SiteNav from "@/components/SiteNav";
 import "./globals.css";
+import "./navigation-refinement.css";
 import "@/components/workspace-overhaul.css";
 export const metadata:Metadata={metadataBase:new URL("https://usekit.ng"),title:{default:"UseKit — Everyday tools, made easier",template:"%s | UseKit"},description:"Thoughtful free digital tools for Nigerians. Create invoices, build a CV, compress images, make QR codes and WhatsApp links. No signup needed.",applicationName:"UseKit",icons:{icon:[{url:"/icon.svg",type:"image/svg+xml"}],shortcut:["/icon.svg"],apple:[{url:"/icon.svg",type:"image/svg+xml"}]},openGraph:{title:"UseKit — Everyday tools, made easier",description:"A calmer, simpler way to get everyday digital tasks done. Free tools, no signup.",type:"website",url:"https://usekit.ng"}};
 function Brand(){return <span className="brand"><img src="/usekit-mark.svg" alt=""/><span className="brand-word">UseKit</span></span>}
