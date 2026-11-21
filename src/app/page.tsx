@@ -23,7 +23,13 @@ export default function Home(){
  const ordered=order.map(s=>tools.find(t=>t.slug===s)).filter(Boolean);
  const filtered=ordered.filter(t=>toolControls[t!.slug]!==false&&(t!.name+" "+t!.short+" "+t!.category).toLowerCase().includes(query.toLowerCase()));
  return <main className="site-shell">
-  <section className="center-hero"><h1>Make everyday work<br/>feel <em className="hero-changing">{typed}<span className="type-cursor">|</span></em>.</h1><p>Create invoices and quotations, build a stronger CV, compress images, make QR codes and share WhatsApp links—with guided writing to help you finish everyday work faster.</p><div className="center-actions"><a className="button-blue" href="#quick-tools">Try free tools</a><a className="quiet-link" href="#toolkit">Explore everything</a></div></section>
+  <section className="center-hero home-hero">
+    <span className="hero-eyebrow"><i/> PRACTICAL TOOLS FOR EVERYDAY PROGRESS</span>
+    <h1>Make everyday work<br/>feel <em className="hero-changing">{typed}<span className="type-cursor">|</span></em>.</h1>
+    <p>Create invoices, shape a stronger CV, compress images and PDFs, make QR codes and more. Thoughtful tools that help you get the little things done well.</p>
+    <div className="center-actions"><a className="button-blue" href="#quick-tools">Explore free tools <span>↗</span></a><a className="quiet-link" href="#toolkit">See everything</a></div>
+    <div className="home-proof"><span>MADE FOR THE WAY YOU WORK</span><div><b>Small businesses</b><i/><b>Freelancers</b><i/><b>Job seekers</b><i/><b>Creators</b><i/><b>Students</b></div></div>
+  </section>
   <QuickToolsPanel/>
   <section className="toolkit-section" id="toolkit"><div className="toolkit-heading"><div><span className="section-kicker">ALL TOOLS</span><h2>Find your tool.<br/><em>Find your flow.</em></h2></div><div className="toolkit-intro"><p>Practical tools for business, work and everyday life. Choose what you need and get moving.</p><label className="search-control"><input value={query} onChange={e=>setQuery(e.target.value)} placeholder="Search all tools" aria-label="Search tools"/></label></div></div>
    <div className="photo-tool-grid">{filtered.map((tool,index)=><article className="photo-tool-card" key={tool!.slug}><div className="photo-tool-image"><img src={photos[tool!.slug]} alt="" loading={index>2?"lazy":"eager"}/><span className="photo-tool-shade"/></div><div className="photo-tool-meta"><span className="tool-number">0{index+1}</span><span className="tool-category">{tool!.tag}</span></div><div className="photo-tool-copy"><h3>{tool!.name}</h3><p>{tool!.short}</p><Link className="photo-tool-action" href={"/tools/"+tool!.slug}>Open tool</Link></div></article>)}</div>
