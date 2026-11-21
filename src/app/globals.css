@@ -1235,3 +1235,18 @@ select option{background-color:#29292d!important;color:#f5f5f6!important}
 select option:checked,select option:hover,select option:focus{background:#e92b50!important;color:#ffffff!important}
 .quick-form>select option:checked,.quick-form>select option:hover{background:#e92b50!important;color:#ffffff!important}
 :focus-visible{outline-color:#e92b50}
+
+
+/* QR centre selector: custom menu avoids the operating-system blue option highlight. */
+.qr-center-picker{position:relative!important;width:100%!important;margin:5px 0 7px!important;z-index:8!important}
+.qr-center-picker-trigger{display:flex!important;align-items:center!important;justify-content:space-between!important;gap:14px!important;width:100%!important;min-height:48px!important;padding:0 16px!important;border:0!important;border-radius:10px!important;background:#39393e!important;color:#f5f5f6!important;font:inherit!important;font-size:14px!important;text-align:left!important;cursor:pointer!important;box-shadow:none!important;outline:0!important}
+.qr-center-picker-trigger svg{display:block!important;flex:0 0 17px!important;width:17px!important;height:17px!important;color:#f5f5f6!important;opacity:1!important}
+.qr-center-picker-trigger:hover,.qr-center-picker-trigger:focus-visible,.qr-center-picker-trigger[aria-expanded=true]{background:#414148!important;color:#fff!important;outline:2px solid #e92b50!important;outline-offset:1px!important}
+.qr-center-picker-options{position:absolute!important;top:calc(100% + 5px)!important;left:0!important;right:0!important;display:grid!important;gap:3px!important;padding:5px!important;border:1px solid #48484f!important;border-radius:11px!important;background:#29292f!important;box-shadow:0 12px 26px rgba(0,0,0,.32)!important;z-index:30!important}
+.qr-center-picker-options button{display:block!important;width:100%!important;min-height:39px!important;padding:8px 11px!important;border:0!important;border-radius:7px!important;background:transparent!important;color:#f2f1f3!important;font:inherit!important;font-size:13px!important;text-align:left!important;cursor:pointer!important;box-shadow:none!important;outline:0!important}
+.qr-center-picker-options button:hover,.qr-center-picker-options button:focus-visible,.qr-center-picker-options button[aria-selected=true]{background:#e92b50!important;color:#fff!important;outline:0!important}
+.quick-qr-paper>div>div[style*="82px"]{width:82px!important;height:82px!important;min-width:82px!important;min-height:82px!important;padding:4px!important}
+.quick-qr-paper>div>div[style*="82px"] span{font-size:13px!important;line-height:1!important;white-space:nowrap!important;overflow-wrap:normal!important;word-break:normal!important;letter-spacing:-.35px!important}
+/* Remove residual blue interaction styling from common controls and navigation surfaces. */
+button,a,[role="tab"],[role="option"],input,select{ -webkit-tap-highlight-color:transparent }
+button:focus-visible,a:focus-visible,[role="tab"]:focus-visible{outline-color:#e92b50!important}
