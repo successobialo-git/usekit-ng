@@ -4,7 +4,8 @@ const faqs=[
  {q:"What is UseKit?",a:"UseKit brings free practical digital tools and smart assistance together to help you create, improve and complete everyday work."},
  {q:"Who is UseKit for?",a:"UseKit is designed for small business owners, freelancers, job seekers, students, creators and professionals who want straightforward ways to get everyday digital tasks done."},
  {q:"What can I do with UseKit?",a:"You can create QR codes, invoices, quotations and WhatsApp links, build or improve a CV, and compress images and PDFs for online applications and everyday sharing."},
- {q:"Are UseKit tools free to use?",a:"Yes. UseKit offers a range of free online tools for everyday business, career and digital tasks. Some advanced features or AI-assisted capabilities may have separate limits, which are shown within the relevant tool."},\n {q:"Can I use UseKit on my phone?",a:"Yes. UseKit is designed to work in modern mobile, tablet and desktop browsers."}
+ {q:"Are UseKit tools free to use?",a:"Yes. UseKit offers a range of free online tools for everyday business, career and digital tasks. Some advanced features or AI-assisted capabilities may have separate limits, which are shown within the relevant tool."},
+ {q:"Can I use UseKit on my phone?",a:"Yes. UseKit is designed to work in modern mobile, tablet and desktop browsers."}
 ];
 
 const aboutStructuredData={
