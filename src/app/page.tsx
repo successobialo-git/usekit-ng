@@ -27,7 +27,7 @@ export default function Home(){
   <section className="center-hero home-hero">
     <h1>Make everyday work<br/>feel <em className="hero-changing">{typed}<span className="type-cursor">|</span></em>.</h1>
     <p>Create invoices and quotations, build a stronger CV, compress images and PDFs, make QR codes and more, all with simple tools designed to help you get things done.</p>
-    <div className="center-actions"><a className="button-blue hero-primary" href="#quick-tools">Get started <span><Send size={17} strokeWidth={2.2}/></span></a><a className="quiet-link" href="#toolkit">Explore tools</a></div>
+    <div className="center-actions"><a className="button-blue hero-primary" href="#quick-tools">Get started for free <span><Send size={17} strokeWidth={2.2}/></span></a><a className="quiet-link" href="#toolkit">Explore tools</a></div>
     <div className="home-proof" aria-label="Tools for small businesses, freelancers, job seekers, creators and students">
       <div><span><Store size={17} strokeWidth={1.7}/>Small businesses</span><span><BriefcaseBusiness size={17} strokeWidth={1.7}/>Freelancers</span><span><UserRound size={17} strokeWidth={1.7}/>Job seekers</span><span><Palette size={17} strokeWidth={1.7}/>Creators</span><span><GraduationCap size={18} strokeWidth={1.7}/>Students</span></div>
     </div>
@@ -44,7 +44,7 @@ export default function Home(){
     <div className="home-about-copy">
       <span className="section-kicker">A LITTLE ABOUT USEKIT</span>
       <h2 id="home-about-title">Everyday tools.<br/><em>More time for what matters.</em></h2>
-      <p>UseKit brings practical digital tools and smart assistance together to make everyday work easier. Create professional business documents, improve your CV, get help with writing, prepare files for online applications and simplify the small tasks that take up your day.</p>
+      <p>UseKit brings free practical online tools and smart assistance together to make everyday work easier. Create business documents, improve your CV, prepare files for online applications and handle everyday digital tasks without paying for a separate tool each time.</p>
       <Link href="/about" className="home-about-link">Get to know UseKit <span aria-hidden="true">→</span></Link>
     </div>
     <div className="home-about-points">
