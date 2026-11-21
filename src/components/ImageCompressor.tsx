@@ -34,7 +34,7 @@ export default function ImageCompressor(){
  async function encodeCanvas(canvas:HTMLCanvasElement,mime:ImageFormat,q:number){return new Promise<Blob>((resolve,reject)=>canvas.toBlob(b=>b?resolve(b):reject(new Error("This browser could not encode the image.")),mime,q));}
  async function compressOne(source:File):Promise<ImageOutput>{
   const bitmap=await createImageBitmap(source);const maxW=Number(width)>0?Number(width):bitmap.width,maxH=Number(height)>0?Number(height):bitmap.height;
-  const initialScale=Math.min(1,maxW/bitmap.width,maxH/bitmap.height);let scale=initialScale,best:Blob|null=null;
+  const initialScale=Math.min(1,maxW/bitmap.width,maxH/bitmap.height);let best:Blob|null=null;
   const canvas=document.createElement("canvas"),ctx=canvas.getContext("2d");if(!ctx)throw new Error("Image processing is unavailable in this browser.");
   const qualities=format==="image/png"?[1]:Array.from(new Set([quality,.76,.66,.56,.46,.36,.26,.18,.12].filter(q=>q<=quality))).sort((a,b)=>b-a);
   const scales=[1,.92,.84,.76,.68,.60,.52,.44,.36,.30,.24,.18,.14,.10].map(x=>x*initialScale);
@@ -97,7 +97,7 @@ export default function ImageCompressor(){
    <div className="tool-promo"><div><span>USEKIT / EVERYDAY TOOLS</span><h2>More useful tools, less everyday friction.</h2><p>Explore free tools built for Nigerian businesses and everyday tasks.</p></div><Link href="/workspace">Explore all tools</Link></div>
    <section className="faq"><h2>Image &amp; PDF compression FAQs</h2>
     <details className="faq-item"><summary>How do I compress an image to a specific KB size?</summary><p>Select Image, upload your file, enter your exact target number and choose KB or MB. UseKit adjusts image quality and dimensions to get as close as possible.</p></details>
-    <details className="faq-item"><summary>Can I compress images for JAMB or NYSC portals?</summary><p>Yes. Enter the file-size requirement shown by the portal. Always check the portal's image dimensions and format requirements too.</p></details>
+    <details className="faq-item"><summary>Can I compress images for JAMB or NYSC portals?</summary><p>Yes. Enter the file-size requirement shown by the portal. Always check the portal&apos;s image dimensions and format requirements too.</p></details>
     <details className="faq-item"><summary>How to compress PDF to 200KB?</summary><p>Select PDF, upload your file, enter 200 and choose KB, then select Compress PDF. The tool tests page scale and image quality and returns a file at or below 200KB when possible, or the closest result it can produce.</p></details>
     <details className="faq-item"><summary>Can I compress PDF to any size?</summary><p>You can enter any positive target size in KB or MB. Some PDFs cannot reach extremely small targets while remaining readable; UseKit provides the closest result the browser can generate.</p></details>
     <details className="faq-item"><summary>Are my images and PDFs uploaded?</summary><p>No. Processing happens locally in your browser. Your files are not uploaded to UseKit's servers.</p></details>
