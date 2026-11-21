@@ -59,3 +59,14 @@
 .workspace-v2-tool .image-studio-grid .document-card .document-eyebrow{margin:0 0 12px!important}
 .workspace-v2-tool .image-studio-grid .document-card .document-next{margin-top:16px!important}
 @media(max-width:650px){.workspace-v2-tool .quick-empty{min-height:150px!important;padding:22px 16px!important}.workspace-v2-tool .quick-empty strong{font-size:14px!important}.workspace-v2-tool .quick-empty span{font-size:11px!important}}
+
+/* QR Studio: compact editor with a comfortable live-preview margin. */
+.qr-studio-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(300px,.82fr);gap:24px;align-items:start}
+.qr-live-preview{position:sticky;top:104px;padding:22px;border-radius:20px;background:#f1f1f3;min-width:0}
+.qr-live-paper{width:100%;min-height:340px;padding:28px 20px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px;border-radius:16px;overflow:hidden}
+.qr-live-paper svg{display:block;width:min(100%,280px);height:auto;max-height:320px}
+.qr-live-preview>.document-eyebrow{display:block;margin:0 0 16px}
+.qr-settings .document-card{margin-bottom:16px}
+.qr-settings .document-next{width:100%}
+@media(max-width:900px){.qr-studio-grid{grid-template-columns:minmax(0,1fr)}.qr-live-preview{position:static}.qr-live-paper{min-height:280px}}
+@media(max-width:480px){.qr-live-preview{padding:14px}.qr-live-paper{padding:20px 12px;min-height:250px}}
