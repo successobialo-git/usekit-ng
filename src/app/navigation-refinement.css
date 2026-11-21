@@ -31,3 +31,7 @@
 .quick-export .qr-download-menu>div{background:#29292e!important;border:1px solid #45454b!important;box-shadow:0 12px 28px rgba(0,0,0,.25)!important}
 .quick-export .qr-download-menu>div button{color:#f0f0f1!important}
 .quick-export .qr-download-menu>div button:hover{background:#414147!important}
+
+.quick-workspace .quick-form input[type=file]{background:#36363c!important;color:#ededee!important;border:0!important;border-radius:9px!important;max-width:100%!important}
+.quick-workspace .quick-form input[type=file]::file-selector-button{background:#45454c!important;color:#ededee!important;border:0!important;border-radius:7px!important;padding:7px 10px!important;margin-right:10px!important}
+@media(max-width:600px){.quick-workspace .quick-form{min-width:0!important}.quick-workspace .quick-form input,.quick-workspace .quick-form select{max-width:100%!important;min-width:0!important;box-sizing:border-box!important}.quick-export .qr-download-menu>button{width:40px!important;min-width:40px!important;height:42px!important}}
