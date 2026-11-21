@@ -23,12 +23,13 @@ export default function ImageCompressor(){
  const [quality,setQuality]=useState(.84),[width,setWidth]=useState(""),[height,setHeight]=useState("");
  const [imageOutputs,setImageOutputs]=useState<ImageOutput[]>([]),[pdfUrl,setPdfUrl]=useState(""),[pdfSize,setPdfSize]=useState(0);
  const [originalPreview,setOriginalPreview]=useState(""),[notice,setNotice]=useState(""),[busy,setBusy]=useState(false),[dragging,setDragging]=useState(false);
- const imageInput=useRef<HTMLInputElement>(null),pdfInput=useRef<HTMLInputElement>(null),dropRef=useRef<HTMLDivElement>(null);
+ const imageInput=useRef<HTMLInputElement>(null),pdfInput=useRef<HTMLInputElement>(null),dropRef=useRef<HTMLDivElement>(null),ownedUrls=useRef<string[]>([]);
  const targetBytes=bytes(Number(target),unit);
- useEffect(()=>()=>{imageOutputs.forEach(x=>URL.revokeObjectURL(x.url));if(pdfUrl)URL.revokeObjectURL(pdfUrl);if(originalPreview)URL.revokeObjectURL(originalPreview);},[imageOutputs,pdfUrl,originalPreview]);
+ useEffect(()=>()=>{ownedUrls.current.forEach(url=>URL.revokeObjectURL(url));},[]);
+ function makeObjectUrl(blob:Blob){const url=makeObjectUrl(blob);ownedUrls.current.push(url);return url;}
 
  function clearOutputs(){imageOutputs.forEach(x=>URL.revokeObjectURL(x.url));setImageOutputs([]);if(pdfUrl)URL.revokeObjectURL(pdfUrl);setPdfUrl("");setPdfSize(0);setNotice("");}
- function selectImages(files:FileList|File[]|null){if(!files)return;const selected=Array.from(files).filter(f=>f.type.startsWith("image/"));if(!selected.length){setNotice("Choose a supported image file.");return;}clearOutputs();setImageFiles(selected);if(originalPreview)URL.revokeObjectURL(originalPreview);setOriginalPreview(URL.createObjectURL(selected[0]));}
+ function selectImages(files:FileList|File[]|null){if(!files)return;const selected=Array.from(files).filter(f=>f.type.startsWith("image/"));if(!selected.length){setNotice("Choose a supported image file.");return;}clearOutputs();setImageFiles(selected);if(originalPreview)URL.revokeObjectURL(originalPreview);setOriginalPreview(makeObjectUrl(selected[0]));}
  function selectPdf(file:File|null){if(!file)return;if(file.type!=="application/pdf"&&!file.name.toLowerCase().endsWith(".pdf")){setNotice("Choose a PDF file.");return;}clearOutputs();setPdfFile(file);}
 
  async function encodeCanvas(canvas:HTMLCanvasElement,mime:ImageFormat,q:number){return new Promise<Blob>((resolve,reject)=>canvas.toBlob(b=>b?resolve(b):reject(new Error("This browser could not encode the image.")),mime,q));}
@@ -36,13 +37,13 @@ export default function ImageCompressor(){
   const bitmap=await createImageBitmap(source);const maxW=Number(width)>0?Number(width):bitmap.width,maxH=Number(height)>0?Number(height):bitmap.height;
   const initialScale=Math.min(1,maxW/bitmap.width,maxH/bitmap.height);let scale=initialScale,best:Blob|null=null;
   const canvas=document.createElement("canvas"),ctx=canvas.getContext("2d");if(!ctx)throw new Error("Image processing is unavailable in this browser.");
-  const qualities=format==="image/png"?[1]:[quality,.76,.66,.56,.46,.36,.26,.18,.12];
+  const qualities=format==="image/png"?[1]:Array.from(new Set([quality,.76,.66,.56,.46,.36,.26,.18,.12].filter(q=>q<=quality))).sort((a,b)=>b-a);
   const scales=[1,.92,.84,.76,.68,.60,.52,.44,.36,.30,.24,.18,.14,.10].map(x=>x*initialScale);
   outer:for(const s of scales){canvas.width=Math.max(1,Math.round(bitmap.width*s));canvas.height=Math.max(1,Math.round(bitmap.height*s));ctx.clearRect(0,0,canvas.width,canvas.height);ctx.drawImage(bitmap,0,0,canvas.width,canvas.height);
    for(const q of qualities){const blob=await encodeCanvas(canvas,format,q);if(!best||Math.abs(blob.size-targetBytes)<Math.abs(best.size-targetBytes))best=blob;if(blob.size<=targetBytes){best=blob;break outer;}}
   }
   bitmap.close();if(!best)throw new Error("Could not compress "+source.name);
-  const url=URL.createObjectURL(best),ext=format==="image/jpeg"?"jpg":format==="image/webp"?"webp":"png";
+  const url=makeObjectUrl(best),ext=format==="image/jpeg"?"jpg":format==="image/webp"?"webp":"png";
   return {name:source.name.replace(/\.[^.]+$/,"")+"."+ext,url,size:best.size,original:source.size,targetMet:best.size<=targetBytes};
  }
  async function compressImages(){if(!imageFiles.length||!Number.isFinite(targetBytes)||targetBytes<=0){setNotice("Enter a valid target size greater than zero.");return;}clearOutputs();setBusy(true);setNotice("Compressing "+imageFiles.length+" image"+(imageFiles.length===1?"":"s")+" in your browser…");
