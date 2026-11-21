@@ -1,0 +1,13 @@
+/* Only the requested hero trust note and header navigation tabs. */
+.site-header .nav-wrap nav{display:flex!important;align-items:center!important;gap:3px!important;height:38px!important;padding:4px!important;border-radius:999px!important;background:#f4f3f1!important;color:#555!important}
+.site-header .nav-wrap nav .nav-tab{display:inline-flex!important;align-items:center!important;justify-content:center!important;min-height:30px!important;padding:0 13px!important;border-radius:999px!important;color:#626166!important;font-size:11px!important;font-weight:550!important;line-height:1!important;transition:background .18s ease,color .18s ease!important}
+.site-header .nav-wrap nav .nav-tab:hover{background:#ebe9e7!important;color:#29292e!important}
+.site-header .nav-wrap nav .nav-tab.is-active{background:#f9e5e9!important;color:#c92348!important;box-shadow:inset 0 0 0 1px rgba(233,43,80,.07)!important}
+.home-hero .center-actions{display:flex!important;align-items:center!important;justify-content:center!important;gap:20px!important;flex-wrap:wrap!important}
+.home-hero .hero-trust{display:inline-flex!important;align-items:center!important;gap:9px!important;margin-left:4px!important;text-align:left!important}
+.home-hero .hero-trust-mark{width:30px!important;height:30px!important;display:grid!important;place-items:center!important;border-radius:50%!important;background:#f9e8eb!important;color:#d72b50!important}
+.home-hero .hero-trust>span:last-child{display:grid!important;gap:3px!important}
+.home-hero .hero-trust strong{font-size:10px!important;line-height:1.25!important;font-weight:700!important;color:#39383b!important;white-space:nowrap!important}
+.home-hero .hero-trust small{display:flex!important;align-items:center!important;gap:7px!important;font-size:9px!important;color:#858187!important;line-height:1.2!important}
+.home-hero .hero-trust small i{width:3px!important;height:3px!important;border-radius:50%!important;background:#d5a0aa!important;display:inline-block!important}
+@media(max-width:760px){.site-header .nav-wrap nav{display:none!important}.home-hero .center-actions{gap:14px!important}.home-hero .hero-trust{flex-basis:100%!important;justify-content:center!important;margin:5px 0 0!important}}
