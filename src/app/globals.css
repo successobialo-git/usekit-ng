@@ -1220,3 +1220,38 @@ a{color:inherit}
 .workspace-v2-tool .document-step-buttons button.current,.workspace-v2-tool .document-step-buttons button.complete{background:#5a3943!important;color:#fff!important}
 .workspace-v2-tool .document-step-buttons button.current span,.workspace-v2-tool .document-step-buttons button.complete span{background:#e92b50!important}
 @media(max-width:600px){.workspace-v2-tool .document-step-buttons{overflow-x:auto!important;justify-content:flex-start!important}.workspace-v2-tool .document-step-buttons button{flex:0 0 auto!important}.workspace-v2-tool .document-step-buttons button small{display:none!important}}
+
+/* Header brand lockup: keep the mark and wordmark optically aligned on one line. */
+.site-header .nav-wrap > .brand{
+  display:inline-flex!important;
+  align-items:center!important;
+  justify-self:start!important;
+  align-self:center!important;
+  flex-direction:row!important;
+  gap:10px!important;
+  height:40px!important;
+  margin:0!important;
+  padding:0!important;
+  line-height:1!important;
+  white-space:nowrap!important;
+}
+.site-header .nav-wrap > .brand img{
+  display:block!important;
+  flex:0 0 30px!important;
+  width:30px!important;
+  height:30px!important;
+  max-width:30px!important;
+  margin:0!important;
+  padding:0!important;
+  object-fit:contain!important;
+  vertical-align:middle!important;
+  transform:none!important;
+}
+.site-header .nav-wrap > .brand .brand-word{
+  display:block!important;
+  flex:0 0 auto!important;
+  margin:0!important;
+  padding:0!important;
+  line-height:1!important;
+  transform:none!important;
+}
