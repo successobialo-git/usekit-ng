@@ -100,7 +100,7 @@ export default function ImageCompressor(){
     <details className="faq-item"><summary>Can I compress images for JAMB or NYSC portals?</summary><p>Yes. Enter the file-size requirement shown by the portal. Always check the portal&apos;s image dimensions and format requirements too.</p></details>
     <details className="faq-item"><summary>How to compress PDF to 200KB?</summary><p>Select PDF, upload your file, enter 200 and choose KB, then select Compress PDF. The tool tests page scale and image quality and returns a file at or below 200KB when possible, or the closest result it can produce.</p></details>
     <details className="faq-item"><summary>Can I compress PDF to any size?</summary><p>You can enter any positive target size in KB or MB. Some PDFs cannot reach extremely small targets while remaining readable; UseKit provides the closest result the browser can generate.</p></details>
-    <details className="faq-item"><summary>Are my images and PDFs uploaded?</summary><p>No. Processing happens locally in your browser. Your files are not uploaded to UseKit's servers.</p></details>
+    <details className="faq-item"><summary>Are my images and PDFs uploaded?</summary><p>No. Processing happens locally in your browser. Your files are not uploaded to UseKit&apos;s servers.</p></details>
    </section>
   </div>
  </section>;
