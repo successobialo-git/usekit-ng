@@ -10,7 +10,7 @@ const faqs=[
 const aboutStructuredData={
  "@context":"https://schema.org",
  "@graph":[
-  {"@type":"Organization","@id":"https://usekit.ng/#organization","name":"UseKit","url":"https://usekit.ng/","description":"Practical digital tools and smart assistance for business, careers and everyday work."},
+  {"@type":"Organization","@id":"https://usekit.ng/#organization","name":"UseKit","url":"https://usekit.ng/","description":"Practical digital tools and smart assistance for business, careers and everyday work.","founder":{"@id":"https://usekit.ng/about#founder"}},\n  {"@type":"Person","@id":"https://usekit.ng/about#founder","name":"Success Obialo","jobTitle":"Founder and Creator of UseKit","worksFor":{"@id":"https://usekit.ng/#organization"}},
   {"@type":"WebPage","@id":"https://usekit.ng/about#webpage","url":"https://usekit.ng/about","name":"About UseKit","description":"Learn about UseKit, a practical digital toolkit for business, careers and everyday work.","about":{"@id":"https://usekit.ng/#organization"}},
   {"@type":"FAQPage","mainEntity":faqs.map(item=>({"@type":"Question","name":item.q,"acceptedAnswer":{"@type":"Answer","text":item.a}}))}
  ]
@@ -37,7 +37,7 @@ export default function About(){
     <span>OUR POINT OF VIEW</span>
     <h2>Technology should make the day feel lighter.</h2>
     <p>Everyday tasks should not require a dozen different websites. UseKit brings useful tools for business, careers and daily digital work into one straightforward place, so you can focus on the result instead of figuring out the process.</p>
-    <p>Whether you are preparing a business document, improving your CV, creating a QR code or getting a file ready for an online application, the experience should feel simple and considered.</p>
+    <p>Whether you are preparing a business document, improving your CV, creating a QR code or getting a file ready for an online application, the experience should feel simple and considered.</p>\n    <p className="about-founder-note">UseKit is an independent digital tools platform founded and built by <strong>Success Obialo</strong>.</p>
     <Link href="/#toolkit" className="about-feature-link">Explore the tools <span aria-hidden="true">→</span></Link>
    </div>
    <img src="https://images.pexels.com/photos/10375968/pexels-photo-10375968.jpeg?auto=compress&cs=tinysrgb&w=1200" alt="Professional working at a laptop in a modern workspace"/>
