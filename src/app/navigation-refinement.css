@@ -128,3 +128,20 @@ input[type=range]::-webkit-progress-value{background:#e92b50!important}
  .site-header .nav-wrap>.brand img{width:25px!important;height:25px!important;min-width:25px!important;max-width:25px!important;flex-basis:25px!important}
  .site-header .nav-wrap>.brand .brand-word{font-size:17px!important}
 }
+
+/* Keep the QR format menu attached to its split download button and inside the dark tool panel. */
+.quick-preview:has(.quick-export .qr-download-menu>div){padding-bottom:112px!important}
+.quick-export{position:relative!important;z-index:5!important;isolation:isolate!important}
+.quick-export .qr-download-menu{position:relative!important;align-self:stretch!important}
+.quick-export .qr-download-menu>button{height:auto!important;min-height:42px!important;margin:0!important;border-radius:0 999px 999px 0!important;border-left:1px solid rgba(255,255,255,.22)!important}
+.quick-export .qr-download-menu>div{position:absolute!important;top:calc(100% - 1px)!important;bottom:auto!important;right:0!important;z-index:40!important;margin:0!important;border:1px solid #45454b!important;border-top:0!important;border-radius:0 0 12px 12px!important;background:#29292e!important;box-shadow:0 10px 22px rgba(0,0,0,.24)!important;overflow:hidden!important}
+.quick-export .qr-download-menu>div button{min-height:30px!important;padding:6px 10px!important;font-size:9px!important;line-height:1.2!important;white-space:nowrap!important}
+.quick-export:has(.qr-download-menu>div) .qr-main-download{border-radius:999px 0 0 0!important}
+.quick-export:has(.qr-download-menu>div) .qr-download-menu>button{border-radius:0 999px 0 0!important}
+
+/* QR code colour field: soft charcoal only, no visible outline or white frame. */
+.quick-colours label span{background:#36363c!important;border:0!important;outline:0!important;box-shadow:none!important;border-radius:10px!important;padding:7px 10px!important}
+.quick-colours input[type=color]{background:#36363c!important;border:0!important;outline:0!important;box-shadow:none!important;padding:0!important;width:34px!important;height:34px!important;appearance:none!important;-webkit-appearance:none!important}
+.quick-colours input[type=color]::-webkit-color-swatch-wrapper{padding:0!important;background:#36363c!important;border:0!important}
+.quick-colours input[type=color]::-webkit-color-swatch{border:0!important;border-radius:6px!important;box-shadow:none!important}
+.quick-colours input[type=color]::-moz-color-swatch{border:0!important;border-radius:6px!important;box-shadow:none!important}
