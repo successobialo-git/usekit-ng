@@ -1174,3 +1174,6 @@ a{color:inherit}
 .about-founder-note{margin-top:17px!important;padding-top:13px!important;border-top:1px solid #ffffff25!important;color:#c7c3ca!important;font-size:11px!important;line-height:1.65!important}
 .about-founder-note strong{color:#f18ba0!important;font-weight:700!important}
 @media(max-width:760px){.about-page{padding-left:17px!important;padding-right:17px!important}}
+
+/* Homepage About panel: keep the soft pink background without a visible outline. */
+.home-about-intro{border:0!important;outline:0!important;box-shadow:none!important}
