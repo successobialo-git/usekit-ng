@@ -1167,3 +1167,10 @@ a{color:inherit}
  .about-quick-grid article{padding:17px!important}
  .about-faq{padding:20px 17px!important;margin-top:32px!important}
 }
+
+
+/* About page's pale canvas must extend edge-to-edge beyond the centred site wrapper. */
+.about-page{position:relative!important;left:50%!important;width:100vw!important;max-width:none!important;margin-left:-50vw!important;margin-right:-50vw!important;padding-left:clamp(18px,5.4vw,82px)!important;padding-right:clamp(18px,5.4vw,82px)!important;background:linear-gradient(135deg,#fbfbfb 0%,#f2f2f2 58%,#f8f3f4 100%)!important;box-sizing:border-box!important}
+.about-founder-note{margin-top:17px!important;padding-top:13px!important;border-top:1px solid #ffffff25!important;color:#c7c3ca!important;font-size:11px!important;line-height:1.65!important}
+.about-founder-note strong{color:#f18ba0!important;font-weight:700!important}
+@media(max-width:760px){.about-page{padding-left:17px!important;padding-right:17px!important}}
