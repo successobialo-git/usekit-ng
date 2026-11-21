@@ -782,3 +782,41 @@ a{color:inherit}
 .cv-saved-card button:first-child,.cv-import-trigger{background:#e92b50!important;color:#fff!important}
 .cv-saved-card button:last-child{background:#ededed!important;color:#45474b!important}
 .document-add,.suggestion-action,.cv-template-select button.chosen{background:#292929!important;color:#fff!important}
+
+
+/* Consistent charcoal navigation and neutral secondary states on standalone tool routes */
+.tool-app-sidebar,.document-sidebar,.cv-sidebar,.workspace-sidebar{background:#1d1d1d!important;color:#fff!important}
+.tool-app-sidebar .tool-sidebar-note,.document-sidebar .sidebar-bottom,.cv-sidebar .sidebar-bottom,.workspace-sidebar-bottom{background:#292929!important;color:#c5c6c9!important;border:0!important}
+.tool-app-sidebar>span,.document-sidebar>.sidebar-caption,.cv-sidebar>.sidebar-caption,.workspace-nav-label{color:#b8babe!important}
+.tool-app-sidebar>a,.document-sidebar>a,.cv-sidebar>button{background:transparent!important;color:#d0d1d3!important;border:0!important}
+.tool-app-sidebar>a.selected,.document-sidebar>a.side-active,.cv-sidebar>button.side-active{background:#e92b50!important;color:#fff!important}
+.tool-app-sidebar>a:hover,.document-sidebar>a:hover,.cv-sidebar>button:hover{background:#292929!important;color:#fff!important}
+.document-stepper button{color:#777b82!important}
+.document-stepper button.current{color:#e92b50!important}
+.document-stepper button.complete{color:#55585d!important}
+.document-stepper button span{background:#f1f1f1!important;color:#55585d!important}
+.document-stepper button.current span{background:#e92b50!important;color:#fff!important}
+.document-summary,.summary-card,.summary-tip{background:#f7f7f7!important;color:#1d1d1d!important;border:0!important;box-shadow:none!important}
+.summary-card h3,.summary-card strong,.summary-tip strong{color:#1d1d1d!important}
+.summary-card span,.summary-tip p{color:#777b82!important}
+.summary-card button{background:#292929!important;color:#fff!important}
+.summary-card button.summary-export{background:#e92b50!important;color:#fff!important}
+.document-preview header{background:#1d1d1d!important}
+.document-preview-client{background:#f2f2f2!important;color:#292929!important}
+.document-preview-total strong,.document-preview-total{color:#292929!important}
+.cv-preview-panel{background:#fff!important;color:#1d1d1d!important;border:0!important;box-shadow:none!important}
+.cv-suggestion-panel{background:#f7f7f7!important;color:#1d1d1d!important;border:0!important}
+.cv-suggestion-content>p{color:#777b82!important}
+.cv-suggestion-content button{background:#ededed!important;color:#45474b!important;border:0!important}
+.cv-suggestion-content button:hover{background:#292929!important;color:#fff!important}
+.cv-template-select button.chosen{background:#e92b50!important;color:#fff!important}
+.cv-import-trigger{background:#fff!important;color:#e92b50!important;border-color:#e92b50!important}
+.cv-import-error,.cv-import-success{background:#f7f7f7!important;color:#55585d!important}
+.cv-progress>span{background:#e92b50!important}
+.cv-import-highlight input,.cv-import-highlight textarea{background:#fff7f8!important}
+.cv-modal,.cv-modal-head,.cv-modal-head h2{background:#fff!important;color:#1d1d1d!important}
+.cv-drop-area{background:#f7f7f7!important;border-color:#d5d5d5!important;color:#1d1d1d!important}
+.cv-drop-area.dragging{background:#fff7f8!important;border-color:#e92b50!important}
+.cv-private-note,.cv-modal-head p,.cv-saved-card small{color:#777b82!important}
+.cv-modal-head>button,.cv-custom-name-row button{background:#ededed!important;color:#45474b!important}
+.cv-raw-text{background:#f7f7f7!important;color:#45474b!important;border:0!important}
