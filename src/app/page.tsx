@@ -1,6 +1,7 @@
 "use client";
 import Link from "next/link";
 import {useEffect,useState} from "react";
+import {BriefcaseBusiness,GraduationCap,Palette,Store,UserRound} from "lucide-react";
 import QuickToolsPanel from "@/components/QuickToolsPanel";
 import AdSenseUnit from "@/components/AdSenseUnit";
 import {tools} from "@/lib/tools";
@@ -24,11 +25,12 @@ export default function Home(){
  const filtered=ordered.filter(t=>toolControls[t!.slug]!==false&&(t!.name+" "+t!.short+" "+t!.category).toLowerCase().includes(query.toLowerCase()));
  return <main className="site-shell">
   <section className="center-hero home-hero">
-    <span className="hero-eyebrow"><i/> PRACTICAL TOOLS FOR EVERYDAY PROGRESS</span>
     <h1>Make everyday work<br/>feel <em className="hero-changing">{typed}<span className="type-cursor">|</span></em>.</h1>
-    <p>Create invoices, shape a stronger CV, compress images and PDFs, make QR codes and more. Thoughtful tools that help you get the little things done well.</p>
-    <div className="center-actions"><a className="button-blue" href="#quick-tools">Explore free tools <span>↗</span></a><a className="quiet-link" href="#toolkit">See everything</a></div>
-    <div className="home-proof"><span>MADE FOR THE WAY YOU WORK</span><div><b>Small businesses</b><i/><b>Freelancers</b><i/><b>Job seekers</b><i/><b>Creators</b><i/><b>Students</b></div></div>
+    <p>Create invoices and quotations, build a stronger CV, compress images and PDFs, make QR codes and more — all with simple tools designed to help you get things done.</p>
+    <div className="center-actions"><a className="button-blue hero-primary" href="#quick-tools">Get started <span>↗</span></a><a className="quiet-link" href="#toolkit">Explore tools</a></div>
+    <div className="home-proof" aria-label="Tools for small businesses, freelancers, job seekers, creators and students">
+      <div><span><Store size={17} strokeWidth={1.7}/>Small businesses</span><span><BriefcaseBusiness size={17} strokeWidth={1.7}/>Freelancers</span><span><UserRound size={17} strokeWidth={1.7}/>Job seekers</span><span><Palette size={17} strokeWidth={1.7}/>Creators</span><span><GraduationCap size={18} strokeWidth={1.7}/>Students</span></div>
+    </div>
   </section>
   <QuickToolsPanel/>
   <section className="toolkit-section" id="toolkit"><div className="toolkit-heading"><div><span className="section-kicker">ALL TOOLS</span><h2>Find your tool.<br/><em>Find your flow.</em></h2></div><div className="toolkit-intro"><p>Practical tools for business, work and everyday life. Choose what you need and get moving.</p><label className="search-control"><input value={query} onChange={e=>setQuery(e.target.value)} placeholder="Search all tools" aria-label="Search tools"/></label></div></div>
