@@ -9,6 +9,7 @@ import {logToolUse} from "@/lib/supabase";
 import {tools} from "@/lib/tools";
 
 type Mode="image"|"pdf";
+type PdfCompressionMode="preserve"|"maximum";
 type Unit="KB"|"MB";
 type ImageFormat="image/jpeg"|"image/webp"|"image/png";
 type ImageOutput={name:string,url:string,size:number,original:number,targetMet:boolean};
@@ -17,7 +18,7 @@ const pretty=(size:number)=>size>=1024*1024?(size/1024/1024).toFixed(2)+" MB":(s
 const percent=(before:number,after:number)=>before>0?Math.max(0,(1-after/before)*100):0;
 
 export default function ImageCompressor(){
- const [mode,setMode]=useState<Mode>("image"),[imageFiles,setImageFiles]=useState<File[]>([]),[pdfFile,setPdfFile]=useState<File|null>(null);
+ const [mode,setMode]=useState<Mode>("image"),[imageFiles,setImageFiles]=useState<File[]>([]),[pdfFile,setPdfFile]=useState<File|null>(null),[pdfCompressionMode,setPdfCompressionMode]=useState<PdfCompressionMode>("preserve");
  const [target,setTarget]=useState("200"),[unit,setUnit]=useState<Unit>("KB"),[format,setFormat]=useState<ImageFormat>("image/jpeg");
  const [quality,setQuality]=useState(.84),[width,setWidth]=useState(""),[height,setHeight]=useState("");
  const [imageOutputs,setImageOutputs]=useState<ImageOutput[]>([]),[pdfUrl,setPdfUrl]=useState(""),[pdfSize,setPdfSize]=useState(0);
@@ -61,9 +62,29 @@ export default function ImageCompressor(){
   }finally{await source.destroy();}
  }
  async function compressPdf(){if(!pdfFile||!Number.isFinite(targetBytes)||targetBytes<=0){setNotice("Enter a valid target size greater than zero.");return;}clearOutputs();setBusy(true);setNotice("Reading PDF locally and preparing compressed versions…");
-  try{const data=new Uint8Array(await pdfFile.arrayBuffer());let best:Uint8Array|null=null,bestDiff=Infinity,finished=false;const qualities=[.84,.72,.60,.48,.36,.26,.18,.12];const scales=[1,.9,.8,.7,.6,.5,.42,.35,.28,.22,.16,.12];
-   for(const s of scales){for(const q of qualities){setNotice("Compressing PDF… testing "+Math.round(s*100)+"% page scale and "+Math.round(q*100)+"% image quality.");const candidate=await renderPdf(s,q,data);const diff=Math.abs(candidate.byteLength-targetBytes);if(diff<bestDiff){best=candidate;bestDiff=diff;}if(candidate.byteLength<=targetBytes){best=candidate;finished=true;break;}if(s<=.12&&q<=.12)break;}if(finished)break;}
-   if(!best)throw new Error("Could not compress this PDF.");const blob=new Blob([best as BlobPart],{type:"application/pdf"}),url=URL.createObjectURL(blob);setPdfUrl(url);setPdfSize(blob.size);setNotice(blob.size<=targetBytes?"PDF compressed successfully.":"The smallest result reached by the browser is ready; it is the closest available result to your target.");void logToolUse("pdf_compressor");
+  try{const data=new Uint8Array(await pdfFile.arrayBuffer());let best:Uint8Array;let resultMessage="";
+   if(pdfCompressionMode==="preserve"){
+    setNotice("Optimising PDF structure while preserving selectable text, links and vector content…");
+    const originalDoc=await PDFDocument.load(data.slice(),{updateMetadata:false});
+    const originalPageCount=originalDoc.getPageCount();
+    const optimized=await originalDoc.save({useObjectStreams:true,addDefaultPage:false});
+    const candidate=optimized.byteLength<=data.byteLength?optimized:data;
+    const pdfjs=await import("pdfjs-dist/legacy/build/pdf.mjs");
+    pdfjs.GlobalWorkerOptions.workerSrc=new URL("pdfjs-dist/legacy/build/pdf.worker.min.mjs",import.meta.url).toString();
+    const check=await pdfjs.getDocument({data:candidate.slice(),isEvalSupported:false}).promise;
+    if(check.numPages!==originalPageCount)throw new Error("PDF validation failed: page count changed. Your original file has been kept.");
+    let extractedText=0;for(let i=1;i<=check.numPages;i++){const page=await check.getPage(i);const content=await page.getTextContent();extractedText+=content.items.filter((item)=>"str" in item&&item.str.trim().length>0).length;page.cleanup();}
+    await check.destroy();
+    best=candidate;
+    resultMessage=candidate===data?"This PDF was already efficiently structured. The original has been kept unchanged; selectable text and document content are preserved.":"PDF optimised. Selectable/searchable text, links and vector content are preserved.";
+    if(best.byteLength>targetBytes)resultMessage+=" The requested target is smaller than a safe text-preserving optimisation could achieve.";
+    if(extractedText===0)resultMessage+=" This document has no extractable text layer (it may be a scanned PDF).";
+   }else{
+    let smallest:Uint8Array|null=null,bestDiff=Infinity,finished=false;const qualities=[.84,.72,.60,.48,.36,.26,.18,.12];const scales=[1,.9,.8,.7,.6,.5,.42,.35,.28,.22,.16,.12];
+    for(const scale of scales){for(const q of qualities){setNotice("Maximum compression… testing "+Math.round(scale*100)+"% page scale and "+Math.round(q*100)+"% image quality. Text will be flattened.");const candidate=await renderPdf(scale,q,data);const diff=Math.abs(candidate.byteLength-targetBytes);if(diff<bestDiff){smallest=candidate;bestDiff=diff;}if(candidate.byteLength<=targetBytes){smallest=candidate;finished=true;break;}if(scale<=.12&&q<=.12)break;}if(finished)break;}
+    if(!smallest)throw new Error("Could not compress this PDF.");best=smallest;resultMessage=best.byteLength<=targetBytes?"PDF compressed to the requested size.":"The closest maximum-compression result is ready; the target could not be reached.";
+   }
+   const blob=new Blob([best as BlobPart],{type:"application/pdf"}),url=URL.createObjectURL(blob);setPdfUrl(url);setPdfSize(blob.size);setNotice(resultMessage);void logToolUse("pdf_compressor");
   }catch(e){setNotice(e instanceof Error?e.message:"PDF compression failed. Try a smaller PDF or a modern browser.");}finally{setBusy(false);}
  }
 
@@ -86,11 +107,13 @@ export default function ImageCompressor(){
    </div>:<div className="image-studio-grid">
     <div className="document-card"><span className="document-eyebrow">01 / UPLOAD PDF</span><h3>Choose your PDF</h3><div className={"pdf-dropzone "+(dragging?"dragging":"")} onDragOver={e=>{e.preventDefault();setDragging(true);}} onDragLeave={()=>setDragging(false)} onDrop={handleDrop} onClick={()=>pdfInput.current?.click()} role="button" tabIndex={0} onKeyDown={e=>{if(e.key==="Enter"||e.key===" "){e.preventDefault();pdfInput.current?.click();}}}><input ref={pdfInput} type="file" accept="application/pdf,.pdf" hidden onChange={e=>selectPdf(e.target.files?.[0]||null)}/><span className="pdf-drop-icon">PDF</span><strong>Drag &amp; drop your PDF here</strong><span>or click to browse files</span></div>
      {pdfFile&&<div className="pdf-file-info"><strong>{pdfFile.name}</strong><span>Original size: {pretty(pdfFile.size)}</span></div>}
-     <span className="document-eyebrow">02 / TARGET SIZE</span><div className="document-grid target-size-row"><div className="field"><label>Target size</label><input type="number" min="0.01" step="any" value={target} onChange={e=>setTarget(e.target.value)} placeholder="e.g. 200"/></div><div className="field"><label>Unit</label><select value={unit} onChange={e=>setUnit(e.target.value as Unit)}><option>KB</option><option>MB</option></select></div></div>
-     <button className="document-next" disabled={!pdfFile||busy} onClick={compressPdf}>{busy?"Compressing PDF…":"Compress PDF"}</button>
+     <span className="document-eyebrow">02 / COMPRESSION MODE</span><div className="field"><label>Choose how to compress</label><select value={pdfCompressionMode} onChange={e=>{setPdfCompressionMode(e.target.value as PdfCompressionMode);clearOutputs();}}><option value="preserve">Recommended · Keep text selectable</option><option value="maximum">Maximum · Smallest file (flattens pages)</option></select></div>
+     <p className="document-hint">{pdfCompressionMode==="preserve"?"Keeps searchable text, links, fonts and vector graphics. Best for forms, CVs, certificates and official documents. Image-heavy PDFs may shrink more than text-only PDFs.":"Rebuilds each page as an image for stronger size reduction. Text, links, forms and accessibility structure will not remain interactive or searchable."}</p>
+     <span className="document-eyebrow">03 / TARGET SIZE</span><div className="document-grid target-size-row"><div className="field"><label>Target size</label><input type="number" min="0.01" step="any" value={target} onChange={e=>setTarget(e.target.value)} placeholder="e.g. 200"/></div><div className="field"><label>Unit</label><select value={unit} onChange={e=>setUnit(e.target.value as Unit)}><option>KB</option><option>MB</option></select></div></div>
+     <button className="document-next" disabled={!pdfFile||busy} onClick={compressPdf}>{busy?"Compressing PDF…":pdfCompressionMode==="preserve"?"Optimise PDF · Keep text":"Compress PDF · Maximum"}</button>
      {notice&&<p className="document-notice" aria-live="polite">{notice}</p>}
      {pdfUrl&&pdfFile&&<div className="pdf-result-panel"><div><span>ORIGINAL</span><strong>{pretty(pdfFile.size)}</strong></div><div><span>COMPRESSED</span><strong>{pretty(pdfSize)}</strong></div><div><span>SIZE SAVED</span><strong>{saved.toFixed(1)}%</strong></div><a className="document-next" href={pdfUrl} download={pdfFile.name.replace(/\.pdf$/i,"")+"_compressed.pdf"}>Download compressed PDF</a></div>}
-     <p className="document-hint">PDF pages are rebuilt as optimised images. This can greatly reduce size, but text in the resulting PDF will no longer be selectable or searchable.</p>
+     <p className="document-hint">Recommended mode preserves document text and structure. Choose Maximum only when reducing file size matters more than selectable text, links or forms. Keep your original PDF as a backup.</p>
     </div><aside className="qr-live-preview"><span className="document-eyebrow">PDF COMPRESSION</span><div className="quick-empty"><strong>{pdfFile?pdfFile.name:"Your PDF result appears here"}</strong><span>{pdfFile?"Original: "+pretty(pdfFile.size):"Drop a PDF or browse to choose one."}</span>{pdfUrl&&<span>Compressed: {pretty(pdfSize)} · {saved.toFixed(1)}% saved</span>}</div><p>PDF processing is performed in your browser. No file is sent to a server.</p></aside>
    </div>}
    <AdSenseUnit placement="tool"/><AdSenseUnit placement="tool"/><AdSenseUnit placement="tool"/>
