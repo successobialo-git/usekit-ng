@@ -1,13 +1,33 @@
-/* Only the requested hero trust note and header navigation tabs. */
-.site-header .nav-wrap nav{display:flex!important;align-items:center!important;gap:3px!important;height:38px!important;padding:4px!important;border-radius:999px!important;background:#f4f3f1!important;color:#555!important}
-.site-header .nav-wrap nav .nav-tab{display:inline-flex!important;align-items:center!important;justify-content:center!important;min-height:30px!important;padding:0 13px!important;border-radius:999px!important;color:#626166!important;font-size:11px!important;font-weight:550!important;line-height:1!important;transition:background .18s ease,color .18s ease!important}
-.site-header .nav-wrap nav .nav-tab:hover{background:#ebe9e7!important;color:#29292e!important}
-.site-header .nav-wrap nav .nav-tab.is-active{background:#f9e5e9!important;color:#c92348!important;box-shadow:inset 0 0 0 1px rgba(233,43,80,.07)!important}
-.home-hero .center-actions{display:flex!important;align-items:center!important;justify-content:center!important;gap:20px!important;flex-wrap:wrap!important}
-.home-hero .hero-trust{display:inline-flex!important;align-items:center!important;gap:9px!important;margin-left:4px!important;text-align:left!important}
-.home-hero .hero-trust-mark{width:30px!important;height:30px!important;display:grid!important;place-items:center!important;border-radius:50%!important;background:#f9e8eb!important;color:#d72b50!important}
-.home-hero .hero-trust>span:last-child{display:grid!important;gap:3px!important}
-.home-hero .hero-trust strong{font-size:10px!important;line-height:1.25!important;font-weight:700!important;color:#39383b!important;white-space:nowrap!important}
-.home-hero .hero-trust small{display:flex!important;align-items:center!important;gap:7px!important;font-size:9px!important;color:#858187!important;line-height:1.2!important}
-.home-hero .hero-trust small i{width:3px!important;height:3px!important;border-radius:50%!important;background:#d5a0aa!important;display:inline-block!important}
-@media(max-width:760px){.site-header .nav-wrap nav{display:none!important}.home-hero .center-actions{gap:14px!important}.home-hero .hero-trust{flex-basis:100%!important;justify-content:center!important;margin:5px 0 0!important}}
+/* Requested UseKit hero and header navigation refinements only. */
+.site-header .nav-wrap nav{display:flex!important;align-items:center!important;gap:3px!important;height:38px!important;padding:4px!important;border-radius:999px!important;background:#29292e!important;color:#d0d0d3!important}
+.site-header .nav-wrap nav .nav-tab{display:inline-flex!important;align-items:center!important;justify-content:center!important;min-height:30px!important;padding:0 13px!important;border-radius:999px!important;color:#c7c7cb!important;font-size:11px!important;font-weight:550!important;line-height:1!important;transition:background .18s ease,color .18s ease!important}
+.site-header .nav-wrap nav .nav-tab:hover{background:#35353b!important;color:#f0f0f1!important}
+.site-header .nav-wrap nav .nav-tab.is-active{background:#3a3438!important;color:#ef8296!important;box-shadow:none!important}
+
+/* Keep the homepage Get started CTA identical to the header CTA treatment. */
+.home-hero .center-actions{display:flex!important;align-items:center!important;justify-content:center!important;gap:22px!important;flex-wrap:wrap!important}
+.home-hero .hero-primary{display:inline-flex!important;align-items:center!important;justify-content:space-between!important;gap:22px!important;background:#e92b50!important;color:#fff!important;border:0!important;border-radius:999px!important;padding:8px 9px 8px 20px!important;min-height:47px!important;font-size:12px!important;font-weight:600!important;line-height:1!important;text-decoration:none!important;white-space:nowrap!important;box-shadow:none!important}
+.home-hero .hero-primary span{display:grid!important;place-items:center!important;flex:0 0 31px!important;width:31px!important;height:31px!important;border-radius:50%!important;background:#fff!important;color:#202024!important}
+.home-hero .hero-primary span svg{display:block!important;width:17px!important;height:17px!important;color:#202024!important}
+@media(max-width:760px){.site-header .nav-wrap nav{display:none!important}.home-hero .center-actions{gap:14px!important}.home-hero .hero-primary{min-height:43px!important;padding:6px 7px 6px 15px!important;gap:13px!important;font-size:11px!important}.home-hero .hero-primary span{width:29px!important;height:29px!important;flex-basis:29px!important}}
+
+/* Consistent charcoal controls on dark workspace panels, including file inputs. */
+.workspace-v2-tool input:not([type=checkbox]):not([type=radio]):not([type=range]):not([type=color]),
+.workspace-v2-tool textarea,.workspace-v2-tool select,
+.workspace-v2-tool input[type=file],
+.workspace-v2-tool .document-card input:not([type=checkbox]):not([type=radio]):not([type=range]):not([type=color]),
+.workspace-v2-tool .document-card textarea,.workspace-v2-tool .document-card select,
+.workspace-v2-tool .field input:not([type=checkbox]):not([type=radio]):not([type=range]):not([type=color]),
+.workspace-v2-tool .field textarea,.workspace-v2-tool .field select{background:#36363c!important;color:#ededee!important;border:0!important;box-shadow:none!important}
+.workspace-v2-tool input::file-selector-button{background:#45454c!important;color:#ededee!important;border:0!important;border-radius:7px!important;padding:7px 10px!important;margin-right:10px!important}
+.workspace-v2-tool input::placeholder,.workspace-v2-tool textarea::placeholder{color:#929299!important}
+
+/* Homepage quick tool fields and QR export menu. */
+.quick-workspace .quick-form input:not([type=file]):not([type=checkbox]):not([type=color]):not([type=range]),
+.quick-workspace .quick-form select{background:#36363c!important;color:#ededee!important;border:0!important;box-shadow:none!important}
+.quick-workspace .quick-form input::placeholder{color:#929299!important}
+.quick-export .qr-download-menu>button{display:grid!important;place-items:center!important;width:42px!important;min-width:42px!important;height:42px!important;background:#e92b50!important;color:#fff!important;border:0!important;border-radius:0 999px 999px 0!important}
+.quick-export .qr-download-menu>button svg{display:block!important;color:#fff!important}
+.quick-export .qr-download-menu>div{background:#29292e!important;border:1px solid #45454b!important;box-shadow:0 12px 28px rgba(0,0,0,.25)!important}
+.quick-export .qr-download-menu>div button{color:#f0f0f1!important}
+.quick-export .qr-download-menu>div button:hover{background:#414147!important}
