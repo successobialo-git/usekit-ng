@@ -1113,3 +1113,10 @@ a{color:inherit}
 .workspace-v2-tool .document-card{box-sizing:border-box!important;min-width:0!important}
 .workspace-v2-tool .document-card *{min-width:0}
 .workspace-v2-tool .document-card input,.workspace-v2-tool .document-card textarea,.workspace-v2-tool .document-card select{max-width:100%!important;box-sizing:border-box!important}
+
+/* Header workspace CTA mirrors the homepage Get started button. */
+.site-header .nav-wrap .nav-cta{display:inline-flex!important;align-items:center!important;justify-content:space-between!important;gap:22px!important;background:#e92b50!important;color:#fff!important;border:0!important;border-radius:999px!important;padding:8px 9px 8px 20px!important;min-height:47px!important;font-size:12px!important;font-weight:600!important;line-height:1!important;text-decoration:none!important;white-space:nowrap!important;box-shadow:none!important}
+.site-header .nav-wrap .nav-cta:after{display:none!important;content:none!important}
+.site-header .nav-wrap .nav-cta span{display:grid!important;place-items:center!important;flex:0 0 31px!important;width:31px!important;height:31px!important;border-radius:50%!important;background:#fff!important;color:#202024!important}
+.site-header .nav-wrap .nav-cta span svg{display:block!important;width:17px!important;height:17px!important;color:#202024!important}
+@media(max-width:600px){.site-header .nav-wrap .nav-cta{min-height:43px!important;padding:6px 7px 6px 15px!important;gap:13px!important;font-size:11px!important}.site-header .nav-wrap .nav-cta span{width:29px!important;height:29px!important;flex-basis:29px!important}}
