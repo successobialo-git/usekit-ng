@@ -1,7 +1,7 @@
-import Link from "next/link";
+import Link from "next/link";\nconst aboutStructuredData={"@context":"https://schema.org","@graph":[{"@type":"Organization","@id":"https://usekit.ng/#organization","name":"UseKit","url":"https://usekit.ng/","description":"UseKit brings practical digital tools and smart assistance together to help people create, improve and complete everyday work."},{"@type":"WebPage","@id":"https://usekit.ng/about#webpage","url":"https://usekit.ng/about","name":"About UseKit | Everyday Digital Tools and Productivity Assistance","description":"Learn how UseKit helps small businesses, freelancers, job seekers, students and professionals with practical online tools, CV creation and improvement, business documents, QR codes and file compression.","about":{"@id":"https://usekit.ng/#organization"}},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"What is UseKit?","acceptedAnswer":{"@type":"Answer","text":"UseKit is an everyday productivity platform that brings practical digital tools and intelligent assistance together to help people create, improve, organise and complete common tasks."}},{"@type":"Question","name":"Who can use UseKit?","acceptedAnswer":{"@type":"Answer","text":"UseKit is designed for small business owners, freelancers, job seekers, students, creators, professionals and anyone who needs straightforward help with everyday digital work."}},{"@type":"Question","name":"Do I have to start my CV from scratch?","acceptedAnswer":{"@type":"Answer","text":"No. UseKit supports importing an existing PDF or DOCX CV, extracting its text and reviewing the details in the CV builder. Users can also paste CV text and refine the imported information."}}]}]};
 export const metadata={
  title:"About UseKit | Everyday Digital Tools and AI Productivity Assistance",
- description:"Discover how UseKit helps people and businesses work smarter with practical online tools, AI writing assistance, CV creation and improvement, business documents, QR codes and file compression.",
+ description:"Discover how UseKit helps people and businesses work smarter with practical online tools, CV writing suggestions and practical productivity assistance, CV creation and improvement, business documents, QR codes and file compression.",
  keywords:["about UseKit","online productivity tools","AI writing assistance","free business tools Nigeria","CV builder Nigeria","invoice generator","image and PDF compressor","everyday digital tools"],
  alternates:{canonical:"/about"},
  openGraph:{title:"About UseKit | Everyday Tools, Made Easier",description:"Meet UseKit: practical digital tools and smart assistance for business, careers and everyday work.",url:"/about",type:"website"}
@@ -13,7 +13,7 @@ const faqs=[
  {q:"Do I have to start my CV from scratch?",a:"UseKit's CV experience is designed to support people building a new CV as well as people who want to work from an existing CV where upload and import are supported. You can then refine the information and presentation with guided assistance."},
  {q:"Can I use UseKit on my phone?",a:"UseKit is designed for a responsive browser experience across mobile phones, tablets and desktop computers."}
 ];
-export default function About(){return <main className="content-page about-page">
+export default function About(){return <main className="content-page about-page"><script type="application/ld+json" dangerouslySetInnerHTML={{__html:JSON.stringify(aboutStructuredData)}}/>
  <div className="internal-page-banner">
   <span>USEKIT / ABOUT</span>
   <h1>Useful tools.<br/><em>Better everyday flow.</em></h1>
@@ -34,7 +34,7 @@ export default function About(){return <main className="content-page about-page"
   <div className="about-value-grid">
    <article><span>01 / BUSINESS</span><h3>Run everyday business tasks</h3><p>Create professional invoices and quotations, prepare customer ready WhatsApp links and make useful QR codes for your business.</p><Link href="/tools/invoice-generator">Explore business tools →</Link></article>
    <article><span>02 / CAREER</span><h3>Build a stronger CV</h3><p>Create a CV with guided suggestions or improve an existing one where upload and import are supported. Organise your experience and present your skills clearly.</p><Link href="/tools/cv-generator">Explore the CV tool →</Link></article>
-   <article><span>03 / AI ASSISTANCE</span><h3>Write and work smarter</h3><p>Use smart writing assistance to get past the blank page, shape ideas, refine drafts and communicate with greater clarity. AI should make useful work easier, while you stay in control.</p></article>
+   <article><span>03 / AI ASSISTANCE</span><h3>Write and work smarter</h3><p>Use guided CV writing suggestions to build a stronger professional summary, improve work experience descriptions and organise skills for a target role. Suggestions are prompts to review and personalise, not claims about experience you do not have.</p></article>
    <article><span>04 / FILES</span><h3>Get files ready to use</h3><p>Compress images and PDFs for online applications, forms, portals and everyday sharing, with less frustration around file size.</p><Link href="/tools/image-compressor">Explore file tools →</Link></article>
   </div>
  </section>
