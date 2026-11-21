@@ -822,3 +822,5 @@ a{color:inherit}
 .cv-raw-text{background:#f7f7f7!important;color:#474747!important;border:0!important}
 
 .tone-pink,.tool-tag.tone-pink,.tool-category.tone-pink{background:#fff7f8!important;color:#e92b50!important;border-color:#f5d7dd!important}
+
+.cv-import-trigger{display:flex;align-items:center;justify-content:center;gap:8px}
