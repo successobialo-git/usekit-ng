@@ -929,3 +929,40 @@ a{color:inherit}
  .toolkit-section{border-radius:18px!important;margin:0 10px 15px!important;padding:46px 16px!important}
  .search-control{width:100%!important}
 }
+
+
+/* Header direction follows the supplied reference: light, restrained and integrated with the hero */
+.site-header{
+  position:relative!important;top:auto!important;z-index:50!important;
+  width:calc(100% - 40px)!important;max-width:1240px!important;
+  height:76px!important;margin:18px auto 0!important;padding:0!important;
+  background:transparent!important;backdrop-filter:none!important;
+}
+.nav-wrap{
+  width:100%!important;max-width:none!important;height:76px!important;
+  margin:0!important;padding:0 24px!important;
+  border-radius:0!important;background:transparent!important;
+  color:#202024!important;box-shadow:none!important;
+}
+.nav-wrap .brand-word{color:#202024!important}
+.nav-wrap nav{color:#45454a!important;gap:clamp(15px,2vw,27px)!important}
+.nav-wrap nav a{color:#55555a!important;font-size:10px!important;font-weight:650!important}
+.nav-wrap nav a:hover{color:#e92b50!important}
+.nav-cta{background:#202024!important;color:#fff!important;padding:11px 17px!important;border-radius:999px!important}
+.mobile-menu-toggle{color:#202024!important}
+.mobile-nav-panel{background:#fff!important;color:#202024!important}
+.center-hero.home-hero{
+  max-width:1240px!important;width:calc(100% - 40px)!important;
+  min-height:500px!important;margin:0 auto 22px!important;
+  border-radius:0 0 18px 18px!important;
+  padding:75px 22px 42px!important;
+  box-shadow:0 12px 30px rgba(24,24,28,.08)!important;
+  background:radial-gradient(ellipse at 12% 28%,rgba(233,43,80,.065),transparent 34%),radial-gradient(ellipse at 88% 15%,rgba(222,222,222,.55),transparent 32%),linear-gradient(135deg,#fff 0%,#fff 52%,#fcfaf9 100%)!important;
+}
+@media(max-width:650px){
+ .site-header{width:calc(100% - 24px)!important;height:62px!important;margin:12px auto 0!important}
+ .nav-wrap{height:62px!important;padding:0 8px!important;border-radius:0!important;background:transparent!important}
+ .nav-wrap nav{display:none!important}
+ .nav-cta{padding:10px 13px!important}
+ .center-hero.home-hero{width:calc(100% - 24px)!important;min-height:0!important;margin:0 auto 14px!important;padding:54px 17px 30px!important;border-radius:0 0 16px 16px!important}
+}
