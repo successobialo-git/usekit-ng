@@ -1177,3 +1177,40 @@ a{color:inherit}
 
 /* Homepage About panel: keep the soft pink background without a visible outline. */
 .home-about-intro{border:0!important;outline:0!important;box-shadow:none!important}
+
+
+/* About page layout repair: full-bleed page canvas, contained content, no horizontal overflow. */
+.about-page{
+ position:relative!important;
+ left:auto!important;
+ width:100vw!important;
+ max-width:100vw!important;
+ margin-left:calc(50% - 50vw)!important;
+ margin-right:calc(50% - 50vw)!important;
+ padding:35px clamp(16px,5vw,76px) 72px!important;
+ box-sizing:border-box!important;
+ overflow-x:clip!important;
+}
+.about-page *{box-sizing:border-box!important;min-width:0!important}
+.about-page .internal-page-banner,
+.about-page .content-feature,
+.about-page .about-quick-values,
+.about-page .about-faq{width:100%!important;max-width:100%!important;margin-left:0!important;margin-right:0!important}
+.about-page .internal-page-banner{overflow-wrap:anywhere!important}
+.about-page .internal-page-banner h1,
+.about-page .internal-page-banner p{max-width:100%!important;overflow-wrap:anywhere!important}
+.about-page .content-feature{display:grid!important;grid-template-columns:minmax(0,1fr) minmax(0,.95fr)!important;align-items:center!important;gap:clamp(18px,3vw,38px)!important;overflow:hidden!important}
+.about-page .content-feature>div{min-width:0!important;max-width:100%!important}
+.about-page .content-feature img{display:block!important;width:100%!important;max-width:100%!important;min-width:0!important;height:clamp(220px,28vw,360px)!important;min-height:0!important;object-fit:cover!important}
+.about-page .about-quick-grid{grid-template-columns:repeat(3,minmax(0,1fr))!important}
+.about-page .about-quick-grid article{min-width:0!important;overflow-wrap:anywhere!important}
+.about-page .about-faq{overflow:hidden!important}
+.about-page .about-faq summary{min-width:0!important;overflow-wrap:anywhere!important}
+.about-page .about-faq details p{max-width:100%!important;overflow-wrap:anywhere!important}
+@media(max-width:760px){
+ .about-page{width:100vw!important;max-width:100vw!important;margin-left:calc(50% - 50vw)!important;margin-right:calc(50% - 50vw)!important;padding:26px 16px 52px!important}
+ .about-page .content-feature{grid-template-columns:minmax(0,1fr)!important;padding:19px!important;gap:18px!important}
+ .about-page .content-feature img{height:220px!important;max-height:220px!important}
+ .about-page .about-quick-grid{grid-template-columns:minmax(0,1fr)!important}
+ .about-page .about-faq{padding:20px 17px!important}
+}
