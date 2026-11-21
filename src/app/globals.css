@@ -748,3 +748,37 @@ a{color:inherit}
  .uk-download-menu>div{right:0;left:auto;min-width:210px}
  .workspace-v2-tool .document-top-actions{display:flex;flex-wrap:wrap;gap:7px}
 }
+
+
+/* Final removal of legacy warm accent treatments */
+.tool-head:before,.tool-promo>div>span,.document-eyebrow,.section-kicker,.workspace-kicker{color:#e92b50!important}
+.tool-promo,.promo,.faq-item,.ad-slot,.usekit-ad-slot{background:#f7f7f7!important;color:#1d1d1d!important;border-color:#ededed!important}
+.tool-promo h2,.promo strong,.faq h2,.faq-item summary{color:#1d1d1d!important}
+.tool-promo p,.promo p,.faq-item p{color:#777b82!important}
+.tool-promo a,.promo a{background:#e92b50!important;color:#fff!important}
+.cv-import-success,.cv-private-note,.cv-extracting,.cv-drop-area,.cv-saved-card,.cv-custom-chips button{background:#f7f7f7!important;color:#4d4f53!important;border-color:#e5e5e5!important}
+.cv-import-success{border-left:3px solid #e92b50!important}
+.cv-import-error{background:#f4f4f4!important;color:#4d4f53!important;border-left:3px solid #e92b50!important}
+.cv-spinner{border-color:#e92b50 transparent #e92b50 #e92b50!important}
+.cv-progress>span{background:#e92b50!important}
+.cv-custom-chips button:hover,.cv-suggestion-content button:hover{background:#292929!important;color:#fff!important}
+.cv-target-role{background:#f7f7f7!important;border:0!important}
+.cv-target-role label{color:#4d4f53!important}
+.cv-target-role small{color:#777b82!important}
+.image-pdf-frame .compress-tabs{background:#f2f2f2!important}
+.image-pdf-frame .compress-tabs button{background:transparent!important;color:#686b70!important}
+.image-pdf-frame .compress-tabs button.active{background:#e92b50!important;color:#fff!important}
+.image-pdf-frame .pdf-dropzone{background:#f7f7f7!important;border-color:#d9d9d9!important}
+.image-pdf-frame .pdf-dropzone:hover,.image-pdf-frame .pdf-dropzone.dragging{border-color:#e92b50!important;background:#f4f4f4!important}
+.image-pdf-frame .pdf-drop-icon{background:#292929!important;color:#fff!important}
+.image-pdf-frame .pdf-file-info,.image-pdf-frame .pdf-result-panel>div{background:#292929!important;color:#fff!important}
+.image-pdf-frame .pdf-file-info span,.image-pdf-frame .pdf-result-panel>div span{color:#c5c6c9!important}
+.image-pdf-frame .document-hint,.image-pdf-frame .document-hint *{color:#777b82!important}
+.image-pdf-frame .faq-item{background:#f7f7f7!important}
+.image-pdf-frame .usekit-ad-slot{background:#f7f7f7!important;color:#777b82!important}
+.image-pdf-frame .pdf-result-panel>a,.image-pdf-frame .pdf-result-panel .document-next{background:#e92b50!important;color:#fff!important}
+.document-preview.template-clean header,.document-preview.template-mint header{border-color:#e92b50!important}
+.document-preview.template-mint .document-preview-client,.document-preview.template-clean .document-preview-client{background:#f3f3f3!important;color:#292929!important}
+.cv-saved-card button:first-child,.cv-import-trigger{background:#e92b50!important;color:#fff!important}
+.cv-saved-card button:last-child{background:#ededed!important;color:#45474b!important}
+.document-add,.suggestion-action,.cv-template-select button.chosen{background:#292929!important;color:#fff!important}
