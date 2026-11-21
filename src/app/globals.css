@@ -682,3 +682,69 @@ a{color:inherit}
  .workspace-v2-tool .document-stepper button{white-space:nowrap}
  .workspace-v2-tool .template-grid{grid-template-columns:repeat(2,minmax(0,1fr))!important}
 }
+
+
+/* Preview and download controls */
+.uk-download-menu{position:relative;display:inline-block;z-index:25}
+.uk-download-menu>summary{list-style:none;cursor:pointer;display:inline-flex;align-items:center;justify-content:center;min-height:38px;padding:0 16px;border-radius:9px;background:#e92b50;color:#fff;font-size:10px;font-weight:800}
+.uk-download-menu>summary::-webkit-details-marker{display:none}
+.uk-download-menu>summary:after{content:"⌄";margin-left:10px;font-size:13px}
+.uk-download-menu[open]>summary{background:#292929}
+.uk-download-menu>div{position:absolute;right:0;top:calc(100% + 7px);min-width:235px;padding:7px;border-radius:11px;background:#292929;box-shadow:0 14px 35px rgba(0,0,0,.16);display:grid;gap:4px;z-index:100}
+.uk-download-menu>div button{width:100%;padding:11px 12px;border:0;border-radius:7px;background:transparent!important;color:#f4f4f4!important;text-align:left;font-size:10px;font-weight:650;cursor:pointer}
+.uk-download-menu>div button:hover{background:#414141!important}
+.uk-download-menu>div button:last-child{color:#fff!important;background:#e92b50!important}
+.uk-preview-trigger{display:inline-flex;align-items:center;justify-content:center;min-height:38px;padding:0 15px;border:0;border-radius:9px;background:#f1f1f1!important;color:#292929!important;font-size:10px;font-weight:800;cursor:pointer}
+.uk-preview-trigger:hover{background:#e6e6e6!important}
+.uk-document-preview-overlay,.cv-document-preview-overlay,.uk-image-preview-overlay{position:fixed;inset:0;z-index:1000;display:flex;align-items:center;justify-content:center;overflow:auto;padding:24px;background:rgba(18,18,18,.78)}
+.uk-document-preview-shell,.uk-image-preview-shell,.uk-pdf-preview-shell{width:min(100%,920px);max-height:calc(100dvh - 48px);overflow:auto;padding:22px;border-radius:16px;background:#fff;color:#1d1d1d}
+.uk-document-preview-head,.cv-document-preview-head{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-bottom:18px}
+.uk-document-preview-head strong,.cv-document-preview-head strong{font-size:14px;color:#1d1d1d}
+.uk-document-preview-head button,.cv-document-preview-head button{border:0;border-radius:8px;padding:9px 12px;background:#292929;color:#fff;font-size:10px;font-weight:750;cursor:pointer}
+.uk-document-preview-shell .document-preview{width:100%;max-width:720px;margin:0 auto 18px;box-shadow:0 10px 35px rgba(0,0,0,.09)!important}
+.uk-document-preview-shell .document-export-actions{display:flex;justify-content:center;flex-wrap:wrap;gap:8px}
+.cv-document-preview-overlay{flex-direction:column;align-items:center;justify-content:flex-start}
+.cv-document-preview-head{width:min(100%,900px);padding:13px 16px;border-radius:11px;background:#fff}
+.cv-document-preview-overlay>.document-eyebrow{width:min(100%,900px);margin:8px 0;color:#fff!important}
+.cv-document-preview-overlay .cv-paper{width:min(100%,900px);max-height:none;margin:0 auto;background:#fff;box-shadow:0 12px 38px rgba(0,0,0,.18)!important}
+.cv-document-preview-overlay .preview-disclaimer{width:min(100%,900px);padding:10px 0;color:#ddd!important}
+.uk-image-preview-shell{width:min(100%,1000px)}
+.uk-image-preview-compare{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:18px 0}
+.uk-image-preview-compare>div{min-width:0;padding:12px;border-radius:11px;background:#f5f5f5}
+.uk-image-preview-compare span{display:block;margin-bottom:10px;font-size:9px;font-weight:800;letter-spacing:.1em;color:#777b82}
+.uk-image-preview-compare img{display:block;width:100%;max-height:65vh;object-fit:contain;background:#fff;border-radius:7px}
+.uk-pdf-preview-shell iframe{display:block;width:100%;height:min(72vh,760px);border:0;background:#fff}
+.uk-image-preview-shell>.document-next,.uk-pdf-preview-shell>.document-next{display:flex;width:max-content;margin:12px auto 0;text-decoration:none}
+
+/* Keep the workspace focused on the selected tool, not a second directory */
+.workspace-v2-tool .tool-promo,.workspace-v2-tool .faq,.workspace-v2-tool .ad-slot,.workspace-v2-tool .usekit-ad-slot{display:none!important}
+.workspace-v2-tool .tool-app-top h2,.workspace-v2-tool .document-topbar h2{color:#1d1d1d!important}
+.workspace-v2-tool .tool-app-top p,.workspace-v2-tool .document-topbar p{color:#777b82!important}
+.workspace-v2-tool .document-stepper{margin-bottom:22px}
+.workspace-v2-tool .document-fields,.workspace-v2-tool .cv-form,.workspace-v2-tool .qr-settings{min-width:0}
+.workspace-v2-tool .summary-card{background:#f7f7f7!important;color:#1d1d1d!important;border:0!important;box-shadow:none!important}
+.workspace-v2-tool .summary-card strong,.workspace-v2-tool .summary-card h3{color:#1d1d1d!important}
+.workspace-v2-tool .summary-card span,.workspace-v2-tool .summary-tip p{color:#777b82!important}
+.workspace-v2-tool .summary-card button{background:#292929!important;color:#fff!important}
+.workspace-v2-tool .summary-card .summary-export{background:#e92b50!important}
+.workspace-v2-tool .document-template-grid button,.workspace-v2-tool .template-grid button{background:#f7f7f7!important;color:#1d1d1d!important;border:0!important}
+.workspace-v2-tool .template-grid button b{color:#1d1d1d!important}
+.workspace-v2-tool .document-export-actions button{background:#292929!important;color:#fff!important}
+.workspace-v2-tool .document-export-actions button:first-child{background:#e92b50!important}
+.workspace-v2-tool .image-output-actions{display:flex;flex-wrap:wrap;gap:9px;margin-top:12px}
+.workspace-v2-tool .quick-download{display:inline-flex;align-items:center;min-height:38px;padding:0 14px;border-radius:9px;background:#292929!important;color:#fff!important;font-size:10px;font-weight:750}
+.workspace-v2-tool .pdf-result-panel .uk-preview-trigger{grid-column:1/-1}
+.workspace-v2-tool .pdf-result-panel .document-next{grid-column:1/-1}
+
+/* Restrict photographic colour so the site accent remains the only strong hue */
+.feature-portrait .lady-image,.carousel-slide img,.photo-tool-image img{filter:grayscale(1)!important}
+.closing-art{filter:grayscale(1)}
+@media(max-width:650px){
+ .uk-document-preview-overlay,.cv-document-preview-overlay,.uk-image-preview-overlay{padding:10px}
+ .uk-document-preview-shell,.uk-image-preview-shell,.uk-pdf-preview-shell{max-height:calc(100dvh - 20px);padding:13px;border-radius:12px}
+ .uk-image-preview-compare{grid-template-columns:1fr}
+ .uk-image-preview-compare img{max-height:45vh}
+ .uk-document-preview-shell .document-preview{transform-origin:top left}
+ .uk-download-menu>div{right:0;left:auto;min-width:210px}
+ .workspace-v2-tool .document-top-actions{display:flex;flex-wrap:wrap;gap:7px}
+}
