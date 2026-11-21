@@ -9,6 +9,7 @@ import {logToolUse} from "@/lib/supabase";
 import {tools} from "@/lib/tools";
 
 type Mode="image"|"pdf";
+type PdfCompressionMode="preserve"|"maximum";
 type Unit="KB"|"MB";
 type ImageFormat="image/jpeg"|"image/webp"|"image/png";
 type ImageOutput={name:string,url:string,size:number,original:number,targetMet:boolean};
@@ -17,7 +18,7 @@ const pretty=(size:number)=>size>=1024*1024?(size/1024/1024).toFixed(2)+" MB":(s
 const percent=(before:number,after:number)=>before>0?Math.max(0,(1-after/before)*100):0;
 
 export default function ImageCompressor(){
- const [mode,setMode]=useState<Mode>("image"),[imageFiles,setImageFiles]=useState<File[]>([]),[pdfFile,setPdfFile]=useState<File|null>(null);
+ const [mode,setMode]=useState<Mode>("image"),[imageFiles,setImageFiles]=useState<File[]>([]),[pdfFile,setPdfFile]=useState<File|null>(null),[pdfCompressionMode,setPdfCompressionMode]=useState<PdfCompressionMode>("preserve");
  const [target,setTarget]=useState("200"),[unit,setUnit]=useState<Unit>("KB"),[format,setFormat]=useState<ImageFormat>("image/jpeg");
  const [quality,setQuality]=useState(.84),[width,setWidth]=useState(""),[height,setHeight]=useState("");
  const [imageOutputs,setImageOutputs]=useState<ImageOutput[]>([]),[pdfUrl,setPdfUrl]=useState(""),[pdfSize,setPdfSize]=useState(0);
@@ -61,9 +62,28 @@ export default function ImageCompressor(){
   }finally{await source.destroy();}
  }
  async function compressPdf(){if(!pdfFile||!Number.isFinite(targetBytes)||targetBytes<=0){setNotice("Enter a valid target size greater than zero.");return;}clearOutputs();setBusy(true);setNotice("Reading PDF locally and preparing compressed versions…");
-  try{const data=new Uint8Array(await pdfFile.arrayBuffer());let best:Uint8Array|null=null,bestDiff=Infinity,finished=false;const qualities=[.84,.72,.60,.48,.36,.26,.18,.12];const scales=[1,.9,.8,.7,.6,.5,.42,.35,.28,.22,.16,.12];
-   for(const s of scales){for(const q of qualities){setNotice("Compressing PDF… testing "+Math.round(s*100)+"% page scale and "+Math.round(q*100)+"% image quality.");const candidate=await renderPdf(s,q,data);const diff=Math.abs(candidate.byteLength-targetBytes);if(diff<bestDiff){best=candidate;bestDiff=diff;}if(candidate.byteLength<=targetBytes){best=candidate;finished=true;break;}if(s<=.12&&q<=.12)break;}if(finished)break;}
-   if(!best)throw new Error("Could not compress this PDF.");const blob=new Blob([best as BlobPart],{type:"application/pdf"}),url=URL.createObjectURL(blob);setPdfUrl(url);setPdfSize(blob.size);setNotice(blob.size<=targetBytes?"PDF compressed successfully.":"The smallest result reached by the browser is ready; it is the closest available result to your target.");void logToolUse("pdf_compressor");
+  try{const data=new Uint8Array(await pdfFile.arrayBuffer());let best:Uint8Array;let resultMessage="";
+   if(pdfCompressionMode==="preserve"){
+    setNotice("Checking your PDF, then keeping the original file exactly as uploaded…");
+    // Do not re-save or rewrite this PDF. Re-serialising can alter advanced features
+    // (forms, signatures, annotations, attachments, layers, metadata, etc.) that
+    // cannot be fully verified by comparing extracted text or page count.
+    const pdfjs=await import("pdfjs-dist/legacy/build/pdf.mjs");
+    pdfjs.GlobalWorkerOptions.workerSrc=new URL("pdfjs-dist/legacy/build/pdf.worker.min.mjs",import.meta.url).toString();
+    const check=await pdfjs.getDocument({data:data.slice(),isEvalSupported:false}).promise;
+    const pageCount=check.numPages;
+    await check.destroy();
+    if(pageCount<1)throw new Error("This PDF has no readable pages. Your original file has not been changed.");
+    best=data;
+    resultMessage="Original PDF preserved byte-for-byte. No compression was applied, so selectable text and all original PDF features remain exactly as uploaded.";
+    if(data.byteLength>targetBytes)resultMessage+=" The requested target ("+pretty(targetBytes)+") cannot be reached in exact-preservation mode. This PDF may contain little removable data; choose Maximum only if you accept flattening pages and losing interactive features.";
+    else resultMessage+=" The original is already at or below your requested size.";
+   }else{
+    let smallest:Uint8Array|null=null,bestDiff=Infinity,finished=false;const qualities=[.84,.72,.60,.48,.36,.26,.18,.12];const scales=[1,.9,.8,.7,.6,.5,.42,.35,.28,.22,.16,.12];
+    for(const scale of scales){for(const q of qualities){setNotice("Maximum compression… testing "+Math.round(scale*100)+"% page scale and "+Math.round(q*100)+"% image quality. Text will be flattened.");const candidate=await renderPdf(scale,q,data);const diff=Math.abs(candidate.byteLength-targetBytes);if(diff<bestDiff){smallest=candidate;bestDiff=diff;}if(candidate.byteLength<=targetBytes){smallest=candidate;finished=true;break;}if(scale<=.12&&q<=.12)break;}if(finished)break;}
+    if(!smallest)throw new Error("Could not compress this PDF.");best=smallest;resultMessage=best.byteLength<=targetBytes?"PDF compressed to the requested size.":"The closest maximum-compression result is ready; the target could not be reached.";
+   }
+   const blob=new Blob([best as BlobPart],{type:"application/pdf"}),url=URL.createObjectURL(blob);setPdfUrl(url);setPdfSize(blob.size);setNotice(resultMessage);void logToolUse("pdf_compressor");
   }catch(e){setNotice(e instanceof Error?e.message:"PDF compression failed. Try a smaller PDF or a modern browser.");}finally{setBusy(false);}
  }
 
@@ -86,20 +106,22 @@ export default function ImageCompressor(){
    </div>:<div className="image-studio-grid">
     <div className="document-card"><span className="document-eyebrow">01 / UPLOAD PDF</span><h3>Choose your PDF</h3><div className={"pdf-dropzone "+(dragging?"dragging":"")} onDragOver={e=>{e.preventDefault();setDragging(true);}} onDragLeave={()=>setDragging(false)} onDrop={handleDrop} onClick={()=>pdfInput.current?.click()} role="button" tabIndex={0} onKeyDown={e=>{if(e.key==="Enter"||e.key===" "){e.preventDefault();pdfInput.current?.click();}}}><input ref={pdfInput} type="file" accept="application/pdf,.pdf" hidden onChange={e=>selectPdf(e.target.files?.[0]||null)}/><span className="pdf-drop-icon">PDF</span><strong>Drag &amp; drop your PDF here</strong><span>or click to browse files</span></div>
      {pdfFile&&<div className="pdf-file-info"><strong>{pdfFile.name}</strong><span>Original size: {pretty(pdfFile.size)}</span></div>}
-     <span className="document-eyebrow">02 / TARGET SIZE</span><div className="document-grid target-size-row"><div className="field"><label>Target size</label><input type="number" min="0.01" step="any" value={target} onChange={e=>setTarget(e.target.value)} placeholder="e.g. 200"/></div><div className="field"><label>Unit</label><select value={unit} onChange={e=>setUnit(e.target.value as Unit)}><option>KB</option><option>MB</option></select></div></div>
-     <button className="document-next" disabled={!pdfFile||busy} onClick={compressPdf}>{busy?"Compressing PDF…":"Compress PDF"}</button>
+     <span className="document-eyebrow">02 / COMPRESSION MODE</span><div className="field"><label>Choose how to compress</label><select value={pdfCompressionMode} onChange={e=>{setPdfCompressionMode(e.target.value as PdfCompressionMode);clearOutputs();}}><option value="preserve">Exact preservation · Keep original PDF</option><option value="maximum">Maximum · Smallest file (flattens pages)</option></select></div>
+     <p className="document-hint">{pdfCompressionMode==="preserve"?"Returns your original PDF byte-for-byte without re-saving it. This preserves signatures, forms, annotations, links, attachments, layers, metadata and selectable text exactly—but does not compress the file.":"Rebuilds each page as an image for stronger size reduction. Text, links, forms and accessibility structure will not remain interactive or searchable."}</p>
+     <span className="document-eyebrow">03 / TARGET SIZE</span><div className="document-grid target-size-row"><div className="field"><label>Target size</label><input type="number" min="0.01" step="any" value={target} onChange={e=>setTarget(e.target.value)} placeholder="e.g. 200"/></div><div className="field"><label>Unit</label><select value={unit} onChange={e=>setUnit(e.target.value as Unit)}><option>KB</option><option>MB</option></select></div></div>
+     <button className="document-next" disabled={!pdfFile||busy} onClick={compressPdf}>{busy?"Compressing PDF…":pdfCompressionMode==="preserve"?"Keep original PDF":"Compress PDF · Maximum"}</button>
      {notice&&<p className="document-notice" aria-live="polite">{notice}</p>}
-     {pdfUrl&&pdfFile&&<div className="pdf-result-panel"><div><span>ORIGINAL</span><strong>{pretty(pdfFile.size)}</strong></div><div><span>COMPRESSED</span><strong>{pretty(pdfSize)}</strong></div><div><span>SIZE SAVED</span><strong>{saved.toFixed(1)}%</strong></div><a className="document-next" href={pdfUrl} download={pdfFile.name.replace(/\.pdf$/i,"")+"_compressed.pdf"}>Download compressed PDF</a></div>}
-     <p className="document-hint">PDF pages are rebuilt as optimised images. This can greatly reduce size, but text in the resulting PDF will no longer be selectable or searchable.</p>
-    </div><aside className="qr-live-preview"><span className="document-eyebrow">PDF COMPRESSION</span><div className="quick-empty"><strong>{pdfFile?pdfFile.name:"Your PDF result appears here"}</strong><span>{pdfFile?"Original: "+pretty(pdfFile.size):"Drop a PDF or browse to choose one."}</span>{pdfUrl&&<span>Compressed: {pretty(pdfSize)} · {saved.toFixed(1)}% saved</span>}</div><p>PDF processing is performed in your browser. No file is sent to a server.</p></aside>
+     {pdfUrl&&pdfFile&&<div className="pdf-result-panel"><div><span>ORIGINAL</span><strong>{pretty(pdfFile.size)}</strong></div><div><span>{pdfCompressionMode==="preserve"?"UNCHANGED COPY":"COMPRESSED"}</span><strong>{pretty(pdfSize)}</strong></div><div><span>{pdfCompressionMode==="preserve"?"SIZE REDUCTION":"SIZE SAVED"}</span><strong>{saved.toFixed(1)}%</strong></div><a className="document-next" href={pdfUrl} download={pdfFile.name.replace(/\.pdf$/i,"")+"_compressed.pdf"}>Download compressed PDF</a></div>}
+     <p className="document-hint">Exact preservation mode makes no changes to the original PDF, so its existing features remain byte-for-byte intact—but file size will not decrease. Maximum mode creates a rasterised copy and may remove text, forms, links, signatures, annotations and other features. Keep your original.</p>
+    </div><aside className="qr-live-preview"><span className="document-eyebrow">PDF COMPRESSION</span><div className="quick-empty"><strong>{pdfFile?pdfFile.name:"Your PDF result appears here"}</strong><span>{pdfFile?"Original: "+pretty(pdfFile.size):"Drop a PDF or browse to choose one."}</span>{pdfUrl&&<span>{pdfCompressionMode==="preserve"?"Original preserved unchanged: ":"Compressed: "}{pretty(pdfSize)} · {saved.toFixed(1)}% size reduction</span>}</div><p>PDF processing is performed in your browser. No file is sent to a server.</p></aside>
    </div>}
    <AdSenseUnit placement="tool"/><AdSenseUnit placement="tool"/><AdSenseUnit placement="tool"/>
    <div className="tool-promo"><div><span>USEKIT / EVERYDAY TOOLS</span><h2>More useful tools, less everyday friction.</h2><p>Explore free tools built for Nigerian businesses and everyday tasks.</p></div><Link href="/workspace">Explore all tools</Link></div>
    <section className="faq"><h2>Image &amp; PDF compression FAQs</h2>
     <details className="faq-item"><summary>How do I compress an image to a specific KB size?</summary><p>Select Image, upload your file, enter your exact target number and choose KB or MB. UseKit adjusts image quality and dimensions to get as close as possible.</p></details>
     <details className="faq-item"><summary>Can I compress images for JAMB or NYSC portals?</summary><p>Yes. Enter the file-size requirement shown by the portal. Always check the portal&apos;s image dimensions and format requirements too.</p></details>
-    <details className="faq-item"><summary>How to compress PDF to 200KB?</summary><p>Select PDF, upload your file, enter 200 and choose KB, then select Compress PDF. The tool tests page scale and image quality and returns a file at or below 200KB when possible, or the closest result it can produce.</p></details>
-    <details className="faq-item"><summary>Can I compress PDF to any size?</summary><p>You can enter any positive target size in KB or MB. Some PDFs cannot reach extremely small targets while remaining readable; UseKit provides the closest result the browser can generate.</p></details>
+    <details className="faq-item"><summary>How to compress PDF to 200KB?</summary><p>Select PDF, upload your file and enter 200 KB. Exact preservation mode returns the original PDF unchanged, so it will not reduce file size. Maximum mode can reduce size by converting pages to images, but text will no longer be selectable or searchable and interactive PDF features may be lost.</p></details>
+    <details className="faq-item"><summary>Can I compress PDF to any size?</summary><p>Exact preservation mode returns the original PDF byte-for-byte and does not reduce its size. This is the only mode that guarantees the uploaded PDF is not rewritten by this tool. Maximum mode may reduce size by converting pages to images, but it can remove selectable text and advanced PDF features. A target size is not a promise that every document can safely reach it.</p></details>
     <details className="faq-item"><summary>Are my images and PDFs uploaded?</summary><p>No. Processing happens locally in your browser. Your files are not uploaded to UseKit&apos;s servers.</p></details>
    </section>
   </div>
