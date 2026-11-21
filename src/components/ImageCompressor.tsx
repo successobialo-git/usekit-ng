@@ -27,7 +27,7 @@ export default function ImageCompressor(){
  useEffect(()=>()=>{ownedUrls.current.forEach(url=>URL.revokeObjectURL(url));},[]);
  function makeObjectUrl(blob:Blob){const url=URL.createObjectURL(blob);ownedUrls.current.push(url);return url;}
 
- function clearOutputs(){imageOutputs.forEach(x=>URL.revokeObjectURL(x.url));setImageOutputs([]);if(pdfUrl)URL.revokeObjectURL(pdfUrl);setPdfUrl("");setPdfSize(0);setNotice("");}
+ function clearOutputs(){imageOutputs.forEach(x=>URL.revokeObjectURL(x.url));setImageOutputs([]);if(pdfUrl)URL.revokeObjectURL(pdfUrl);setPdfUrl("");setPdfSize(0);setShowImagePreview(false);setShowPdfPreview(false);setNotice("");}
  function selectImages(files:FileList|File[]|null){if(!files)return;const selected=Array.from(files).filter(f=>f.type.startsWith("image/"));if(!selected.length){setNotice("Choose a supported image file.");return;}clearOutputs();setImageFiles(selected);if(originalPreview)URL.revokeObjectURL(originalPreview);setOriginalPreview(makeObjectUrl(selected[0]));}
  function selectPdf(file:File|null){if(!file)return;if(file.type!=="application/pdf"&&!file.name.toLowerCase().endsWith(".pdf")){setNotice("Choose a PDF file.");return;}clearOutputs();setPdfFile(file);}
 
