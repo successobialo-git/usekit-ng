@@ -1,0 +1,80 @@
+/* Mobile homepage refinement — isolated overrides */
+@media (max-width: 600px) {
+  .site-header { position: sticky; top: 0; z-index: 120; padding: 5px 8px 0; }
+  .nav-wrap { position: relative; z-index: 121; height: 54px; padding: 0 14px; }
+  .brand { gap: 8px !important; font-size: 15px !important; letter-spacing: .035em !important; }
+  .brand img { width: 31px !important; height: 31px !important; flex: 0 0 31px; object-fit: contain; }
+  .brand-word { font-size: 15px !important; line-height: 1 !important; letter-spacing: .055em !important; }
+  .nav-cta { margin-left: auto; margin-right: 10px; white-space: nowrap; }
+  .mobile-menu-toggle {
+    width: 38px !important; height: 38px !important; flex: 0 0 38px;
+    display: inline-flex !important; flex-direction: column; align-items: center;
+    justify-content: center; gap: 6px; padding: 0 !important;
+    border: 0 !important; border-radius: 11px !important;
+    background: #292929 !important; color: #fff; cursor: pointer;
+  }
+  .mobile-menu-toggle span { display:block; width:17px; height:2px; border-radius:2px; background:#fff; transition:transform .2s, opacity .2s; }
+  .mobile-menu-toggle[aria-expanded="true"] span:first-child { transform:translateY(4px) rotate(45deg); }
+  .mobile-menu-toggle[aria-expanded="true"] span:last-child { transform:translateY(-4px) rotate(-45deg); }
+  .mobile-nav-panel {
+    position: fixed !important; inset: 0 auto 0 0 !important;
+    width: min(86vw, 370px) !important; height: 100dvh !important;
+    z-index: 119 !important; padding: 104px 25px 32px !important;
+    display: flex !important; flex-direction: column; align-items: stretch;
+    gap: 0 !important; overflow-y: auto; background: #1d1d1d !important;
+    border-radius: 0 22px 22px 0; box-shadow: 0 0 0 100vmax rgba(15,15,15,.58) !important;
+  }
+  .mobile-nav-panel a {
+    display:flex; align-items:center; min-height:62px; padding:0 4px;
+    color:#fff !important; font-size:17px !important; font-weight:650;
+    border-bottom:1px solid rgba(255,255,255,.12);
+  }
+  .center-hero { padding: 54px 17px 38px !important; margin:0 8px !important; }
+  .center-hero h1 {
+    max-width: 560px; font-size: clamp(47px, 12.4vw, 61px) !important;
+    line-height: 1.04 !important; letter-spacing: -.065em !important;
+    margin-bottom: 18px !important;
+  }
+  .center-hero h1 .hero-changing { display:inline; }
+  .center-hero>p { font-size:11px !important; line-height:1.75 !important; }
+  .quick-tools { padding: 30px 16px 24px !important; border-radius: 0 !important; }
+  .quick-tools-heading { padding: 0 3px 20px !important; gap:16px !important; }
+  .quick-tools-heading>div:first-child { padding: 8px 0 0 !important; }
+  .quick-tools-heading .section-kicker { display:inline-block; margin-bottom:9px; }
+  .quick-tools-heading h2 { margin:0 0 9px !important; line-height:1.1 !important; }
+  .quick-tools-heading p { margin:0 !important; line-height:1.65 !important; }
+  .quick-tabs {
+    width:100% !important; display:grid !important; grid-template-columns:1fr 1fr;
+    gap:4px !important; padding:4px !important; border-radius:12px !important;
+    overflow:hidden !important; transform:none !important;
+  }
+  .quick-tabs button {
+    min-width:0; width:100%; border-radius:9px !important; padding:11px 7px !important;
+    white-space:normal; line-height:1.25; transform:none !important;
+  }
+  .quick-workspace { border-radius:14px !important; overflow:hidden; }
+  .quick-form,.quick-preview { padding:17px !important; }
+  .quick-export { display:flex; flex-wrap:wrap; gap:8px; }
+  .quick-export button { border-radius:9px !important; }
+  .toolkit-section { padding:48px 0 54px !important; overflow:hidden; }
+  .toolkit-heading { padding:0 18px; }
+  .toolkit-heading h2 { margin-top:10px !important; }
+  .toolkit-intro { padding:0 18px; }
+  .photo-tool-grid {
+    display:flex !important; width:max-content !important; max-width:none !important;
+    gap:12px !important; padding:4px 18px 12px !important;
+    animation:usekitToolMarquee 34s linear infinite;
+    will-change:transform;
+  }
+  .photo-tool-grid:hover { animation-play-state:paused; }
+  .photo-tool-card { width:min(78vw,290px) !important; min-width:min(78vw,290px) !important; flex:0 0 min(78vw,290px) !important; }
+  .photo-tool-image { height:165px !important; }
+  .photo-tool-copy { padding:16px !important; }
+  .photo-tool-copy h3 { font-size:17px !important; }
+  .photo-tool-copy p { font-size:10px !important; line-height:1.55 !important; }
+  .toolkit-footer { padding:0 18px; }
+}
+@keyframes usekitToolMarquee { from { transform:translateX(0); } to { transform:translateX(-50%); } }
+@media (prefers-reduced-motion: reduce) {
+  .photo-tool-grid { animation:none !important; }
+}
