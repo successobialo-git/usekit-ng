@@ -27,13 +27,14 @@ export default function Home(){
   const el=carouselRef.current;
   if(!el)return;
   let frame=0,pausedUntil=0,last=0;
-  const pause=()=>{pausedUntil=performance.now()+2200;};
+  const pause=()=>{pausedUntil=performance.now()+2600;};
+  carouselPauseRef.current=pause;
   const tick=(now:number)=>{
-   if(now>pausedUntil&&now-last>=16){
+   if(now-pausedUntil>0&&now-last>=16){
     const loopPoint=el.scrollWidth/2;
     if(loopPoint>0){
-     el.scrollLeft+=0.38;
-     if(el.scrollLeft>=loopPoint)el.scrollLeft-=loopPoint;
+     el.scrollLeft=el.scrollLeft+0.8;
+     if(el.scrollLeft>=loopPoint)el.scrollLeft=el.scrollLeft-loopPoint;
     }
     last=now;
    }
@@ -48,9 +49,22 @@ export default function Home(){
    el.removeEventListener("pointerdown",pause);
    el.removeEventListener("touchstart",pause);
    el.removeEventListener("wheel",pause);
+   carouselPauseRef.current=()=>{};
   };
  },[]);
- const moveTools=(direction:-1|1)=>{const el=carouselRef.current;if(!el)return;carouselPauseRef.current();const card=el.querySelector<HTMLElement>(".photo-tool-card");if(!card)return;const track=getComputedStyle(el.querySelector(".photo-tool-track")!).gap;const gap=parseFloat(track)||16;const step=card.getBoundingClientRect().width+gap;el.scrollBy({left:direction*step,top:0,behavior:"smooth"});};
+ const moveTools=(direction:-1|1)=>{
+  const el=carouselRef.current;
+  if(!el)return;
+  carouselPauseRef.current();
+  const track=el.querySelector<HTMLElement>(".photo-tool-track");
+  const card=track?.querySelector<HTMLElement>(".photo-tool-card");
+  if(!track||!card)return;
+  const gap=parseFloat(getComputedStyle(track).columnGap||getComputedStyle(track).gap)||16;
+  const step=card.getBoundingClientRect().width+gap;
+  const max=el.scrollWidth-el.clientWidth;
+  if(direction===-1&&el.scrollLeft<=2)el.scrollLeft=Math.max(0,el.scrollWidth/2-step);
+  el.scrollTo({left:Math.max(0,Math.min(max,el.scrollLeft+direction*step)),behavior:"smooth"});
+ };
  const ordered=order.map(s=>tools.find(t=>t.slug===s)).filter(Boolean);
  const filtered=ordered.filter(t=>toolControls[t!.slug]!==false&&(t!.name+" "+t!.short+" "+t!.category).toLowerCase().includes(query.toLowerCase()));
  return <main className="site-shell">
