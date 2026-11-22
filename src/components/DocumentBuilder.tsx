@@ -75,7 +75,7 @@ useEffect(()=>{let active=true;void(async()=>{try{const supabase=(await import("
             <div className="document-preview-client" style={{background:t.accent,color:"white"}}>
               <small>PREPARED FOR</small>
               <strong>{customer||"Customer name"}</strong>
-              <span>{customerEmail}</span>
+              <span>{[customerEmail,customerAddress].filter(Boolean).join(" · ")}</span>
             </div>
             <div className="document-preview-table">
               <div className="document-preview-table-head"><b>Description</b><b>Qty</b><b>Unit price</b><b>Amount</b></div>
