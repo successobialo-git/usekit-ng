@@ -1395,7 +1395,8 @@ button:focus-visible,a:focus-visible,[role="tab"]:focus-visible{outline-color:#e
  .photo-tool-carousel-shell{position:relative!important;min-width:0!important;}
  .photo-tool-carousel{overflow-x:auto!important;overflow-y:hidden!important;scroll-behavior:smooth!important;scrollbar-width:none!important;touch-action:pan-x!important;-webkit-overflow-scrolling:touch!important;}
  .photo-tool-carousel::-webkit-scrollbar{display:none!important;}
- .photo-tool-track{animation:none!important;}
+ .photo-tool-track{animation:usekit-home-tools-scroll 38s linear infinite!important;}
+ .photo-tool-carousel:active .photo-tool-track{animation-play-state:paused!important;}
  .photo-tool-track .photo-tool-card{background:#343439!important;color:#fff!important;}
  .photo-tool-track .photo-tool-copy{background:#343439!important;color:#fff!important;}
  .photo-tool-track .photo-tool-copy h3{color:#fff!important;}
@@ -1420,3 +1421,5 @@ button:focus-visible,a:focus-visible,[role="tab"]:focus-visible{outline-color:#e
 .quick-export .qr-main-download{border-radius:10px 0 0 10px!important;}
 .qr-download-menu>button{border-radius:0 10px 10px 0!important;}
 .qr-download-menu>div{border-radius:12px!important;}
+
+@media (max-width:650px){.photo-tool-carousel:active .photo-tool-track{animation-play-state:paused!important;}}
