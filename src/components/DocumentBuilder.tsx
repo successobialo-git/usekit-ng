@@ -56,8 +56,11 @@ useEffect(()=>{let active=true;void(async()=>{try{const supabase=(await import("
       <div className="uk-document-preview-overlay" role="dialog" aria-modal="true">
         <div className="uk-document-preview-shell">
           <div className="uk-document-preview-head">
-            <strong>Document preview</strong>
+            <div><strong>{kind==="invoice"?"Invoice":"Quotation"} preview</strong><small>Compare layouts, then download the complete document</small></div>
             <button type="button" onClick={()=>setShowPreview(false)}>Close preview</button>
+          </div>
+          <div className="workspace-preview-templates" aria-label="Choose document template">
+            {templates.map(x=><button type="button" key={x.id} className={template===x.id?"chosen":""} onClick={()=>setTemplate(x.id)}><span className="workspace-template-swatch" style={{background:x.dark}}><i style={{background:x.accent}}/></span><b>{x.name}</b><small>{template===x.id?"Selected":"Use this design"}</small></button>)}
           </div>
           <div className={"document-preview template-"+template} ref={previewRef} style={{background:t.bg}}>
             <header style={{background:t.dark,color:"white"}}>
@@ -66,20 +69,23 @@ useEffect(()=>{let active=true;void(async()=>{try{const supabase=(await import("
                 <strong>{kind.toUpperCase()}</strong>
                 <span>{business||"YOUR BUSINESS"}</span>
               </div>
-              <small>{number}<br/>{issue}</small>
+              <small>{number}<br/>{issue}<br/>{kind==="invoice"?(due?"Due: "+due:""):(validUntil?"Valid until: "+validUntil:"")}</small>
             </header>
+            <div className="document-preview-business-meta">{[businessEmail,businessPhone,businessAddress].filter(Boolean).join(" · ")}</div>
             <div className="document-preview-client" style={{background:t.accent,color:"white"}}>
               <small>PREPARED FOR</small>
               <strong>{customer||"Customer name"}</strong>
               <span>{customerEmail}</span>
             </div>
-            <div className="document-preview-rows">
-              {items.map(x=>(
-                <div key={x.id}>
-                  <span>{x.description||"Service"}</span>
-                  <b>{money((Number(x.qty)||0)*(Number(x.price)||0),currency)}</b>
-                </div>
-              ))}
+            <div className="document-preview-table">
+              <div className="document-preview-table-head"><b>Description</b><b>Qty</b><b>Unit price</b><b>Amount</b></div>
+              {items.map(x=><div className="document-preview-table-row" key={x.id}><span>{x.description||"Service"}</span><span>{x.qty}</span><span>{money(Number(x.price)||0,currency)}</span><b>{money((Number(x.qty)||0)*(Number(x.price)||0),currency)}</b></div>)}
+            </div>
+            <div className="document-preview-totals">
+              <div><span>Subtotal</span><b>{money(subtotal,currency)}</b></div>
+              <div><span>Discount</span><b>−{money(discountValue,currency)}</b></div>
+              <div><span>Tax</span><b>{money(taxValue,currency)}</b></div>
+              <div><span>Additional charges</span><b>{money(Number(shipping)||0,currency)}</b></div>
             </div>
             <div className="document-preview-total" style={{color:t.dark}}>
               TOTAL <strong>{money(total,currency)}</strong>
@@ -98,6 +104,7 @@ useEffect(()=>{let active=true;void(async()=>{try{const supabase=(await import("
                 <p>{x.content}</p>
               </section>
             ))}
+            <section className="document-preview-payment"><strong>Payment details &amp; terms</strong><p>{terms}</p>{bank&&<p>{bank}</p>}{schedule&&<p>{schedule}</p>}</section>
             <footer>{notes||"Thank you for your business."}</footer>
           </div>
           <div className="document-export-actions">
