@@ -1,7 +1,7 @@
 "use client";
 import Link from "next/link";
-import {useEffect,useState} from "react";
-import {BriefcaseBusiness,GraduationCap,Palette,Send,Store,UserRound} from "lucide-react";
+import {useEffect,useRef,useState} from "react";
+import {BriefcaseBusiness,GraduationCap,Palette,Send,Store,UserRound,ArrowLeft,ArrowRight,QrCode,Image as ImageIcon,Receipt,FileUser,MessageCircle} from "lucide-react";
 import QuickToolsPanel from "@/components/QuickToolsPanel";
 import AdSenseUnit from "@/components/AdSenseUnit";
 import {tools} from "@/lib/tools";
@@ -19,8 +19,10 @@ const photos:Record<string,string>={
 };
 export default function Home(){
  const [word,setWord]=useState(0),[typed,setTyped]=useState(""),[deleting,setDeleting]=useState(false),[query,setQuery]=useState(""),[toolControls,setToolControls]=useState<Record<string,boolean>>({});
+ const carouselRef=useRef<HTMLDivElement>(null);
  useEffect(()=>{let active=true;void(async()=>{try{const {data}=await getBrowserSupabase().from("site_settings").select("value").eq("key","tool_controls").maybeSingle();if(active&&data?.value)setToolControls(data.value as Record<string,boolean>);}catch{/* Public tool browsing remains available if settings cannot load. */}})();return()=>{active=false;}},[]);
  useEffect(()=>{const phrase=phrases[word];const delay=!deleting&&typed===phrase?1450:deleting?42:92;const timer=window.setTimeout(()=>{if(!deleting&&typed===phrase){setDeleting(true);return;}if(deleting&&typed===""){setDeleting(false);setWord(v=>(v+1)%phrases.length);return;}setTyped(deleting?phrase.slice(0,Math.max(0,typed.length-1)):phrase.slice(0,typed.length+1));},delay);return()=>window.clearTimeout(timer);},[typed,deleting,word]);
+ useEffect(()=>{const el=carouselRef.current;if(!el)return;let frame=0;let last=0;let paused=false;const tick=(time:number)=>{if(!paused&&time-last>32){el.scrollLeft+=.55;last=time;if(el.scrollLeft>=el.scrollWidth-el.clientWidth-2)el.scrollLeft=0;}frame=requestAnimationFrame(tick);};frame=requestAnimationFrame(tick);const pause=()=>{paused=true;};const resume=()=>{paused=false;};el.addEventListener("pointerdown",pause);el.addEventListener("pointerup",resume);el.addEventListener("pointercancel",resume);el.addEventListener("touchstart",pause,{passive:true});el.addEventListener("touchend",resume,{passive:true});return()=>{cancelAnimationFrame(frame);el.removeEventListener("pointerdown",pause);el.removeEventListener("pointerup",resume);el.removeEventListener("pointercancel",resume);el.removeEventListener("touchstart",pause);el.removeEventListener("touchend",resume);};},[]);
  const ordered=order.map(s=>tools.find(t=>t.slug===s)).filter(Boolean);
  const filtered=ordered.filter(t=>toolControls[t!.slug]!==false&&(t!.name+" "+t!.short+" "+t!.category).toLowerCase().includes(query.toLowerCase()));
  return <main className="site-shell">
@@ -34,7 +36,7 @@ export default function Home(){
   </section>
   <QuickToolsPanel/>
   <section className="toolkit-section" id="toolkit"><div className="toolkit-heading"><div><span className="section-kicker">ALL TOOLS</span><h2>Find your tool.<br/><em>Find your flow.</em></h2></div><div className="toolkit-intro"><p>Practical tools for business, work and everyday life. Choose what you need and get moving.</p><label className="search-control"><input value={query} onChange={e=>setQuery(e.target.value)} placeholder="Search all tools" aria-label="Search tools"/></label></div></div>
-   <div className="photo-tool-carousel" aria-label="Browse UseKit tools"><div className="photo-tool-track">{[0,1].map(copy=>filtered.map((tool,index)=><article className="photo-tool-card" key={`${copy}-${tool!.slug}`} aria-hidden={copy===1?true:undefined}><div className="photo-tool-image"><img src={photos[tool!.slug]} alt="" loading={index>2?"lazy":"eager"}/><span className="photo-tool-shade"/></div><div className="photo-tool-meta"><span className="tool-number">0{index+1}</span><span className="tool-category">{tool!.tag}</span></div><div className="photo-tool-copy"><h3>{tool!.name}</h3><p>{tool!.short}</p><Link className="photo-tool-action" href={"/tools/"+tool!.slug} tabIndex={copy===1?-1:undefined}>Open tool</Link></div></article>))}</div></div>
+   <div className="photo-tool-carousel" aria-label="Browse UseKit tools"><div className="photo-tool-track">{[0,1].map(copy=>filtered.map((tool,index)=><article className="photo-tool-card" key={`${copy}-${tool!.slug}`} aria-hidden={copy===1?true:undefined}><div className="photo-tool-image"><img src={photos[tool!.slug]} alt="" loading={index>2?"lazy":"eager"}/><span className="photo-tool-shade"/><span className="photo-tool-icon">{tool!.slug==="qr-code-generator"?<QrCode/>:tool!.slug==="image-compressor"?<ImageIcon/>:tool!.slug==="cv-generator"?<FileUser/>:tool!.slug==="whatsapp-link-generator"?<MessageCircle/>:<Receipt/>}</span></div><div className="photo-tool-meta"><span className="tool-number">0{index+1}</span><span className="tool-category">{tool!.tag}</span></div><div className="photo-tool-copy"><h3>{tool!.name}</h3><p>{tool!.short}</p><Link className="photo-tool-action" href={"/tools/"+tool!.slug} tabIndex={copy===1?-1:undefined}>Open tool</Link></div></article>))}</div></div>
    {filtered.length===0&&<p className="no-tools">No tools match that search. Try another word.</p>}
    <p className="toolkit-footer"><span>{filtered.length} PRACTICAL TOOLS</span></p>
   </section>
