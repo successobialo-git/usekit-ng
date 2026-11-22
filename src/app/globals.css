@@ -1524,3 +1524,29 @@ button:focus-visible,a:focus-visible,[role="tab"]:focus-visible{outline-color:#e
 .photo-tool-carousel-controls .photo-tool-arrow:hover{background:#f06a83!important}
 @media(max-width:760px){.photo-tool-carousel-controls{margin-top:16px!important}.photo-tool-carousel{touch-action:pan-x pan-y!important;overscroll-behavior-x:contain!important}}
 @media(min-width:761px){.photo-tool-carousel{overflow-x:auto!important}.photo-tool-carousel-controls{margin-top:20px!important}}
+
+
+/* Subtle image wash at the top of the homepage hero, fading into its existing palette. */
+.center-hero.home-hero{isolation:isolate!important;position:relative!important;overflow:hidden!important}
+.center-hero.home-hero:after{
+ content:""!important;
+ position:absolute!important;
+ z-index:0!important;
+ pointer-events:none!important;
+ top:0!important;
+ left:0!important;
+ right:0!important;
+ height:72%!important;
+ background-image:
+  linear-gradient(180deg,rgba(255,247,248,.84) 0%,rgba(255,249,248,.91) 42%,rgba(255,249,248,.98) 76%,rgba(255,249,248,1) 100%),
+  url("https://images.pexels.com/photos/10375968/pexels-photo-10375968.jpeg?auto=compress&cs=tinysrgb&w=1600")!important;
+ background-size:cover!important;
+ background-position:center 38%!important;
+ opacity:.52!important;
+ -webkit-mask-image:linear-gradient(to bottom,#000 0%,#000 38%,rgba(0,0,0,.65) 66%,transparent 100%)!important;
+ mask-image:linear-gradient(to bottom,#000 0%,#000 38%,rgba(0,0,0,.65) 66%,transparent 100%)!important;
+}
+.center-hero.home-hero>*{position:relative!important;z-index:1!important}
+@media(max-width:760px){
+ .center-hero.home-hero:after{height:66%!important;background-position:center 35%!important;opacity:.42!important}
+}
