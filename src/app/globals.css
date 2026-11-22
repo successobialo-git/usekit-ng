@@ -1731,3 +1731,21 @@ button:focus-visible,a:focus-visible,[role="tab"]:focus-visible{outline-color:#e
  #mobile-site-menu .mobile-nav-close{background:#e92b50!important;color:#fff!important;border:0!important}
  #mobile-site-menu .mobile-nav-close svg{stroke:#fff!important}
 }
+
+/* Carousel reliability: remove mandatory snapping that was fighting both RAF and arrows. */
+.photo-tool-carousel{
+ overflow-x:auto!important;overflow-y:hidden!important;
+ scroll-snap-type:none!important;scroll-behavior:auto!important;
+ overscroll-behavior-x:contain!important;
+}
+.photo-tool-track{display:flex!important;flex-flow:row nowrap!important;animation:none!important;transform:none!important}
+.photo-tool-track .photo-tool-card{scroll-snap-align:none!important}
+.photo-tool-carousel-controls,.photo-tool-carousel-controls .photo-tool-arrow{
+ pointer-events:auto!important;visibility:visible!important;opacity:1!important;
+}
+.photo-tool-carousel-controls .photo-tool-arrow{position:relative!important;z-index:60!important;cursor:pointer!important}
+@media(max-width:760px){
+ .hero-description-desktop{display:none!important}
+ .hero-description-mobile{display:inline!important}
+}
+@media(min-width:761px){.hero-description-mobile{display:none!important}}
