@@ -2156,3 +2156,17 @@ button:focus-visible,a:focus-visible,[role="tab"]:focus-visible{outline-color:#e
  .workspace-v2-tool .document-summary{position:static!important}
  .workspace-v2-tool .cv-preview-template-picker{grid-template-columns:minmax(0,1fr)!important}
 }
+
+/* CV preview customisation: selected accent carries through every layout. */
+.cv-preview-customize{display:flex;align-items:center;justify-content:flex-end;gap:10px;width:min(100%,900px);margin:0 auto 12px;padding:10px 13px;border:1px solid #45434d;border-radius:11px;background:#24242b;color:#e9e4eb;font-size:11px}
+.cv-preview-customize label{font-weight:650;color:#ddd6df}
+.cv-preview-customize input[type=color]{width:34px;height:28px;padding:2px;border:1px solid #57515b;border-radius:7px;background:#303038;cursor:pointer}
+.cv-preview-customize span{font-size:10px;color:#c8c0ca;font-variant-numeric:tabular-nums}
+.cv-preview-customize button{padding:6px 10px;border:1px solid #504a54;border-radius:7px;background:#333139;color:#f3edf3;font-size:10px;cursor:pointer}
+.cv-paper .cv-modern-main section h4,.cv-paper .cv-executive-preview section h4{color:var(--cv-accent)!important}
+.cv-paper .cv-executive-preview header{border-bottom:3px solid var(--cv-accent)!important}
+.cv-paper.ats>header{border-bottom:2px solid var(--cv-accent)!important}
+.cv-paper.ats section h4{color:var(--cv-accent)!important;border-bottom-color:var(--cv-accent)!important}
+.cv-paper.modern .cv-modern-preview aside{border-top:5px solid var(--cv-accent)!important}
+.cv-paper.modern .cv-modern-main section h4{border-bottom:1px solid color-mix(in srgb,var(--cv-accent),transparent 55%)!important}
+@media(max-width:650px){.cv-preview-customize{justify-content:flex-start;flex-wrap:wrap}.cv-preview-customize label{flex-basis:100%}}
