@@ -1592,3 +1592,24 @@ button:focus-visible,a:focus-visible,[role="tab"]:focus-visible{outline-color:#e
  .home-hero h1{font-size:clamp(40px,10vw,54px)!important;line-height:1.03!important}
  .home-hero h1 .hero-changing{font-size:clamp(31px,8.35vw,42px)!important}
 }
+
+
+/* Hard-targeted final overrides. These selectors intentionally target the actual rendered elements. */
+#qr-export-control{display:flex!important;align-items:stretch!important;justify-content:flex-start!important;gap:0!important;position:relative!important;overflow:visible!important;border-radius:0!important}
+#qr-export-control>.qr-main-download{border-radius:0!important;border-top-left-radius:0!important;border-top-right-radius:0!important;border-bottom-left-radius:0!important;border-bottom-right-radius:0!important;clip-path:inset(0)!important;-webkit-clip-path:inset(0)!important;margin:0!important}
+#qr-export-control>.qr-download-menu{position:relative!important;display:flex!important;flex:0 0 42px!important;margin:0!important;padding:0!important}
+#qr-export-control>.qr-download-menu>button{width:100%!important;height:auto!important;min-height:42px!important;border-radius:0!important;border-top-left-radius:0!important;border-top-right-radius:0!important;border-bottom-left-radius:0!important;border-bottom-right-radius:0!important;clip-path:inset(0)!important;-webkit-clip-path:inset(0)!important;margin:0!important}
+#qr-export-control>.qr-download-menu>div{top:100%!important;right:0!important;left:auto!important;margin:0!important;transform:none!important;border-radius:0 0 10px 10px!important;border-top-left-radius:0!important;border-top-right-radius:0!important;z-index:999!important}
+.home-hero.home-hero{isolation:isolate!important;position:relative!important;overflow:hidden!important}
+.home-hero .home-hero-image-overlay{position:absolute!important;inset:0 0 auto!important;height:78%!important;z-index:0!important;pointer-events:none!important;background-image:linear-gradient(180deg,rgba(255,247,248,.76) 0%,rgba(255,249,248,.82) 38%,rgba(255,249,248,.94) 72%,rgba(255,249,248,1) 100%),url("https://images.pexels.com/photos/10375968/pexels-photo-10375968.jpeg?auto=compress&cs=tinysrgb&w=1600")!important;background-size:cover!important;background-position:center 38%!important;opacity:.82!important}
+.home-hero>*:not(.home-hero-image-overlay){position:relative!important;z-index:1!important}
+.photo-tool-carousel{scroll-behavior:smooth!important;overflow-x:auto!important;overflow-y:hidden!important;scrollbar-width:none!important}
+.photo-tool-carousel::-webkit-scrollbar{display:none!important}
+.photo-tool-carousel-controls{position:relative!important;z-index:20!important;pointer-events:auto!important}
+.photo-tool-carousel-controls button{pointer-events:auto!important;cursor:pointer!important}
+@media(max-width:760px){
+ .home-hero .home-hero-image-overlay{height:74%!important;background-position:center 35%!important;opacity:.68!important}
+ .mobile-nav-panel{position:fixed!important;top:0!important;left:0!important;right:0!important;bottom:14px!important;height:auto!important;min-height:0!important;width:100vw!important;max-width:none!important;border-radius:0 0 24px 24px!important;overflow-y:auto!important;padding:calc(env(safe-area-inset-top) + 22px) 26px 30px!important}
+ .mobile-nav-close{display:grid!important;place-items:center!important;background:#e92b50!important;color:#fff!important;border:0!important;border-radius:50%!important;width:42px!important;height:42px!important}
+ .mobile-nav-close svg{stroke:#fff!important}
+}
