@@ -1369,7 +1369,7 @@ button:focus-visible,a:focus-visible,[role="tab"]:focus-visible{outline-color:#e
   .photo-tool-carousel { width: 100% !important; overflow: hidden !important; }
   .photo-tool-track { display: flex !important; align-items: stretch !important; gap: 16px !important; width: max-content !important; padding: 0 2px 10px !important; animation: usekit-home-tools-scroll 52s linear infinite !important; will-change: transform; }
   .photo-tool-carousel:hover .photo-tool-track { animation-play-state: paused !important; }
-  .photo-tool-track .photo-tool-card { flex: 0 0 clamp(390px, 43vw, 520px) !important; width: clamp(390px, 43vw, 520px) !important; min-width: clamp(390px, 43vw, 520px) !important; }
+  .photo-tool-track .photo-tool-card { flex: 0 0 clamp(300px, 40vw, 520px) !important; width: clamp(300px, 40vw, 520px) !important; min-width: clamp(300px, 40vw, 520px) !important; }
   .qr-download-menu>div { top: calc(100% + 6px) !important; right: 0 !important; left: auto !important; transform: none !important; transform-origin: top right !important; border-radius: 12px !important; }
 }
 @keyframes usekit-home-tools-scroll { from { transform: translateX(0); } to { transform: translateX(-50%); } }
