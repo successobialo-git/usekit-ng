@@ -1715,3 +1715,19 @@ button:focus-visible,a:focus-visible,[role="tab"]:focus-visible{outline-color:#e
 /* Restore the original white arrow glyphs. */
 .photo-tool-carousel-controls .photo-tool-arrow svg{stroke:#fff!important;color:#fff!important}
 .photo-tool-carousel-controls .photo-tool-arrow{color:#fff!important}
+
+/* Restore continuous carousel auto-scroll on desktop and mobile. */
+.photo-tool-carousel{scroll-behavior:auto!important;overflow-x:auto!important;overflow-y:hidden!important}
+.photo-tool-track{animation:none!important;transform:none!important}
+@media(max-width:760px){.photo-tool-carousel{scroll-behavior:auto!important;touch-action:pan-x pan-y!important}}
+
+/* Mobile menu: light panel, no divider immediately under MENU, taller links. */
+@media(max-width:760px){
+ #mobile-site-menu.mobile-nav-panel{background:#fff!important;color:#202024!important}
+ #mobile-site-menu .mobile-nav-head{border:0!important;border-bottom:0!important;margin-bottom:12px!important;padding-bottom:0!important}
+ #mobile-site-menu .mobile-nav-head>span{color:#555!important}
+ #mobile-site-menu>a{min-height:62px!important;height:62px!important;flex:0 0 62px!important;color:#202024!important}
+ #mobile-site-menu>a.is-active{color:#e92b50!important}
+ #mobile-site-menu .mobile-nav-close{background:#e92b50!important;color:#fff!important;border:0!important}
+ #mobile-site-menu .mobile-nav-close svg{stroke:#fff!important}
+}
