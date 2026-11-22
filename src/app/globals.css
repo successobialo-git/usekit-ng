@@ -2094,3 +2094,10 @@ button:focus-visible,a:focus-visible,[role="tab"]:focus-visible{outline-color:#e
 .workspace-v2-tool .tool-app-top>button{min-height:42px!important;padding:10px 16px!important;border:0!important;border-radius:10px!important;background:#e92b50!important;color:#fff!important;font-weight:700!important}
 @media(max-width:900px){.workspace-v2-tool .qr-live-preview{position:static!important}}
 @media(max-width:520px){.workspace-v2-tool .qr-stepper-tabs{gap:5px!important}.workspace-v2-tool .qr-stepper-tabs button{font-size:10px!important;padding:8px 4px!important}.workspace-v2-tool .qr-live-paper{min-height:250px!important;padding:14px!important}}
+
+.workspace-v2-tool .document-preview-customize{display:grid!important;gap:8px!important;margin:0 0 16px!important;padding:13px 15px!important;border:1px solid #4a4650!important;border-radius:11px!important;background:#29292f!important}
+.workspace-v2-tool .document-preview-customize>label{font-size:11px!important;font-weight:700!important;color:#eee!important}
+.workspace-v2-tool .document-preview-customize>div{display:flex!important;align-items:center!important;gap:10px!important;min-width:0!important}
+.workspace-v2-tool .document-preview-customize input[type=color]{flex:0 0 42px!important;width:42px!important;height:36px!important;min-height:36px!important}
+.workspace-v2-tool .document-preview-customize span{font-size:11px!important;color:#c9c3ca!important}
+.workspace-v2-tool .document-preview-customize button{margin-left:auto!important;padding:8px 10px!important;border:1px solid #514c55!important;border-radius:8px!important;background:#39393f!important;color:#e8e3e8!important;font-size:10px!important}
