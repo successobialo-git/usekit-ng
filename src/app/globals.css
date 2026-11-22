@@ -1753,3 +1753,17 @@ button:focus-visible,a:focus-visible,[role="tab"]:focus-visible{outline-color:#e
 
 /* Mobile hamburger button: white background */
 @media(max-width:760px){.mobile-menu-toggle{background:#fff!important;background-color:#fff!important;border:1px solid #e8e8e8!important;color:#e92b50!important;}}
+
+/* Mobile menu links: individual soft-dark full-width tabs, with a pink active tab. */
+@media(max-width:760px){
+ #mobile-site-menu>a{
+  display:flex!important;align-items:center!important;width:100%!important;box-sizing:border-box!important;
+  margin:0 0 9px!important;padding:0 15px!important;height:62px!important;min-height:62px!important;flex:0 0 62px!important;
+  border:0!important;border-radius:10px!important;background:rgba(48,48,55,.92)!important;
+  color:#c5c3c8!important;font-size:16px!important;font-weight:600!important;
+ }
+ #mobile-site-menu>a.is-active{
+  background:#e92b50!important;color:#f8e9ed!important;border:0!important;
+ }
+ #mobile-site-menu>a:last-child{margin-bottom:0!important}
+}
