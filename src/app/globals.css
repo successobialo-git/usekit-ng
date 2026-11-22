@@ -1585,3 +1585,10 @@ button:focus-visible,a:focus-visible,[role="tab"]:focus-visible{outline-color:#e
  .mobile-nav-close svg{stroke:#fff!important}
  .mobile-nav-head{margin-bottom:22px!important}
 }
+
+
+/* Slightly balance the static mobile hero heading against the typing line. */
+@media(max-width:760px){
+ .home-hero h1{font-size:clamp(40px,10vw,54px)!important;line-height:1.03!important}
+ .home-hero h1 .hero-changing{font-size:clamp(31px,8.35vw,42px)!important}
+}
