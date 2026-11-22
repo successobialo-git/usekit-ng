@@ -1513,3 +1513,14 @@ button:focus-visible,a:focus-visible,[role="tab"]:focus-visible{outline-color:#e
  .quick-export .qr-main-download,.quick-export .qr-download-menu>button{border-radius:0!important}
  .quick-export .qr-download-menu>div{top:100%!important;margin-top:0!important;border-radius:0 0 10px 10px!important}
 }
+
+
+/* Carousel interaction reliability: keep controls above surrounding layout and clickable. */
+.photo-tool-carousel-shell{position:relative!important;display:block!important;overflow:visible!important;min-width:0!important}
+.photo-tool-carousel{position:relative!important;z-index:1!important;display:block!important;overflow-x:auto!important;overflow-y:hidden!important;scrollbar-width:none!important;-webkit-overflow-scrolling:touch!important}
+.photo-tool-carousel-controls{position:relative!important;z-index:5!important;display:flex!important;align-items:center!important;justify-content:center!important;gap:14px!important;width:100%!important;margin:18px auto 0!important;pointer-events:auto!important}
+.photo-tool-carousel-controls .photo-tool-arrow{position:static!important;display:grid!important;place-items:center!important;flex:0 0 40px!important;width:40px!important;height:40px!important;margin:0!important;padding:0!important;transform:none!important;pointer-events:auto!important;cursor:pointer!important;z-index:6!important;color:#fff!important;background:#e92b50!important;border:0!important;border-radius:50%!important}
+.photo-tool-carousel-controls .photo-tool-arrow svg{width:19px!important;height:19px!important;stroke:#fff!important;pointer-events:none!important}
+.photo-tool-carousel-controls .photo-tool-arrow:hover{background:#f06a83!important}
+@media(max-width:760px){.photo-tool-carousel-controls{margin-top:16px!important}.photo-tool-carousel{touch-action:pan-x pan-y!important;overscroll-behavior-x:contain!important}}
+@media(min-width:761px){.photo-tool-carousel{overflow-x:auto!important}.photo-tool-carousel-controls{margin-top:20px!important}}
