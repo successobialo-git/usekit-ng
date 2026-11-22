@@ -1,6 +1,6 @@
 "use client";
 import Link from "next/link";
-import {useEffect,useState} from "react";
+import {useEffect,useRef,useState} from "react";
 import {BriefcaseBusiness,GraduationCap,Palette,Send,Store,UserRound} from "lucide-react";
 import QuickToolsPanel from "@/components/QuickToolsPanel";
 import AdSenseUnit from "@/components/AdSenseUnit";
@@ -19,13 +19,14 @@ const photos:Record<string,string>={
 };
 export default function Home(){
  const [word,setWord]=useState(0),[typed,setTyped]=useState(""),[deleting,setDeleting]=useState(false),[query,setQuery]=useState(""),[toolControls,setToolControls]=useState<Record<string,boolean>>({});
+ const toolsCarouselRef=useRef<HTMLDivElement>(null);
  useEffect(()=>{let active=true;void(async()=>{try{const {data}=await getBrowserSupabase().from("site_settings").select("value").eq("key","tool_controls").maybeSingle();if(active&&data?.value)setToolControls(data.value as Record<string,boolean>);}catch{/* Public tool browsing remains available if settings cannot load. */}})();return()=>{active=false;}},[]);
  useEffect(()=>{const phrase=phrases[word];const delay=!deleting&&typed===phrase?1450:deleting?42:92;const timer=window.setTimeout(()=>{if(!deleting&&typed===phrase){setDeleting(true);return;}if(deleting&&typed===""){setDeleting(false);setWord(v=>(v+1)%phrases.length);return;}setTyped(deleting?phrase.slice(0,Math.max(0,typed.length-1)):phrase.slice(0,typed.length+1));},delay);return()=>window.clearTimeout(timer);},[typed,deleting,word]);
  const ordered=order.map(s=>tools.find(t=>t.slug===s)).filter(Boolean);
  const filtered=ordered.filter(t=>toolControls[t!.slug]!==false&&(t!.name+" "+t!.short+" "+t!.category).toLowerCase().includes(query.toLowerCase()));
  return <main className="site-shell">
   <section className="center-hero home-hero">
-    <h1><span className="hero-desktop-copy">Make everyday work<br/>feel <em className="hero-changing">{typed}<span className="type-cursor">|</span></em>.</span><span className="hero-mobile-copy"><span className="hero-line-one">Make everyday</span><span className="hero-line-two">work feel</span><em className="hero-changing">{typed}<span className="type-cursor">|</span></em>.</span></h1>
+    <h1><span className="hero-desktop-copy">Make everyday work<br/>feel <em className="hero-changing">{typed}<span className="type-cursor">|</span></em>.</span><span className="hero-mobile-copy"><span className="hero-line-one">Make everyday</span><span className="hero-line-two">work feel</span><span className="hero-typing-line"><em className="hero-changing">{typed}<span className="type-cursor">|</span></em><span className="hero-typing-period">.</span></span></span></h1>
     <p>Create invoices and quotations, build a stronger CV, compress images and PDFs, make QR codes and more, all with simple tools designed to help you get things done.</p>
     <div className="center-actions"><a className="button-blue hero-primary" href="#quick-tools">Get started for free <span><Send size={17} strokeWidth={2.2}/></span></a><a className="quiet-link" href="#toolkit">Explore tools</a></div>
     <div className="home-proof" aria-label="Tools for small businesses, freelancers, job seekers, creators and students">
@@ -34,7 +35,7 @@ export default function Home(){
   </section>
   <QuickToolsPanel/>
   <section className="toolkit-section" id="toolkit"><div className="toolkit-heading"><div><span className="section-kicker">ALL TOOLS</span><h2>Find your tool.<br/><em>Find your flow.</em></h2></div><div className="toolkit-intro"><p>Practical tools for business, work and everyday life. Choose what you need and get moving.</p><label className="search-control"><input value={query} onChange={e=>setQuery(e.target.value)} placeholder="Search all tools" aria-label="Search tools"/></label></div></div>
-   <div className="photo-tool-carousel" aria-label="Browse UseKit tools"><div className="photo-tool-track">{[0,1].map(copy=>filtered.map((tool,index)=><article className="photo-tool-card" key={`${copy}-${tool!.slug}`} aria-hidden={copy===1?true:undefined}><div className="photo-tool-image"><img src={photos[tool!.slug]} alt="" loading={index>2?"lazy":"eager"}/><span className="photo-tool-shade"/></div><div className="photo-tool-meta"><span className="tool-number">0{index+1}</span><span className="tool-category">{tool!.tag}</span></div><div className="photo-tool-copy"><h3>{tool!.name}</h3><p>{tool!.short}</p><Link className="photo-tool-action" href={"/tools/"+tool!.slug} tabIndex={copy===1?-1:undefined}>Open tool</Link></div></article>))}</div></div>
+   <div className="photo-tool-carousel-shell"><button type="button" className="photo-tool-arrow photo-tool-arrow-left" aria-label="Previous tools" onClick={()=>toolsCarouselRef.current?.scrollBy({left:-420,behavior:"smooth"})}>‹</button><div className="photo-tool-carousel" aria-label="Browse UseKit tools" ref={toolsCarouselRef}><div className="photo-tool-track">{[0,1].map(copy=>filtered.map((tool,index)=><article className="photo-tool-card" key={`${copy}-${tool!.slug}`} aria-hidden={copy===1?true:undefined}><div className="photo-tool-image"><img src={photos[tool!.slug]} alt="" loading={index>2?"lazy":"eager"}/><span className="photo-tool-shade"/></div><div className="photo-tool-meta"><span className="tool-number">0{index+1}</span><span className="tool-category">{tool!.tag}</span></div><div className="photo-tool-copy"><h3>{tool!.name}</h3><p>{tool!.short}</p><Link className="photo-tool-action" href={"/tools/"+tool!.slug} tabIndex={copy===1?-1:undefined}>Open tool</Link></div></article>))}</div></div><button type="button" className="photo-tool-arrow photo-tool-arrow-right" aria-label="Next tools" onClick={()=>toolsCarouselRef.current?.scrollBy({left:420,behavior:"smooth"})}>›</button></div>
    {filtered.length===0&&<p className="no-tools">No tools match that search. Try another word.</p>}
    <p className="toolkit-footer"><span>{filtered.length} PRACTICAL TOOLS</span></p>
   </section>

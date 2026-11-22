@@ -1378,3 +1378,45 @@ button:focus-visible,a:focus-visible,[role="tab"]:focus-visible{outline-color:#e
 @media (prefers-reduced-motion: reduce) { .photo-tool-track { animation: none !important; } }
 
 @media (min-width: 651px) { .home-hero h1 .hero-desktop-copy { display: inline !important; } .home-hero h1 .hero-mobile-copy { display: none !important; } }
+
+
+/* Focused follow-up: mobile drawer, typing line, QR download control and tool carousel. */
+@media (max-width:650px){
+ .mobile-nav-panel{left:0!important;right:auto!important;top:0!important;bottom:0!important;width:100vw!important;max-width:none!important;height:100dvh!important;min-height:100dvh!important;padding:calc(env(safe-area-inset-top) + 94px) 26px 32px!important;background:#202024!important;color:#fff!important;border-radius:0!important;box-shadow:none!important;transform:none!important;}
+ .mobile-nav-panel a{color:#fff!important;border-bottom:1px solid #3b3b40!important;font-size:18px!important;min-height:62px!important;}
+ .mobile-nav-panel a.is-active{color:#f06a83!important;}
+ .mobile-nav-backdrop{background:rgba(10,10,12,.64)!important;}
+ .mobile-menu-toggle{background:#242429!important;background-color:#242429!important;border:1px solid #3c3c42!important;color:#e92b50!important;}
+ .mobile-menu-toggle span{background:#e92b50!important;}
+ .site-header .nav-wrap>.brand .brand-word{font-size:15px!important;letter-spacing:.075em!important;}
+ .home-hero h1 .hero-typing-line{display:block!important;white-space:nowrap!important;max-width:100%!important;}
+ .home-hero h1 .hero-changing{display:inline-block!important;vertical-align:baseline!important;white-space:nowrap!important;font-size:clamp(20px,6.1vw,32px)!important;line-height:1.1!important;letter-spacing:-.045em!important;max-width:100%!important;}
+ .home-hero h1 .hero-typing-period{display:inline!important;white-space:nowrap!important;font-size:inherit!important;}
+ .photo-tool-carousel-shell{position:relative!important;min-width:0!important;}
+ .photo-tool-carousel{overflow-x:auto!important;overflow-y:hidden!important;scroll-behavior:smooth!important;scrollbar-width:none!important;touch-action:pan-x!important;-webkit-overflow-scrolling:touch!important;}
+ .photo-tool-carousel::-webkit-scrollbar{display:none!important;}
+ .photo-tool-track{animation:none!important;}
+ .photo-tool-track .photo-tool-card{background:#343439!important;color:#fff!important;}
+ .photo-tool-track .photo-tool-copy{background:#343439!important;color:#fff!important;}
+ .photo-tool-track .photo-tool-copy h3{color:#fff!important;}
+ .photo-tool-track .photo-tool-copy p{color:#c6c6cb!important;}
+ .photo-tool-arrow{display:none!important;}
+ .site-footer .brand-word,.footer-inner .brand-word,[class*="footer"] .brand-word{font-size:15px!important;letter-spacing:.075em!important;}
+}
+@media (min-width:651px){
+ .photo-tool-carousel-shell{position:relative!important;min-width:0!important;}
+ .photo-tool-carousel{overflow-x:auto!important;overflow-y:hidden!important;scrollbar-width:none!important;scroll-behavior:smooth!important;}
+ .photo-tool-carousel::-webkit-scrollbar{display:none!important;}
+ .photo-tool-track .photo-tool-card{background:#343439!important;color:#fff!important;}
+ .photo-tool-track .photo-tool-copy{background:#343439!important;color:#fff!important;}
+ .photo-tool-track .photo-tool-copy h3{color:#fff!important;}
+ .photo-tool-track .photo-tool-copy p{color:#c6c6cb!important;}
+ .photo-tool-arrow{position:absolute!important;top:50%!important;z-index:8!important;display:flex!important;align-items:center!important;justify-content:center!important;width:38px!important;height:38px!important;border:0!important;border-radius:50%!important;background:#e92b50!important;color:#242429!important;font-size:28px!important;line-height:1!important;font-weight:700!important;box-shadow:0 4px 14px rgba(0,0,0,.16)!important;cursor:pointer!important;transform:translateY(-50%)!important;}
+ .photo-tool-arrow-left{left:9px!important;}
+ .photo-tool-arrow-right{right:9px!important;}
+ .photo-tool-arrow:hover{background:#f06a83!important;}
+}
+/* Square the joined QR download controls so their top edge cannot form a stray curved lip. */
+.quick-export .qr-main-download{border-radius:10px 0 0 10px!important;}
+.qr-download-menu>button{border-radius:0 10px 10px 0!important;}
+.qr-download-menu>div{border-radius:12px!important;}
