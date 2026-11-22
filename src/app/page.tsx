@@ -25,7 +25,7 @@ export default function Home(){
  const filtered=ordered.filter(t=>toolControls[t!.slug]!==false&&(t!.name+" "+t!.short+" "+t!.category).toLowerCase().includes(query.toLowerCase()));
  return <main className="site-shell">
   <section className="center-hero home-hero">
-    <h1>Make everyday work<br/>feel <em className="hero-changing">{typed}<span className="type-cursor">|</span></em>.</h1>
+    <h1><span className="hero-line-one">Make everyday</span> <span className="hero-line-two">work feel</span> <em className="hero-changing">{typed}<span className="type-cursor">|</span></em>.</h1>
     <p>Create invoices and quotations, build a stronger CV, compress images and PDFs, make QR codes and more, all with simple tools designed to help you get things done.</p>
     <div className="center-actions"><a className="button-blue hero-primary" href="#quick-tools">Get started for free <span><Send size={17} strokeWidth={2.2}/></span></a><a className="quiet-link" href="#toolkit">Explore tools</a></div>
     <div className="home-proof" aria-label="Tools for small businesses, freelancers, job seekers, creators and students">
@@ -34,7 +34,7 @@ export default function Home(){
   </section>
   <QuickToolsPanel/>
   <section className="toolkit-section" id="toolkit"><div className="toolkit-heading"><div><span className="section-kicker">ALL TOOLS</span><h2>Find your tool.<br/><em>Find your flow.</em></h2></div><div className="toolkit-intro"><p>Practical tools for business, work and everyday life. Choose what you need and get moving.</p><label className="search-control"><input value={query} onChange={e=>setQuery(e.target.value)} placeholder="Search all tools" aria-label="Search tools"/></label></div></div>
-   <div className="photo-tool-grid">{filtered.map((tool,index)=><article className="photo-tool-card" key={tool!.slug}><div className="photo-tool-image"><img src={photos[tool!.slug]} alt="" loading={index>2?"lazy":"eager"}/><span className="photo-tool-shade"/></div><div className="photo-tool-meta"><span className="tool-number">0{index+1}</span><span className="tool-category">{tool!.tag}</span></div><div className="photo-tool-copy"><h3>{tool!.name}</h3><p>{tool!.short}</p><Link className="photo-tool-action" href={"/tools/"+tool!.slug}>Open tool</Link></div></article>)}</div>
+   <div className="photo-tool-carousel" aria-label="Browse UseKit tools"><div className="photo-tool-track">{[0,1].map(copy=>filtered.map((tool,index)=><article className="photo-tool-card" key={`${copy}-${tool!.slug}`} aria-hidden={copy===1?true:undefined}><div className="photo-tool-image"><img src={photos[tool!.slug]} alt="" loading={index>2?"lazy":"eager"}/><span className="photo-tool-shade"/></div><div className="photo-tool-meta"><span className="tool-number">0{index+1}</span><span className="tool-category">{tool!.tag}</span></div><div className="photo-tool-copy"><h3>{tool!.name}</h3><p>{tool!.short}</p><Link className="photo-tool-action" href={"/tools/"+tool!.slug} tabIndex={copy===1?-1:undefined}>Open tool</Link></div></article>))}</div></div>
    {filtered.length===0&&<p className="no-tools">No tools match that search. Try another word.</p>}
    <p className="toolkit-footer"><span>{filtered.length} PRACTICAL TOOLS</span></p>
   </section>
