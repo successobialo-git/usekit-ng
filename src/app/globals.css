@@ -1844,3 +1844,18 @@ button:focus-visible,a:focus-visible,[role="tab"]:focus-visible{outline-color:#e
 .workspace-v2-tool .document-stepper button.current b{color:#fff!important}
 .workspace-v2-tool .document-stepper button.complete b{color:#f2a4b4!important}
 @media(max-width:760px){.workspace-v2-tool .document-stepper{overflow-x:auto!important}.workspace-v2-tool .document-stepper button{flex:0 0 auto!important;min-width:112px!important}}
+
+/* Final mobile homepage menu icon treatment: solid accent circles and CTA paper-plane mark. */
+@media(max-width:760px){
+ #mobile-site-menu>a:after{
+  content:""!important;display:block!important;flex:0 0 28px!important;width:28px!important;height:28px!important;
+  margin-left:auto!important;border:0!important;border-radius:50%!important;
+  background-color:#e92b50!important;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23ffffff' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m22 2-7 20-4-9-9-4Z'/%3E%3Cpath d='M22 2 11 13'/%3E%3C/svg%3E")!important;
+  background-repeat:no-repeat!important;background-position:center!important;background-size:15px 15px!important;
+ }
+ #mobile-site-menu>a.is-active:after{
+  background-color:#29292f!important;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23f06a83' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m22 2-7 20-4-9-9-4Z'/%3E%3Cpath d='M22 2 11 13'/%3E%3C/svg%3E")!important;
+ }
+}
