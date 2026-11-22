@@ -1467,3 +1467,28 @@ button:focus-visible,a:focus-visible,[role="tab"]:focus-visible{outline-color:#e
  .quick-export .qr-download-menu>button{border-radius:0 10px 0 0!important}
 }
 @media(min-width:651px){.photo-tool-arrow{display:flex!important}}
+
+
+/* Latest requested refinements: one close control, full-width drawer, readable hero and carousel controls below cards. */
+@media(max-width:650px){
+ .mobile-nav-panel{width:100vw!important;max-width:none!important;left:0!important;right:0!important;top:0!important;bottom:0!important;height:100dvh!important;min-height:100dvh!important;padding:0 24px 28px!important;margin:0!important;border-radius:0!important;box-shadow:none!important;gap:0!important}
+ .mobile-nav-panel a{min-height:62px!important;padding:0 2px!important;border:0!important;border-bottom:1px solid rgba(233,43,80,.18)!important;border-radius:0!important;color:#f4f0f2!important;font-size:17px!important;font-weight:600!important;letter-spacing:.005em!important}
+ .mobile-nav-panel a.is-active{color:#f06a83!important}
+ .mobile-nav-panel a:last-child{border-bottom:0!important}
+ .mobile-menu-toggle[aria-expanded=true] span:nth-child(1){transform:translateY(6px) rotate(45deg)!important}
+ .mobile-menu-toggle[aria-expanded=true] span:nth-child(2){opacity:0!important}
+ .mobile-menu-toggle[aria-expanded=true] span:nth-child(3){transform:translateY(-6px) rotate(-45deg)!important}
+ .home-hero h1 .hero-changing{font-size:clamp(30px,8.1vw,41px)!important;letter-spacing:-.055em!important;line-height:1.02!important;white-space:nowrap!important}
+ .photo-tool-carousel{overflow-x:auto!important;overflow-y:hidden!important;touch-action:pan-x pan-y!important;overscroll-behavior-x:contain!important;scroll-behavior:auto!important;-webkit-overflow-scrolling:touch!important}
+ .photo-tool-track{animation:none!important;transform:none!important;will-change:auto!important}
+ .photo-tool-icon{color:#fff!important}
+ .photo-tool-carousel-controls{display:flex!important;justify-content:center!important;align-items:center!important;gap:14px!important;margin:18px auto 0!important;position:relative!important}
+ .photo-tool-arrow{position:static!important;display:grid!important;place-items:center!important;width:40px!important;height:40px!important;transform:none!important;background:#e92b50!important;color:#fff!important}
+}
+@media(min-width:651px){
+ .photo-tool-carousel{overflow-x:auto!important;overflow-y:hidden!important;scroll-behavior:auto!important}
+ .photo-tool-track{animation:none!important;transform:none!important;will-change:auto!important}
+ .photo-tool-icon{color:#fff!important}
+ .photo-tool-carousel-controls{display:flex!important;justify-content:center!important;align-items:center!important;gap:14px!important;margin:20px auto 0!important;position:relative!important}
+ .photo-tool-arrow{position:static!important;display:grid!important;place-items:center!important;width:40px!important;height:40px!important;transform:none!important;background:#e92b50!important;color:#fff!important}
+}
