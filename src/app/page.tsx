@@ -1,7 +1,7 @@
 "use client";
 import Link from "next/link";
-import {useEffect,useState} from "react";
-import {BriefcaseBusiness,GraduationCap,Palette,Send,Store,UserRound} from "lucide-react";
+import {useEffect,useRef,useState} from "react";
+import {BriefcaseBusiness,GraduationCap,Palette,Send,Store,UserRound,ArrowLeft,ArrowRight,QrCode,Image as ImageIcon,Receipt,FileUser,MessageCircle} from "lucide-react";
 import QuickToolsPanel from "@/components/QuickToolsPanel";
 import AdSenseUnit from "@/components/AdSenseUnit";
 import {tools} from "@/lib/tools";
@@ -19,14 +19,63 @@ const photos:Record<string,string>={
 };
 export default function Home(){
  const [word,setWord]=useState(0),[typed,setTyped]=useState(""),[deleting,setDeleting]=useState(false),[query,setQuery]=useState(""),[toolControls,setToolControls]=useState<Record<string,boolean>>({});
+ const carouselRef=useRef<HTMLDivElement>(null);
+ const carouselPauseRef=useRef<()=>void>(()=>{});
  useEffect(()=>{let active=true;void(async()=>{try{const {data}=await getBrowserSupabase().from("site_settings").select("value").eq("key","tool_controls").maybeSingle();if(active&&data?.value)setToolControls(data.value as Record<string,boolean>);}catch{/* Public tool browsing remains available if settings cannot load. */}})();return()=>{active=false;}},[]);
  useEffect(()=>{const phrase=phrases[word];const delay=!deleting&&typed===phrase?1450:deleting?42:92;const timer=window.setTimeout(()=>{if(!deleting&&typed===phrase){setDeleting(true);return;}if(deleting&&typed===""){setDeleting(false);setWord(v=>(v+1)%phrases.length);return;}setTyped(deleting?phrase.slice(0,Math.max(0,typed.length-1)):phrase.slice(0,typed.length+1));},delay);return()=>window.clearTimeout(timer);},[typed,deleting,word]);
+ useEffect(()=>{
+  const el=carouselRef.current;
+  if(!el)return;
+  let frame=0,pausedUntil=0,last=0;
+  const pause=()=>{pausedUntil=performance.now()+1800;};
+  carouselPauseRef.current=pause;
+  const tick=(now:number)=>{
+   if(now>=pausedUntil&&now-last>=16){
+    const half=el.scrollWidth/2;
+    if(half>el.clientWidth&&el.scrollWidth>0){
+     el.scrollLeft+=0.7;
+     if(el.scrollLeft>=half)el.scrollLeft-=half;
+    }
+    last=now;
+   }
+   frame=requestAnimationFrame(tick);
+  };
+  frame=requestAnimationFrame(tick);
+  el.addEventListener("pointerdown",pause);
+  el.addEventListener("touchstart",pause,{passive:true});
+  el.addEventListener("wheel",pause,{passive:true});
+  return()=>{
+   cancelAnimationFrame(frame);
+   el.removeEventListener("pointerdown",pause);
+   el.removeEventListener("touchstart",pause);
+   el.removeEventListener("wheel",pause);
+   carouselPauseRef.current=()=>{};
+  };
+ },[]);
+ const moveTools=(direction:-1|1)=>{
+  const el=carouselRef.current;
+  const track=el?.querySelector<HTMLElement>(".photo-tool-track");
+  const card=track?.querySelector<HTMLElement>(".photo-tool-card");
+  if(!el||!track||!card)return;
+  carouselPauseRef.current();
+  const styles=getComputedStyle(track);
+  const gap=parseFloat(styles.columnGap)||parseFloat(styles.gap)||16;
+  const step=card.getBoundingClientRect().width+gap;
+  const half=el.scrollWidth/2;
+  if(direction===1&&half>0&&el.scrollLeft+step>=half){
+   el.scrollLeft=el.scrollLeft+step-half;
+  }else if(direction===-1&&el.scrollLeft<=1&&half>0){
+   el.scrollLeft=half-step;
+  }else{
+   el.scrollLeft=Math.max(0,el.scrollLeft+direction*step);
+  }
+ };
  const ordered=order.map(s=>tools.find(t=>t.slug===s)).filter(Boolean);
  const filtered=ordered.filter(t=>toolControls[t!.slug]!==false&&(t!.name+" "+t!.short+" "+t!.category).toLowerCase().includes(query.toLowerCase()));
  return <main className="site-shell">
   <section className="center-hero home-hero">
-    <h1>Make everyday work<br/>feel <em className="hero-changing">{typed}<span className="type-cursor">|</span></em>.</h1>
-    <p>Create invoices and quotations, build a stronger CV, compress images and PDFs, make QR codes and more, all with simple tools designed to help you get things done.</p>
+    <h1><span className="hero-line-one">Make everyday</span> <span className="hero-line-two">work feel</span> <em className="hero-changing">{typed}<span className="type-cursor">|</span><span className="hero-typing-period">.</span></em></h1>
+    <p><span className="hero-description-desktop">Create invoices and quotations, build a stronger CV, compress images and PDFs, make QR codes and more, all with simple tools designed to help you get things done.</span><span className="hero-description-mobile">Create invoices and quotations, build a stronger CV, compress images and PDFs, and make QR codes.</span></p>
     <div className="center-actions"><a className="button-blue hero-primary" href="#quick-tools">Get started for free <span><Send size={17} strokeWidth={2.2}/></span></a><a className="quiet-link" href="#toolkit">Explore tools</a></div>
     <div className="home-proof" aria-label="Tools for small businesses, freelancers, job seekers, creators and students">
       <div><span><Store size={17} strokeWidth={1.7}/>Small businesses</span><span><BriefcaseBusiness size={17} strokeWidth={1.7}/>Freelancers</span><span><UserRound size={17} strokeWidth={1.7}/>Job seekers</span><span><Palette size={17} strokeWidth={1.7}/>Creators</span><span><GraduationCap size={18} strokeWidth={1.7}/>Students</span></div>
@@ -34,7 +83,7 @@ export default function Home(){
   </section>
   <QuickToolsPanel/>
   <section className="toolkit-section" id="toolkit"><div className="toolkit-heading"><div><span className="section-kicker">ALL TOOLS</span><h2>Find your tool.<br/><em>Find your flow.</em></h2></div><div className="toolkit-intro"><p>Practical tools for business, work and everyday life. Choose what you need and get moving.</p><label className="search-control"><input value={query} onChange={e=>setQuery(e.target.value)} placeholder="Search all tools" aria-label="Search tools"/></label></div></div>
-   <div className="photo-tool-grid">{filtered.map((tool,index)=><article className="photo-tool-card" key={tool!.slug}><div className="photo-tool-image"><img src={photos[tool!.slug]} alt="" loading={index>2?"lazy":"eager"}/><span className="photo-tool-shade"/></div><div className="photo-tool-meta"><span className="tool-number">0{index+1}</span><span className="tool-category">{tool!.tag}</span></div><div className="photo-tool-copy"><h3>{tool!.name}</h3><p>{tool!.short}</p><Link className="photo-tool-action" href={"/tools/"+tool!.slug}>Open tool</Link></div></article>)}</div>
+   <div className="photo-tool-carousel-shell"><div className="photo-tool-carousel" ref={carouselRef} aria-label="Browse UseKit tools"><div className="photo-tool-track">{[0,1].map(copy=>filtered.map((tool,index)=><article className="photo-tool-card" key={`${copy}-${tool!.slug}`} aria-hidden={copy===1?true:undefined}><div className="photo-tool-image"><img src={photos[tool!.slug]} alt="" loading={index>2?"lazy":"eager"}/><span className="photo-tool-shade"/><span className="photo-tool-icon">{tool!.slug==="qr-code-generator"?<QrCode/>:tool!.slug==="image-compressor"?<ImageIcon/>:tool!.slug==="cv-generator"?<FileUser/>:tool!.slug==="whatsapp-link-generator"?<MessageCircle/>:<Receipt/>}</span></div><div className="photo-tool-meta"><span className="tool-number">0{index+1}</span><span className="tool-category">{tool!.tag}</span></div><div className="photo-tool-copy"><h3>{tool!.name}</h3><p>{tool!.short}</p><Link className="photo-tool-action" href={"/tools/"+tool!.slug} tabIndex={copy===1?-1:undefined}>Open tool</Link></div></article>))}</div></div><div className="photo-tool-carousel-controls"><button type="button" className="photo-tool-arrow photo-tool-arrow-left" aria-label="Previous tools" onClick={()=>moveTools(-1)}><ArrowLeft size={18}/></button><button type="button" className="photo-tool-arrow photo-tool-arrow-right" aria-label="Next tools" onClick={()=>moveTools(1)}><ArrowRight size={18}/></button></div></div>
    {filtered.length===0&&<p className="no-tools">No tools match that search. Try another word.</p>}
    <p className="toolkit-footer"><span>{filtered.length} PRACTICAL TOOLS</span></p>
   </section>
