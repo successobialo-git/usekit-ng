@@ -1859,3 +1859,73 @@ button:focus-visible,a:focus-visible,[role="tab"]:focus-visible{outline-color:#e
   background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23f06a83' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m22 2-7 20-4-9-9-4Z'/%3E%3Cpath d='M22 2 11 13'/%3E%3C/svg%3E")!important;
  }
 }
+
+
+/* Workspace production polish: consistent dark studio surfaces and responsive form rhythm. */
+.workspace-v2{min-height:calc(100vh - 72px);display:grid!important;grid-template-columns:244px minmax(0,1fr)!important;align-items:stretch!important;background:#f4f2f2!important}
+.workspace-v2-sidebar{position:sticky!important;top:72px!important;align-self:start!important;height:calc(100vh - 72px)!important;overflow-y:auto!important;padding:28px 15px!important;background:#f7f6f6!important}
+.workspace-v2-sidebar nav{display:grid!important;gap:8px!important}
+.workspace-v2-sidebar nav button{width:100%!important;min-width:0!important;box-sizing:border-box!important;padding:10px 11px!important;gap:9px!important;text-align:left!important}
+.workspace-v2-sidebar nav button span{overflow-wrap:anywhere!important;line-height:1.3!important}
+.workspace-v2-main{min-width:0!important;max-width:100%!important;overflow:hidden!important}
+.workspace-v2-tool{width:100%!important;max-width:1240px!important;margin:0 auto!important;min-width:0!important}
+.workspace-v2-tool .tool-app-sidebar,.workspace-v2-tool .document-sidebar{display:none!important}
+.workspace-v2-tool .tool-app-frame,.workspace-v2-tool .qr-studio,.workspace-v2-tool .document-app,.workspace-v2-tool .cv-app{display:block!important;width:100%!important;min-width:0!important;max-width:100%!important;grid-template-columns:minmax(0,1fr)!important;overflow:visible!important}
+.workspace-v2-tool .tool-app-main,.workspace-v2-tool .document-main,.workspace-v2-tool .cv-main{width:100%!important;min-width:0!important;max-width:100%!important;box-sizing:border-box!important;padding:0!important}
+.workspace-v2-tool .tool-app-top,.workspace-v2-tool .document-topbar,.workspace-v2-tool .cv-topbar{display:flex!important;align-items:center!important;justify-content:space-between!important;gap:22px!important;flex-wrap:wrap!important;min-width:0!important}
+.workspace-v2-tool .tool-app-top>div,.workspace-v2-tool .document-topbar>div,.workspace-v2-tool .cv-topbar>div{min-width:0!important}
+.workspace-v2-tool .qr-studio-grid,.workspace-v2-tool .image-studio-grid,.workspace-v2-tool .document-columns,.workspace-v2-tool .cv-columns{display:grid!important;grid-template-columns:minmax(0,1.05fr) minmax(320px,.95fr)!important;align-items:start!important;gap:18px!important;min-width:0!important}
+.workspace-v2-tool .qr-settings,.workspace-v2-tool .document-card,.workspace-v2-tool .cv-form,.workspace-v2-tool .cv-step-panel,.workspace-v2-tool .document-fields,.workspace-v2-tool .qr-live-preview,.workspace-v2-tool .cv-preview-panel{box-sizing:border-box!important;min-width:0!important;padding:22px!important;background:#29292f!important;color:#f5f2f4!important;border:0!important;border-radius:16px!important}
+.workspace-v2-tool .field{display:grid!important;gap:8px!important;margin:0 0 17px!important;min-width:0!important}
+.workspace-v2-tool .field input,.workspace-v2-tool .field textarea,.workspace-v2-tool .field select,.workspace-v2-tool input:not([type=checkbox]):not([type=radio]):not([type=file]):not([type=range]):not([type=color]),.workspace-v2-tool textarea,.workspace-v2-tool select{width:100%!important;max-width:100%!important;min-width:0!important;min-height:44px!important;box-sizing:border-box!important;border-radius:9px!important;background:#39393f!important;color:#f5f2f4!important;border:1px solid #4a4850!important;padding:11px 13px!important;box-shadow:none!important}
+.workspace-v2-tool input::placeholder,.workspace-v2-tool textarea::placeholder{color:#aaa5ab!important;opacity:1!important}
+.workspace-v2-tool input[type=file]{padding:12px!important;background:#39393f!important;color:#d6d1d6!important;border:1px dashed #66616a!important;border-radius:10px!important}
+.workspace-v2-tool input[type=range]{accent-color:#e92b50!important;padding:0!important;min-height:24px!important}
+.workspace-v2-tool input[type=color]{width:48px!important;height:42px!important;padding:3px!important;border-radius:9px!important;background:#39393f!important;border:1px solid #4a4850!important}
+.workspace-v2-tool .document-grid{display:grid!important;grid-template-columns:repeat(2,minmax(0,1fr))!important;gap:14px!important;min-width:0!important}
+.workspace-v2-tool button{max-width:100%!important}
+.workspace-v2-tool .document-next,.workspace-v2-tool .primary-btn,.workspace-v2-tool .summary-export{min-height:44px!important;padding:11px 18px!important;border-radius:10px!important;font-weight:700!important}
+.workspace-v2-tool .document-stepper{position:relative!important;display:flex!important;gap:8px!important;overflow-x:auto!important;padding:14px!important;margin:0 0 18px!important;background:#29292f!important;border-radius:14px!important}
+.workspace-v2-tool .document-stepper:before{content:"";position:absolute;left:34px;right:34px;top:27px;height:2px;background:#4a454b;pointer-events:none}
+.workspace-v2-tool .document-stepper button{position:relative!important;z-index:1!important;display:flex!important;align-items:center!important;gap:8px!important;flex:1 0 120px!important;min-width:120px!important;padding:8px 10px!important;background:transparent!important;border:0!important;text-align:left!important}
+.workspace-v2-tool .document-stepper button span{display:inline-flex!important;align-items:center!important;justify-content:center!important;min-width:48px!important;height:26px!important;padding:0 8px!important;border-radius:99px!important;background:#414149!important;color:#d5d0d5!important;font-size:10px!important}
+.workspace-v2-tool .document-stepper button b{font-size:11px!important;color:#c8c3c8!important;white-space:nowrap!important}
+.workspace-v2-tool .document-stepper button.current span,.workspace-v2-tool .document-stepper button.complete span{background:#e92b50!important;color:#fff!important}
+.workspace-v2-tool .document-stepper button.current b{color:#fff!important}
+.workspace-v2-tool .document-stepper button.complete b{color:#f2a4b4!important}
+.workspace-v2-tool .qr-stepper{padding:0 0 18px!important}
+.workspace-v2-tool .qr-stepper-track{height:4px!important;border-radius:99px!important;background:#49454d!important;overflow:hidden!important;margin-bottom:12px!important}
+.workspace-v2-tool .qr-stepper-track span{display:block!important;height:100%!important;background:#e92b50!important;border-radius:99px!important;transition:width .25s ease!important}
+.workspace-v2-tool .qr-stepper-label{display:flex!important;align-items:center!important;justify-content:space-between!important;gap:12px!important;color:#d7d1d7!important}
+.workspace-v2-tool .qr-stepper-label strong{color:#fff!important}
+.workspace-v2-tool .qr-step-actions{display:flex!important;justify-content:space-between!important;gap:12px!important;margin-top:18px!important}
+.workspace-v2-tool .qr-step-actions button{min-height:42px!important;padding:10px 16px!important;border-radius:10px!important;background:#414149!important;color:#f5f2f4!important}
+.workspace-v2-tool .qr-step-actions .document-next{background:#e92b50!important;color:#fff!important}
+.workspace-v2-tool .template-grid{display:grid!important;grid-template-columns:repeat(3,minmax(0,1fr))!important;gap:12px!important}
+.workspace-v2-tool .template-grid button{min-width:0!important;padding:10px!important;border-radius:12px!important;background:#39393f!important;border:1px solid #4a4850!important;color:#eee!important}
+.workspace-v2-tool .template-grid button>div{height:92px!important;padding:12px!important;border-radius:7px!important;overflow:hidden!important;box-shadow:0 4px 12px #0002!important}
+.workspace-v2-tool .template-grid button.chosen{border:2px solid #e92b50!important;background:#433039!important}
+.workspace-v2-tool .template-grid button b{display:block!important;margin-top:9px!important;font-size:11px!important;line-height:1.35!important}
+.workspace-v2-tool .document-preview{width:min(100%,794px)!important;min-height:1123px!important;height:auto!important;margin:0 auto!important;padding:36px!important;box-sizing:border-box!important;overflow:visible!important;background:#fff!important;color:#252932!important;box-shadow:0 12px 36px #0003!important}
+.workspace-v2-tool .uk-document-preview-overlay,.workspace-v2-tool .cv-document-preview-overlay{position:fixed!important;inset:0!important;z-index:9999!important;display:flex!important;flex-direction:column!important;align-items:center!important;gap:14px!important;overflow:auto!important;padding:22px!important;background:rgba(15,15,18,.94)!important}
+.workspace-v2-tool .uk-document-preview-shell{width:min(100%,1100px)!important;display:flex!important;flex-direction:column!important;align-items:center!important;gap:16px!important}
+.workspace-v2-tool .uk-document-preview-head,.workspace-v2-tool .cv-document-preview-head{width:min(100%,1100px)!important;box-sizing:border-box!important;display:flex!important;align-items:center!important;justify-content:space-between!important;gap:16px!important;padding:14px 18px!important;border-radius:12px!important;background:#29292f!important;color:#fff!important}
+.workspace-v2-tool .uk-document-preview-head button,.workspace-v2-tool .cv-document-preview-head button{background:#414149!important;color:#fff!important;border:0!important;border-radius:8px!important;padding:9px 13px!important}
+.workspace-v2-tool .document-export-actions{display:flex!important;justify-content:center!important;flex-wrap:wrap!important;gap:10px!important}
+.workspace-v2-tool .document-export-actions button{min-height:42px!important;padding:10px 17px!important;border:0!important;border-radius:9px!important;background:#e92b50!important;color:#fff!important;font-weight:700!important}
+@media(max-width:900px){
+ .workspace-v2{grid-template-columns:1fr!important}
+ .workspace-v2-sidebar{position:relative!important;top:auto!important;height:auto!important;padding:12px!important}
+ .workspace-v2-sidebar nav{display:flex!important;overflow-x:auto!important;gap:8px!important;padding-bottom:3px!important}
+ .workspace-v2-sidebar nav button{flex:0 0 190px!important}
+ .workspace-v2-tool .qr-studio-grid,.workspace-v2-tool .image-studio-grid,.workspace-v2-tool .document-columns,.workspace-v2-tool .cv-columns{grid-template-columns:minmax(0,1fr)!important}
+}
+@media(max-width:650px){
+ .workspace-v2-main{padding:12px 9px 24px!important}
+ .workspace-v2-tool .tool-app-top,.workspace-v2-tool .document-topbar,.workspace-v2-tool .cv-topbar{padding:20px 17px!important}
+ .workspace-v2-tool .qr-settings,.workspace-v2-tool .document-card,.workspace-v2-tool .cv-form,.workspace-v2-tool .document-fields,.workspace-v2-tool .qr-live-preview,.workspace-v2-tool .cv-preview-panel{padding:16px!important}
+ .workspace-v2-tool .document-grid{grid-template-columns:minmax(0,1fr)!important}
+ .workspace-v2-tool .template-grid{grid-template-columns:repeat(2,minmax(0,1fr))!important}
+ .workspace-v2-tool .document-preview{min-height:0!important;padding:20px!important}
+ .workspace-v2-tool .uk-document-preview-overlay,.workspace-v2-tool .cv-document-preview-overlay{padding:10px!important}
+}
