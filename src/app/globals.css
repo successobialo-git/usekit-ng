@@ -1613,3 +1613,74 @@ button:focus-visible,a:focus-visible,[role="tab"]:focus-visible{outline-color:#e
  .mobile-nav-close{display:grid!important;place-items:center!important;background:#e92b50!important;color:#fff!important;border:0!important;border-radius:50%!important;width:42px!important;height:42px!important}
  .mobile-nav-close svg{stroke:#fff!important}
 }
+
+
+/* Final precise homepage corrections: menu fits its links, hero image stays above heading, carousel is truly scrollable. */
+@media(max-width:760px){
+ #mobile-site-menu.mobile-nav-panel{
+  position:fixed!important;top:0!important;left:0!important;right:0!important;bottom:auto!important;
+  width:100vw!important;height:fit-content!important;min-height:0!important;max-height:calc(100dvh - 18px)!important;
+  padding:calc(env(safe-area-inset-top) + 18px) 24px 22px!important;
+  display:flex!important;flex-direction:column!important;justify-content:flex-start!important;align-items:stretch!important;
+  gap:0!important;overflow-y:auto!important;overscroll-behavior:contain!important;
+  border-radius:0 0 22px 22px!important;background:#202024!important;
+ }
+ #mobile-site-menu .mobile-nav-head{margin:0 0 14px!important;padding:0 0 10px!important;min-height:48px!important}
+ #mobile-site-menu>a{min-height:54px!important;height:54px!important;flex:0 0 54px!important;padding:0 2px!important}
+ #mobile-site-menu .mobile-nav-close{background:#e92b50!important;color:#fff!important;border:0!important;border-radius:50%!important}
+}
+.center-hero.home-hero .home-hero-image-overlay{
+ position:absolute!important;top:0!important;left:0!important;right:0!important;height:48px!important;
+ z-index:0!important;pointer-events:none!important;
+ background-image:linear-gradient(180deg,rgba(255,249,248,.28) 0%,rgba(255,249,248,.72) 52%,rgba(255,249,248,1) 100%),url("https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=1600&q=80")!important;
+ background-size:cover!important;background-position:center 48%!important;
+ opacity:.72!important;
+}
+.center-hero.home-hero:after{display:none!important;content:none!important}
+.center-hero.home-hero>*:not(.home-hero-image-overlay){position:relative!important;z-index:1!important}
+.photo-tool-carousel-shell{display:block!important;position:relative!important;overflow:visible!important;min-width:0!important;width:100%!important}
+.photo-tool-carousel{
+ display:block!important;position:relative!important;width:100%!important;max-width:100%!important;
+ overflow-x:scroll!important;overflow-y:hidden!important;overscroll-behavior-x:contain!important;
+ scroll-snap-type:x mandatory!important;scrollbar-width:none!important;-webkit-overflow-scrolling:touch!important;
+ touch-action:pan-x pan-y!important;pointer-events:auto!important;
+}
+.photo-tool-carousel::-webkit-scrollbar{display:none!important}
+.photo-tool-track{
+ display:flex!important;flex-flow:row nowrap!important;align-items:stretch!important;
+ width:max-content!important;min-width:max-content!important;gap:16px!important;
+ animation:none!important;transform:none!important;transition:none!important;will-change:auto!important;
+}
+.photo-tool-track .photo-tool-card{
+ display:grid!important;flex:0 0 clamp(280px,40vw,460px)!important;
+ width:clamp(280px,40vw,460px)!important;min-width:clamp(280px,40vw,460px)!important;
+ scroll-snap-align:start!important;transform:none!important;
+}
+.photo-tool-carousel-controls{display:flex!important;position:relative!important;z-index:50!important;pointer-events:auto!important}
+.photo-tool-carousel-controls .photo-tool-arrow{
+ display:grid!important;visibility:visible!important;opacity:1!important;pointer-events:auto!important;
+ position:static!important;flex:0 0 42px!important;width:42px!important;height:42px!important;
+ place-items:center!important;margin:0!important;padding:0!important;transform:none!important;
+ border:0!important;border-radius:50%!important;background:#e92b50!important;color:#25252a!important;cursor:pointer!important;
+}
+.photo-tool-carousel-controls .photo-tool-arrow svg{width:19px!important;height:19px!important;stroke:#25252a!important;pointer-events:none!important}
+.photo-tool-carousel-controls .photo-tool-arrow:disabled{opacity:.45!important}
+#qr-export-control{position:relative!important;display:flex!important;align-items:stretch!important;gap:0!important;overflow:visible!important}
+#qr-export-control .qr-download-menu>div{
+ top:100%!important;right:0!important;left:auto!important;width:min(208px,calc(100vw - 48px))!important;
+ min-width:0!important;max-width:calc(100vw - 48px)!important;box-sizing:border-box!important;
+ padding:5px!important;transform:none!important;overflow:hidden!important;
+}
+#qr-export-control .qr-download-menu>div button{
+ width:100%!important;box-sizing:border-box!important;padding:9px 8px!important;
+ font-size:8px!important;line-height:1.35!important;text-align:right!important;
+ white-space:normal!important;overflow-wrap:anywhere!important;
+}
+@media(max-width:760px){
+ .photo-tool-track .photo-tool-card{flex-basis:min(78vw,310px)!important;width:min(78vw,310px)!important;min-width:min(78vw,310px)!important}
+ .photo-tool-carousel-controls{margin-top:16px!important}
+}
+@media(min-width:761px){
+ .photo-tool-carousel-track .photo-tool-card{flex-basis:clamp(300px,40vw,460px)!important}
+ .photo-tool-carousel-controls{margin-top:20px!important}
+}
