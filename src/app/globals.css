@@ -1550,3 +1550,38 @@ button:focus-visible,a:focus-visible,[role="tab"]:focus-visible{outline-color:#e
 @media(max-width:760px){
  .center-hero.home-hero:after{height:66%!important;background-position:center 35%!important;opacity:.42!important}
 }
+
+
+/* Screenshot-led QR control correction: square upper corners and flush dropdown attachment. */
+.quick-export>.qr-main-download,
+.quick-export>.qr-download-menu>button{
+ border-radius:0!important;
+ clip-path:inset(0)!important;
+ -webkit-clip-path:inset(0)!important;
+}
+.quick-export>.qr-main-download{border-top-left-radius:0!important;border-bottom-left-radius:0!important}
+.quick-export>.qr-download-menu>button{border-top-right-radius:0!important;border-bottom-right-radius:0!important}
+.quick-export>.qr-download-menu>div{
+ top:100%!important;
+ margin-top:0!important;
+ border-top-left-radius:0!important;
+ border-top-right-radius:0!important;
+ transform:none!important;
+}
+@media(max-width:760px){
+ .mobile-nav-panel{
+  top:0!important;bottom:14px!important;height:calc(100dvh - 14px)!important;min-height:0!important;
+  width:100vw!important;max-width:none!important;
+  padding:calc(env(safe-area-inset-top) + 22px) 26px 30px!important;
+  border-radius:0 0 24px 24px!important;
+  overflow:hidden auto!important;
+  box-shadow:0 16px 40px rgba(0,0,0,.3)!important;
+ }
+ .mobile-nav-close{
+  background:#e92b50!important;
+  border:0!important;
+  color:#fff!important;
+ }
+ .mobile-nav-close svg{stroke:#fff!important}
+ .mobile-nav-head{margin-bottom:22px!important}
+}
