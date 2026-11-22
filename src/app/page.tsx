@@ -25,7 +25,7 @@ export default function Home(){
  const filtered=ordered.filter(t=>toolControls[t!.slug]!==false&&(t!.name+" "+t!.short+" "+t!.category).toLowerCase().includes(query.toLowerCase()));
  return <main className="site-shell">
   <section className="center-hero home-hero">
-    <h1><span className="hero-line-one">Make everyday</span> <span className="hero-line-two">work feel</span> <em className="hero-changing">{typed}<span className="type-cursor">|</span></em>.</h1>
+    <h1><span className="hero-desktop-copy">Make everyday work<br/>feel <em className="hero-changing">{typed}<span className="type-cursor">|</span></em>.</span><span className="hero-mobile-copy"><span className="hero-line-one">Make everyday</span><span className="hero-line-two">work feel</span><em className="hero-changing">{typed}<span className="type-cursor">|</span></em>.</span></h1>
     <p>Create invoices and quotations, build a stronger CV, compress images and PDFs, make QR codes and more, all with simple tools designed to help you get things done.</p>
     <div className="center-actions"><a className="button-blue hero-primary" href="#quick-tools">Get started for free <span><Send size={17} strokeWidth={2.2}/></span></a><a className="quiet-link" href="#toolkit">Explore tools</a></div>
     <div className="home-proof" aria-label="Tools for small businesses, freelancers, job seekers, creators and students">

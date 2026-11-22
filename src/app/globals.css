@@ -1346,6 +1346,8 @@ button:focus-visible,a:focus-visible,[role="tab"]:focus-visible{outline-color:#e
   .mobile-nav-panel a { display: flex !important; align-items: center !important; min-height: 58px !important; padding: 0 4px !important; border-bottom: 1px solid #ededed !important; color: #202024 !important; font-size: 17px !important; font-weight: 650 !important; text-decoration: none !important; }
   .mobile-nav-panel a.is-active { color: #e92b50 !important; }
   .home-hero h1 { font-size: clamp(42px, 10.6vw, 57px) !important; line-height: 1.02 !important; letter-spacing: -.055em !important; }
+  .home-hero h1 .hero-desktop-copy { display: none !important; }
+  .home-hero h1 .hero-mobile-copy { display: block !important; }
   .home-hero h1 .hero-line-one, .home-hero h1 .hero-line-two { display: block !important; }
   .home-hero h1 .hero-changing { display: block !important; min-height: 1.04em !important; white-space: nowrap !important; font-size: .88em !important; letter-spacing: -.055em !important; }
   .quick-tools { padding: 39px 18px 34px !important; }
@@ -1374,3 +1376,5 @@ button:focus-visible,a:focus-visible,[role="tab"]:focus-visible{outline-color:#e
 }
 @keyframes usekit-home-tools-scroll { from { transform: translateX(0); } to { transform: translateX(-50%); } }
 @media (prefers-reduced-motion: reduce) { .photo-tool-track { animation: none !important; } }
+
+@media (min-width: 651px) { .home-hero h1 .hero-desktop-copy { display: inline !important; } .home-hero h1 .hero-mobile-copy { display: none !important; } }
