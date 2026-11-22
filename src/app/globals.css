@@ -1492,3 +1492,24 @@ button:focus-visible,a:focus-visible,[role="tab"]:focus-visible{outline-color:#e
  .photo-tool-carousel-controls{display:flex!important;justify-content:center!important;align-items:center!important;gap:14px!important;margin:20px auto 0!important;position:relative!important}
  .photo-tool-arrow{position:static!important;display:grid!important;place-items:center!important;width:40px!important;height:40px!important;transform:none!important;background:#e92b50!important;color:#fff!important}
 }
+
+
+/* Final focused correction: aligned QR export join and properly structured mobile drawer. */
+.quick-export{display:flex!important;align-items:stretch!important;gap:0!important;position:relative!important;overflow:visible!important}
+.quick-export .qr-main-download{border-radius:0!important;margin:0!important;clip-path:none!important}
+.quick-export .qr-download-menu{display:flex!important;position:relative!important;flex:0 0 42px!important;margin:0!important;padding:0!important}
+.quick-export .qr-download-menu>button{display:flex!important;align-items:center!important;justify-content:center!important;width:100%!important;height:auto!important;min-height:42px!important;margin:0!important;border-radius:0!important;border:0!important;border-left:1px solid rgba(255,255,255,.24)!important;clip-path:none!important}
+.quick-export .qr-download-menu>div{position:absolute!important;top:100%!important;right:0!important;left:auto!important;margin:0!important;padding:7px!important;width:205px!important;min-width:205px!important;max-width:min(84vw,260px)!important;border:1px solid #45454b!important;border-top:0!important;border-radius:0 0 10px 10px!important;transform:none!important;box-shadow:0 12px 28px rgba(0,0,0,.24)!important;z-index:50!important}
+.quick-export .qr-download-menu>div button{border-radius:0!important}
+@media(max-width:760px){
+ .mobile-nav-panel{position:fixed!important;inset:0!important;z-index:123!important;display:flex!important;flex-direction:column!important;align-items:stretch!important;justify-content:flex-start!important;gap:0!important;width:100vw!important;max-width:none!important;height:100dvh!important;min-height:100dvh!important;margin:0!important;padding:calc(env(safe-area-inset-top) + 22px) 26px 32px!important;overflow-y:auto!important;border:0!important;border-radius:0!important;background:#202024!important;color:#f7f5f6!important;box-shadow:none!important}
+ .mobile-nav-head{display:flex!important;align-items:center!important;justify-content:space-between!important;min-height:52px!important;margin:0 0 22px!important;padding:0 0 12px!important;border-bottom:1px solid rgba(233,43,80,.22)!important}
+ .mobile-nav-head>span{font-size:11px!important;line-height:1!important;font-weight:800!important;letter-spacing:.2em!important;color:#b5aeb2!important}
+ .mobile-nav-close{display:grid!important;place-items:center!important;flex:0 0 42px!important;width:42px!important;height:42px!important;margin:0!important;padding:0!important;border:1px solid #4a4146!important;border-radius:50%!important;background:#302a2e!important;color:#f06a83!important;cursor:pointer!important}
+ .mobile-nav-panel a{display:flex!important;align-items:center!important;min-height:60px!important;margin:0!important;padding:0 2px!important;border:0!important;border-bottom:1px solid rgba(233,43,80,.16)!important;border-radius:0!important;background:transparent!important;color:#f5f1f3!important;font-size:17px!important;font-weight:600!important;letter-spacing:.01em!important;text-decoration:none!important}
+ .mobile-nav-panel a.is-active{color:#f06a83!important}
+ .mobile-menu-toggle[aria-expanded=true]{visibility:hidden!important;pointer-events:none!important}
+ .home-hero h1 .hero-changing{font-size:clamp(31px,8.35vw,42px)!important;white-space:nowrap!important;letter-spacing:-.055em!important;line-height:1.02!important}
+ .quick-export .qr-main-download,.quick-export .qr-download-menu>button{border-radius:0!important}
+ .quick-export .qr-download-menu>div{top:100%!important;margin-top:0!important;border-radius:0 0 10px 10px!important}
+}
