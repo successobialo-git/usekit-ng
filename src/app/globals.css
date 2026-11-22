@@ -1740,6 +1740,7 @@ button:focus-visible,a:focus-visible,[role="tab"]:focus-visible{outline-color:#e
 }
 .photo-tool-track{display:flex!important;flex-flow:row nowrap!important;animation:none!important;transform:none!important}
 .photo-tool-track .photo-tool-card{scroll-snap-align:none!important}
+.photo-tool-carousel-controls{gap:20px!important}
 .photo-tool-carousel-controls,.photo-tool-carousel-controls .photo-tool-arrow{
  pointer-events:auto!important;visibility:visible!important;opacity:1!important;
 }
