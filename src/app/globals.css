@@ -1723,7 +1723,7 @@ button:focus-visible,a:focus-visible,[role="tab"]:focus-visible{outline-color:#e
 
 /* Mobile menu: light panel, no divider immediately under MENU, taller links. */
 @media(max-width:760px){
- #mobile-site-menu.mobile-nav-panel{background:#fff!important;color:#202024!important}
+ #mobile-site-menu.mobile-nav-panel{background:radial-gradient(ellipse at 12% 28%,rgba(233,43,80,.055),transparent 38%),radial-gradient(ellipse at 88% 15%,rgba(222,222,222,.55),transparent 36%),linear-gradient(135deg,#fff 0%,#fbf9f9 52%,#f7f5f5 100%)!important;color:#202024!important}
  #mobile-site-menu .mobile-nav-head{border:0!important;border-bottom:0!important;margin-bottom:12px!important;padding-bottom:0!important}
  #mobile-site-menu .mobile-nav-head>span{color:#555!important}
  #mobile-site-menu>a{min-height:62px!important;height:62px!important;flex:0 0 62px!important;color:#202024!important}
