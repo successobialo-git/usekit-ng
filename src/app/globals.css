@@ -1684,3 +1684,34 @@ button:focus-visible,a:focus-visible,[role="tab"]:focus-visible{outline-color:#e
  .photo-tool-carousel-track .photo-tool-card{flex-basis:clamp(300px,40vw,460px)!important}
  .photo-tool-carousel-controls{margin-top:20px!important}
 }
+
+/* Final screenshot corrections: keep QR export menu inside the full red control. */
+#qr-export-control{position:relative!important;overflow:visible!important}
+#qr-export-control>.qr-download-menu{position:static!important;flex:0 0 42px!important}
+#qr-export-control>.qr-download-menu>div{
+ position:absolute!important;top:100%!important;right:0!important;left:auto!important;
+ width:100%!important;min-width:0!important;max-width:100%!important;
+ box-sizing:border-box!important;margin:0!important;padding:8px!important;
+ text-align:center!important;transform:none!important;
+ border-radius:0 0 10px 10px!important;z-index:999!important;
+}
+#qr-export-control>.qr-download-menu>div button{
+ width:100%!important;box-sizing:border-box!important;text-align:center!important;
+ white-space:normal!important;font-size:9px!important;padding:10px 5px!important;
+}
+
+/* Restore the homepage hero to its original image-free background. */
+.center-hero.home-hero:after{content:none!important;display:none!important;background:none!important}
+.home-hero-image-overlay{display:none!important;background:none!important}
+
+/* Desktop-only continuous carousel movement; mobile remains user-controlled. */
+@media(min-width:761px){
+ .photo-tool-carousel{scroll-behavior:auto!important;overflow-x:auto!important;overflow-y:hidden!important}
+}
+@media(max-width:760px){
+ .photo-tool-carousel{scroll-behavior:smooth!important;overflow-x:auto!important}
+}
+
+/* Restore the original white arrow glyphs. */
+.photo-tool-carousel-controls .photo-tool-arrow svg{stroke:#fff!important;color:#fff!important}
+.photo-tool-carousel-controls .photo-tool-arrow{color:#fff!important}
