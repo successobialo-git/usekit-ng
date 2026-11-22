@@ -23,13 +23,36 @@ export default function Home(){
  const carouselPauseRef=useRef<()=>void>(()=>{});
  useEffect(()=>{let active=true;void(async()=>{try{const {data}=await getBrowserSupabase().from("site_settings").select("value").eq("key","tool_controls").maybeSingle();if(active&&data?.value)setToolControls(data.value as Record<string,boolean>);}catch{/* Public tool browsing remains available if settings cannot load. */}})();return()=>{active=false;}},[]);
  useEffect(()=>{const phrase=phrases[word];const delay=!deleting&&typed===phrase?1450:deleting?42:92;const timer=window.setTimeout(()=>{if(!deleting&&typed===phrase){setDeleting(true);return;}if(deleting&&typed===""){setDeleting(false);setWord(v=>(v+1)%phrases.length);return;}setTyped(deleting?phrase.slice(0,Math.max(0,typed.length-1)):phrase.slice(0,typed.length+1));},delay);return()=>window.clearTimeout(timer);},[typed,deleting,word]);
- useEffect(()=>{const el=carouselRef.current;if(!el)return;let frame=0,pausedUntil=0,last=0;const pause=()=>{pausedUntil=performance.now()+3200;};carouselPauseRef.current=pause;const tick=(now:number)=>{if(now>pausedUntil&&now-last>16){const loopPoint=el.scrollWidth/2;if(loopPoint>0){el.scrollLeft+=0.32;if(el.scrollLeft>=loopPoint)el.scrollLeft-=loopPoint;}last=now;}frame=requestAnimationFrame(tick);};frame=requestAnimationFrame(tick);el.addEventListener("pointerdown",pause);el.addEventListener("touchstart",pause,{passive:true});el.addEventListener("wheel",pause,{passive:true});return()=>{cancelAnimationFrame(frame);el.removeEventListener("pointerdown",pause);el.removeEventListener("touchstart",pause);el.removeEventListener("wheel",pause);carouselPauseRef.current=()=>{};};},[]);
+ useEffect(()=>{
+  const el=carouselRef.current;
+  if(!el||!window.matchMedia("(min-width: 761px)").matches)return;
+  let frame=0,pausedUntil=0,last=0;
+  const pause=()=>{pausedUntil=performance.now()+2200;};
+  const tick=(now:number)=>{
+   if(now>pausedUntil&&now-last>=16){
+    const loopPoint=el.scrollWidth/2;
+    if(loopPoint>0){
+     el.scrollLeft+=0.65;
+     if(el.scrollLeft>=loopPoint)el.scrollLeft-=loopPoint;
+    }
+    last=now;
+   }
+   frame=requestAnimationFrame(tick);
+  };
+  frame=requestAnimationFrame(tick);
+  el.addEventListener("pointerdown",pause);
+  el.addEventListener("wheel",pause,{passive:true});
+  return()=>{
+   cancelAnimationFrame(frame);
+   el.removeEventListener("pointerdown",pause);
+   el.removeEventListener("wheel",pause);
+  };
+ },[]);
  const moveTools=(direction:-1|1)=>{const el=carouselRef.current;if(!el)return;carouselPauseRef.current();const card=el.querySelector<HTMLElement>(".photo-tool-card");if(!card)return;const track=getComputedStyle(el.querySelector(".photo-tool-track")!).gap;const gap=parseFloat(track)||16;const step=card.getBoundingClientRect().width+gap;el.scrollBy({left:direction*step,top:0,behavior:"smooth"});};
  const ordered=order.map(s=>tools.find(t=>t.slug===s)).filter(Boolean);
  const filtered=ordered.filter(t=>toolControls[t!.slug]!==false&&(t!.name+" "+t!.short+" "+t!.category).toLowerCase().includes(query.toLowerCase()));
  return <main className="site-shell">
   <section className="center-hero home-hero">
-    <div className="home-hero-image-overlay" aria-hidden="true"/>
     <h1><span className="hero-line-one">Make everyday</span> <span className="hero-line-two">work feel</span> <em className="hero-changing">{typed}<span className="type-cursor">|</span><span className="hero-typing-period">.</span></em></h1>
     <p>Create invoices and quotations, build a stronger CV, compress images and PDFs, make QR codes and more, all with simple tools designed to help you get things done.</p>
     <div className="center-actions"><a className="button-blue hero-primary" href="#quick-tools">Get started for free <span><Send size={17} strokeWidth={2.2}/></span></a><a className="quiet-link" href="#toolkit">Explore tools</a></div>
