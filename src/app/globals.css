@@ -1398,3 +1398,10 @@ button:focus-visible,a:focus-visible,[role="tab"]:focus-visible{outline-color:#e
 @media (prefers-reduced-motion: reduce) {
   .photo-tool-grid { animation:none !important; }
 }
+
+@media (max-width:650px) {
+  .site-header .mobile-nav-backdrop { position:fixed !important; inset:0 !important; z-index:190 !important; display:block !important; width:100vw !important; height:100dvh !important; margin:0 !important; padding:0 !important; border:0 !important; border-radius:0 !important; background:rgba(25,25,28,.42) !important; cursor:pointer !important; }
+  .site-header .mobile-nav-panel { z-index:200 !important; box-shadow:8px 0 30px rgba(0,0,0,.12) !important; }
+  .mobile-nav-panel-head { display:flex !important; align-items:center !important; justify-content:space-between !important; min-height:48px !important; margin-bottom:16px !important; color:#777 !important; font-size:10px !important; font-weight:800 !important; letter-spacing:.14em !important; text-transform:uppercase !important; }
+  .mobile-nav-panel-head button { display:grid !important; place-items:center !important; width:38px !important; height:38px !important; border:0 !important; border-radius:50% !important; background:#f1f1f2 !important; color:#202024 !important; font-size:25px !important; line-height:1 !important; cursor:pointer !important; }
+}
