@@ -25,14 +25,14 @@ export default function Home(){
  useEffect(()=>{const phrase=phrases[word];const delay=!deleting&&typed===phrase?1450:deleting?42:92;const timer=window.setTimeout(()=>{if(!deleting&&typed===phrase){setDeleting(true);return;}if(deleting&&typed===""){setDeleting(false);setWord(v=>(v+1)%phrases.length);return;}setTyped(deleting?phrase.slice(0,Math.max(0,typed.length-1)):phrase.slice(0,typed.length+1));},delay);return()=>window.clearTimeout(timer);},[typed,deleting,word]);
  useEffect(()=>{
   const el=carouselRef.current;
-  if(!el||!window.matchMedia("(min-width: 761px)").matches)return;
+  if(!el)return;
   let frame=0,pausedUntil=0,last=0;
   const pause=()=>{pausedUntil=performance.now()+2200;};
   const tick=(now:number)=>{
    if(now>pausedUntil&&now-last>=16){
     const loopPoint=el.scrollWidth/2;
     if(loopPoint>0){
-     el.scrollLeft+=0.65;
+     el.scrollLeft+=0.38;
      if(el.scrollLeft>=loopPoint)el.scrollLeft-=loopPoint;
     }
     last=now;
@@ -41,10 +41,12 @@ export default function Home(){
   };
   frame=requestAnimationFrame(tick);
   el.addEventListener("pointerdown",pause);
+  el.addEventListener("touchstart",pause,{passive:true});
   el.addEventListener("wheel",pause,{passive:true});
   return()=>{
    cancelAnimationFrame(frame);
    el.removeEventListener("pointerdown",pause);
+   el.removeEventListener("touchstart",pause);
    el.removeEventListener("wheel",pause);
   };
  },[]);
