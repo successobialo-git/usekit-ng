@@ -1834,3 +1834,13 @@ button:focus-visible,a:focus-visible,[role="tab"]:focus-visible{outline-color:#e
  .workspace-v2-tool .tool-app-top,.workspace-v2-tool .document-topbar,.workspace-v2-tool .cv-topbar{padding:21px 17px!important}
  .workspace-v2-tool .document-card,.workspace-v2-tool .qr-settings,.workspace-v2-tool .cv-form{padding:17px!important}
 }
+
+/* Document workflow progress: readable numbered steps with a clear active state. */
+.workspace-v2-tool .document-stepper button{display:flex!important;flex:1 1 0!important;min-width:0!important;flex-direction:column!important;align-items:flex-start!important;gap:5px!important;padding:9px 12px!important;border-radius:10px!important;text-align:left!important}
+.workspace-v2-tool .document-stepper button span{display:inline-flex!important;align-items:center!important;justify-content:center!important;min-height:23px!important;padding:0 9px!important;border-radius:999px!important;background:#414149!important;color:#c9c4ca!important;font-size:9px!important;font-weight:800!important}
+.workspace-v2-tool .document-stepper button b{color:#d1ccd2!important;font-size:11px!important;font-weight:650!important;white-space:nowrap!important}
+.workspace-v2-tool .document-stepper button.current{background:#3a3035!important}
+.workspace-v2-tool .document-stepper button.current span,.workspace-v2-tool .document-stepper button.complete span{background:#e92b50!important;color:#fff!important}
+.workspace-v2-tool .document-stepper button.current b{color:#fff!important}
+.workspace-v2-tool .document-stepper button.complete b{color:#f2a4b4!important}
+@media(max-width:760px){.workspace-v2-tool .document-stepper{overflow-x:auto!important}.workspace-v2-tool .document-stepper button{flex:0 0 auto!important;min-width:112px!important}}
