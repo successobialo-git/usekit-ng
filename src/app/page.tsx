@@ -27,14 +27,14 @@ export default function Home(){
   const el=carouselRef.current;
   if(!el)return;
   let frame=0,pausedUntil=0,last=0;
-  const pause=()=>{pausedUntil=performance.now()+2600;};
+  const pause=()=>{pausedUntil=performance.now()+1800;};
   carouselPauseRef.current=pause;
   const tick=(now:number)=>{
-   if(now-pausedUntil>0&&now-last>=16){
-    const loopPoint=el.scrollWidth/2;
-    if(loopPoint>0){
-     el.scrollLeft=el.scrollLeft+0.8;
-     if(el.scrollLeft>=loopPoint)el.scrollLeft=el.scrollLeft-loopPoint;
+   if(now>=pausedUntil&&now-last>=16){
+    const half=el.scrollWidth/2;
+    if(half>el.clientWidth&&el.scrollWidth>0){
+     el.scrollLeft+=0.7;
+     if(el.scrollLeft>=half)el.scrollLeft-=half;
     }
     last=now;
    }
@@ -54,23 +54,28 @@ export default function Home(){
  },[]);
  const moveTools=(direction:-1|1)=>{
   const el=carouselRef.current;
-  if(!el)return;
-  carouselPauseRef.current();
-  const track=el.querySelector<HTMLElement>(".photo-tool-track");
+  const track=el?.querySelector<HTMLElement>(".photo-tool-track");
   const card=track?.querySelector<HTMLElement>(".photo-tool-card");
-  if(!track||!card)return;
-  const gap=parseFloat(getComputedStyle(track).columnGap||getComputedStyle(track).gap)||16;
+  if(!el||!track||!card)return;
+  carouselPauseRef.current();
+  const styles=getComputedStyle(track);
+  const gap=parseFloat(styles.columnGap)||parseFloat(styles.gap)||16;
   const step=card.getBoundingClientRect().width+gap;
-  const max=el.scrollWidth-el.clientWidth;
-  if(direction===-1&&el.scrollLeft<=2)el.scrollLeft=Math.max(0,el.scrollWidth/2-step);
-  el.scrollTo({left:Math.max(0,Math.min(max,el.scrollLeft+direction*step)),behavior:"smooth"});
+  const half=el.scrollWidth/2;
+  if(direction===1&&half>0&&el.scrollLeft+step>=half){
+   el.scrollLeft=el.scrollLeft+step-half;
+  }else if(direction===-1&&el.scrollLeft<=1&&half>0){
+   el.scrollLeft=half-step;
+  }else{
+   el.scrollLeft=Math.max(0,el.scrollLeft+direction*step);
+  }
  };
  const ordered=order.map(s=>tools.find(t=>t.slug===s)).filter(Boolean);
  const filtered=ordered.filter(t=>toolControls[t!.slug]!==false&&(t!.name+" "+t!.short+" "+t!.category).toLowerCase().includes(query.toLowerCase()));
  return <main className="site-shell">
   <section className="center-hero home-hero">
     <h1><span className="hero-line-one">Make everyday</span> <span className="hero-line-two">work feel</span> <em className="hero-changing">{typed}<span className="type-cursor">|</span><span className="hero-typing-period">.</span></em></h1>
-    <p>Create invoices and quotations, build a stronger CV, compress images and PDFs, make QR codes and more, all with simple tools designed to help you get things done.</p>
+    <p><span className="hero-description-desktop">Create invoices and quotations, build a stronger CV, compress images and PDFs, make QR codes and more, all with simple tools designed to help you get things done.</span><span className="hero-description-mobile">Create invoices and quotations, build a stronger CV, compress images and PDFs, and make QR codes.</span></p>
     <div className="center-actions"><a className="button-blue hero-primary" href="#quick-tools">Get started for free <span><Send size={17} strokeWidth={2.2}/></span></a><a className="quiet-link" href="#toolkit">Explore tools</a></div>
     <div className="home-proof" aria-label="Tools for small businesses, freelancers, job seekers, creators and students">
       <div><span><Store size={17} strokeWidth={1.7}/>Small businesses</span><span><BriefcaseBusiness size={17} strokeWidth={1.7}/>Freelancers</span><span><UserRound size={17} strokeWidth={1.7}/>Job seekers</span><span><Palette size={17} strokeWidth={1.7}/>Creators</span><span><GraduationCap size={18} strokeWidth={1.7}/>Students</span></div>
